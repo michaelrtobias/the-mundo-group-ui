@@ -11,7 +11,7 @@ export default function Home() {
     <div>
       <h2>Home View Rendered</h2>
       <>
-        <Carousel variant="secondary" style={{ display: "inline-block" }}>
+        <Carousel variant="secondary">
           <Carousel.Item>
             <IMG
               src="444-4447220_clipart-earth-logo-clipart-earth-logo-transparent-globe.png"
