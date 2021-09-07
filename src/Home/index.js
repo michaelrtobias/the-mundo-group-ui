@@ -3,7 +3,7 @@ import { Carousel } from "react-bootstrap";
 import styled from "styled-components";
 
 const IMG = styled.img`
-  max-height: 300px;
+  max-height: 50vh;
 `;
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
     <div>
       <h2>Home View Rendered</h2>
       <>
-        <Carousel variant="secondary">
+        <Carousel variant="dark">
           <Carousel.Item>
             <IMG
               src="444-4447220_clipart-earth-logo-clipart-earth-logo-transparent-globe.png"

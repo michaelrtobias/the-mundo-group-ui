@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
+import { Form, Button, Col } from "react-bootstrap";
+
 // import Row from "react-bootstrap/Row";
 import styled from "styled-components";
 import axios from "axios";
@@ -19,7 +18,7 @@ const BorderWrapper = styled.div`
   padding: 10px;
 `;
 
-const ContactUs: React.FC = () => {
+export default function ContactUs() {
   const [wishlistEntry, setWishlistEnty] = useState({});
   const [loading, setLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
@@ -223,6 +222,4 @@ const ContactUs: React.FC = () => {
       </FormWrapper>
     </BorderWrapper>
   );
-};
-
-export default ContactUs;
+}
