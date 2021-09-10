@@ -1,11 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import Col from "react-bootstrap/Col";
-// import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Col, Container, Spinner } from "react-bootstrap";
+import { TextField, makeStyles, Button, colors } from "@material-ui/core";
+import DoneIcon from "@material-ui/icons/Done";
 
+// import Row from "react-bootstrap/Row";
+
+const useStyles = makeStyles((theme) => ({
+  // root: {
+  //   // display: "flex",
+  //   // flexWrap: "wrap",
+  //   // "& > *": {
+  //   //   margin: theme.spacing(1),
+  //   //   padding: theme.spacing(1),
+  //   // },
+  //
+  // },
+  doneicon: {
+    color: colors.green[500],
+  },
+}));
 export default function UploadImage(Props: UploadButtonProps) {
   const [URL, setUrl] = useState("");
   const [success, setSuccess] = useState(false);
@@ -13,13 +27,19 @@ export default function UploadImage(Props: UploadButtonProps) {
   const [loading, setLoading] = useState(false);
 
   const [fileSelected, setFileSelected] = useState(false);
+  const classes = useStyles();
 
-  const handleFileSelected = (files: any) => {
+  const handleFileSelected = (files, e) => {
     setUploadInput(files);
     setFileSelected(true);
   };
 
-  const uploadImage = () => {
+  const handleButtonClick = (e) => {
+    uploadImage();
+    e.preventDefault();
+  };
+
+  const uploadImage = (e) => {
     var file = uploadInput[0];
     console.log("file:");
     console.log(file);
@@ -29,7 +49,8 @@ export default function UploadImage(Props: UploadButtonProps) {
     console.log("filename: " + fileName);
     var fileType = fileParts[1];
     console.log("file type: " + fileType);
-
+    setSuccess(false);
+    setLoading(true);
     let headersConfig = {
       headers: {
         "Content-Type": file.type,
@@ -61,13 +82,14 @@ export default function UploadImage(Props: UploadButtonProps) {
           .then((result) => {
             console.log("Response from s3");
             setSuccess(true);
-            alert("upload successful");
+            setLoading(false);
           })
-          .then(() => {
+          .then((e) => {
             Props.setWishlistEnty({
               ...Props.wishlistEntry,
-              image_URL: url,
+              image_URL: URL,
             });
+            e.preventDefault();
           })
           .catch((error) => {
             throw error;
@@ -79,37 +101,38 @@ export default function UploadImage(Props: UploadButtonProps) {
   };
   return (
     <div>
-      <Container>
-        <Form.Row>
-          <Col md={4}>
-            <Form.Group as={Col} controlId="formMake">
-              <Form.File
-                id="productFormImageUplaod"
-                label="Upload an image of product"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  handleFileSelected(e.target.files);
-                }}
-              ></Form.File>
-              <Form.Control.Feedback type="valid">
-                You did it!
-              </Form.Control.Feedback>
-            </Form.Group>
-          </Col>
-          <Col md={{ span: 5, offset: 1 }}>
-            <Button
-              variant="primary"
-              type="button"
-              disabled={!fileSelected || loading}
-              onClick={(e) => {
-                e.preventDefault();
-                uploadImage();
-              }}
-            >
-              Upload Image
-            </Button>
-          </Col>
-        </Form.Row>
-      </Container>{" "}
+      <TextField
+        id="productFormImageUplaod"
+        type="file"
+        onChange={(e) => {
+          handleFileSelected(e.target.files, e);
+        }}
+      ></TextField>
+      {loading ? (
+        <Button variant="contained" color="primary" disabled>
+          <Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />
+          <span className="visually-hidden">Loading...</span>
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          color="primary"
+          type="button"
+          disabled={!fileSelected || loading}
+          onClick={(e) => {
+            handleButtonClick(e);
+          }}
+        >
+          Upload Image
+        </Button>
+      )}
+      {success && <DoneIcon className={classes.doneicon} fontSize="large" />}
     </div>
   );
 }
