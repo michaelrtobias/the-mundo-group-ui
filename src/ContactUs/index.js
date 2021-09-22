@@ -5,25 +5,18 @@ import styled from "styled-components";
 import axios from "axios";
 import { useHistory } from "react-router";
 import UploadImage from "./components/UploadImage/index";
-import { TextField, Paper, makeStyles, Button } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
+import { TextField, Paper, Button, MenuItem } from "@mui/material";
 
-const useStyles = makeStyles((theme) => ({
-  // root: {
-  //   // display: "flex",
-  //   // flexWrap: "wrap",
-  //   // "& > *": {
-  //   //   margin: theme.spacing(1),
-  //   //   padding: theme.spacing(1),
-  //   // },
-  //
-  // },
+const useStyles = makeStyles(() => ({
   root: {
-    margin: theme.spacing(1),
-    padding: theme.spacing(1),
+    margin: "8px",
+    padding: "8px",
     display: "grid",
     gridTemplateColumns: "3fr 3fr 3fr",
     gridColumnGap: "30px",
     gridRowGap: "10px",
+    background: "blue",
   },
 }));
 
@@ -32,7 +25,7 @@ export default function ContactUs() {
   const [loading, setLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
   const [leadType, setLeadType] = useState([
-    "watch",
+    "Watch",
     "Parts & Accessories",
     "Diamonds",
     "Bracelets",
@@ -45,7 +38,6 @@ export default function ContactUs() {
   const classes = useStyles();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     addWishlistEntry();
   };
 
@@ -74,7 +66,8 @@ export default function ContactUs() {
       .then((res) => {
         console.log(res);
         setLoading(false);
-        history.push("/");
+        history.push("/contact/success");
+        console.log("should have redirected");
       })
       .catch((e) => {
         console.log(e);
@@ -86,19 +79,38 @@ export default function ContactUs() {
   useEffect(() => {
     const isEmailSet = !!wishlistEntry.email;
     const isPhoneSet = !!wishlistEntry.phone;
-    setFormValid(isEmailSet && isPhoneSet);
+    const isFirstNameSet = !!wishlistEntry.first_name;
+    const isLastNameSet = !!wishlistEntry.last_name;
+    const isTypeSet = !!wishlistEntry.type;
+    const isMakeSet = !!wishlistEntry.make;
+    const isModelSet = !!wishlistEntry.model;
+    const isDescriptionSet = !!wishlistEntry.description;
+    const isImageURLSet = !!wishlistEntry.image_URL;
+    setFormValid(
+      isEmailSet &&
+        isPhoneSet &&
+        isFirstNameSet &&
+        isLastNameSet &&
+        isTypeSet &&
+        isMakeSet &&
+        isModelSet &&
+        isDescriptionSet &&
+        isImageURLSet
+    );
   }, [wishlistEntry]);
 
   return (
     <>
+      <div>
+        <h2>Wishlist</h2>
+        <p>Please fill out the form below to help us find your next piece</p>
+      </div>
       <Paper className={classes.root}>
-        <div>
-          <h2>Wishlist</h2>
-          <p>Please fill out the form below to help us find your next piece</p>
-        </div>
         <TextField
+          variant="outlined"
+          color="primary"
           type="text"
-          value={wishlistEntry.first_name || ""}
+          value={wishlistEntry.first_name}
           placeholder="Enter First Name"
           onChange={(e) =>
             setWishlistEnty({
@@ -110,9 +122,11 @@ export default function ContactUs() {
         ></TextField>
 
         <TextField
+          variant="outlined"
+          color="primary"
           type="text"
           placeholder="Enter Last Name"
-          value={wishlistEntry.last_name || ""}
+          value={wishlistEntry.last_name}
           onChange={(e) =>
             setWishlistEnty({
               ...wishlistEntry,
@@ -122,9 +136,11 @@ export default function ContactUs() {
           helperText="Last Name"
         ></TextField>
         <TextField
+          variant="outlined"
+          color="primary"
           type="email"
           placeholder="Enter Email"
-          value={wishlistEntry.email || ""}
+          value={wishlistEntry.email}
           onChange={(e) =>
             setWishlistEnty({
               ...wishlistEntry,
@@ -134,9 +150,11 @@ export default function ContactUs() {
           helperText="Email"
         ></TextField>
         <TextField
+          variant="outlined"
+          color="primary"
           type="phone"
           placeholder="Enter Phone Number"
-          value={wishlistEntry.phone || ""}
+          value={wishlistEntry.phone}
           onChange={(e) =>
             setWishlistEnty({
               ...wishlistEntry,
@@ -147,9 +165,13 @@ export default function ContactUs() {
         ></TextField>
 
         <TextField
-          as="select"
-          defaultValue="Type..."
-          value={wishlistEntry.type || ""}
+          variant="outlined"
+          color="primary"
+          select
+          label="Please select an option"
+          placeholder="What type of goods are you looking for?"
+          defaultValue=""
+          value={wishlistEntry.type}
           onChange={(e) =>
             setWishlistEnty({
               ...wishlistEntry,
@@ -158,16 +180,19 @@ export default function ContactUs() {
           }
           helperText="What type of goods are you looking for?"
         >
-          <option>Type...</option>
-          {leadType.map((type) => {
-            <option>{type}</option>;
-          })}
+          {leadType.map((type) => (
+            <MenuItem key={type} value={type}>
+              {type}
+            </MenuItem>
+          ))}
         </TextField>
 
         <TextField
+          variant="outlined"
+          color="primary"
           type="text"
           placeholder="Enter Make"
-          value={wishlistEntry.make || ""}
+          value={wishlistEntry.make}
           onChange={(e) =>
             setWishlistEnty({
               ...wishlistEntry,
@@ -178,9 +203,11 @@ export default function ContactUs() {
         ></TextField>
 
         <TextField
+          variant="outlined"
+          color="primary"
           type="text"
           placeholder="Enter Model"
-          value={wishlistEntry.model || ""}
+          value={wishlistEntry.model}
           onChange={(e) =>
             setWishlistEnty({
               ...wishlistEntry,
@@ -191,9 +218,11 @@ export default function ContactUs() {
         ></TextField>
 
         <TextField
+          variant="outlined"
+          color="primary"
           type="text"
           placeholder="Enter Description"
-          value={wishlistEntry.description || ""}
+          value={wishlistEntry.description}
           onChange={(e) =>
             setWishlistEnty({
               ...wishlistEntry,
@@ -203,11 +232,11 @@ export default function ContactUs() {
           helperText="Add any extra details about item. Bracelets, Materials, Dials, Bezel,
           etc..."
         />
-
         <UploadImage
           setWishlistEnty={setWishlistEnty}
           {...wishlistEntry}
           loading={loading}
+          wishlistEntry={wishlistEntry}
         />
         <Button
           variant="contained"

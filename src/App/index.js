@@ -9,10 +9,10 @@ import Jewlery from "../Jewlery/index";
 import BeltsAndBuckels from "../BeltsAndBuckels/index";
 import Bracelets from "../Bracelets/index";
 import GoldLink from "../GoldLink/index";
+import FormSuccessful from "../ContactUs/components/FormSuccessful";
 import styled from "styled-components";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
+
+import { Nav, NavDropdown, Navbar } from "react-bootstrap";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
@@ -113,7 +113,8 @@ function App() {
               component={PartsAndAccessories}
             ></Route>
             <Route path="/leathergoods" component={LeatherGoods}></Route>
-            <Route path="/products" component={Products}></Route>
+            <Route path="/products" component={Products}></Route>{" "}
+            <Route path="/contact/success" component={FormSuccessful}></Route>
             <Route path="/contact" component={ContactUs}></Route>
             <Route path="/" component={Home}></Route>
           </Switch>

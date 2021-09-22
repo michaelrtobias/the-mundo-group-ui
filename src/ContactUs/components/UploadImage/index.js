@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Col, Container, Spinner } from "react-bootstrap";
-import { TextField, makeStyles, Button, colors } from "@material-ui/core";
-import DoneIcon from "@material-ui/icons/Done";
+import { TextField, Button, colors } from "@mui/material";
+import DoneIcon from "@mui/icons-material/Done";
+import { makeStyles } from "@mui/styles";
 
 // import Row from "react-bootstrap/Row";
 
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     color: colors.green[500],
   },
 }));
-export default function UploadImage(Props: UploadButtonProps) {
+export default function UploadImage(props) {
   const [URL, setUrl] = useState("");
   const [success, setSuccess] = useState(false);
   const [uploadInput, setUploadInput] = useState([]);
@@ -32,14 +33,17 @@ export default function UploadImage(Props: UploadButtonProps) {
   const handleFileSelected = (files, e) => {
     setUploadInput(files);
     setFileSelected(true);
+    setSuccess(false);
   };
 
-  const handleButtonClick = (e) => {
+  const handleButtonClick = (event) => {
     uploadImage();
-    e.preventDefault();
+    console.log("before");
+    event.preventDefault();
+    console.log("after");
   };
 
-  const uploadImage = (e) => {
+  const uploadImage = () => {
     var file = uploadInput[0];
     console.log("file:");
     console.log(file);
@@ -84,16 +88,21 @@ export default function UploadImage(Props: UploadButtonProps) {
             setSuccess(true);
             setLoading(false);
           })
-          .then((e) => {
-            Props.setWishlistEnty({
-              ...Props.wishlistEntry,
-              image_URL: URL,
+          .then(() => {
+            console.log("blaaaaaaaaaaheeeee");
+            console.log(URL);
+            console.log(url);
+            props.setWishlistEnty({
+              ...props.wishlistEntry,
+              image_URL: url,
             });
-            e.preventDefault();
           })
           .catch((error) => {
             throw error;
           });
+      })
+      .then(() => {
+        console.log(props.wishlistEntry);
       })
       .catch((err) => {
         throw err;
@@ -104,12 +113,15 @@ export default function UploadImage(Props: UploadButtonProps) {
       <TextField
         id="productFormImageUplaod"
         type="file"
+        variant="outlined"
+        helperText="Please upload a picture of item (Optional)"
         onChange={(e) => {
           handleFileSelected(e.target.files, e);
         }}
       ></TextField>
+      {"  "}
       {loading ? (
-        <Button variant="contained" color="primary" disabled>
+        <Button variant="contained" type="button" color="primary" disabled>
           <Spinner
             as="span"
             animation="border"
