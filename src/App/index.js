@@ -20,7 +20,7 @@ import LeatherGoods from "../LeatherGoods";
 import PartsAndAccessories from "../PartsAndAccessories";
 
 const Body = styled.div`
-  background-color: white;
+  background-color: #f5f2e9;
 `;
 
 const Header = styled.header`

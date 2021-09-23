@@ -1,15 +1,12 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
+import { IMG, CarouselWrapper } from "./style.js";
 import styled from "styled-components";
-const IMG = styled.img`
-  max-height: 50vh;
-`;
 
 export default function Home() {
   return (
     <div>
-      <h2>Home View Rendered</h2>
-      <>
+      <CarouselWrapper>
         <Carousel variant="dark">
           <Carousel.Item>
             <IMG
@@ -27,7 +24,7 @@ export default function Home() {
             />
           </Carousel.Item>
         </Carousel>
-      </>
+      </CarouselWrapper>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Purus semper eget

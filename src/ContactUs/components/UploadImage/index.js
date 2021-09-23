@@ -113,7 +113,7 @@ export default function UploadImage(props) {
       <TextField
         id="productFormImageUplaod"
         type="file"
-        variant="outlined"
+        variant="filled"
         helperText="Please upload a picture of item (Optional)"
         onChange={(e) => {
           handleFileSelected(e.target.files, e);

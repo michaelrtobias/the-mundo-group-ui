@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 import UploadImage from "./components/UploadImage/index";
 import { makeStyles } from "@mui/styles";
 import { TextField, Paper, Button, MenuItem } from "@mui/material";
-
+import { ContactFormWrapper } from "./style.js";
 const useStyles = makeStyles(() => ({
   root: {
     margin: "8px",
@@ -100,14 +100,15 @@ export default function ContactUs() {
   }, [wishlistEntry]);
 
   return (
-    <>
+    <ContactFormWrapper>
       <div>
         <h2>Wishlist</h2>
         <p>Please fill out the form below to help us find your next piece</p>
       </div>
       <Paper className={classes.root}>
         <TextField
-          variant="outlined"
+          required
+          variant="filled"
           color="primary"
           type="text"
           value={wishlistEntry.first_name}
@@ -122,7 +123,8 @@ export default function ContactUs() {
         ></TextField>
 
         <TextField
-          variant="outlined"
+          required
+          variant="filled"
           color="primary"
           type="text"
           placeholder="Enter Last Name"
@@ -136,7 +138,8 @@ export default function ContactUs() {
           helperText="Last Name"
         ></TextField>
         <TextField
-          variant="outlined"
+          required
+          variant="filled"
           color="primary"
           type="email"
           placeholder="Enter Email"
@@ -150,7 +153,8 @@ export default function ContactUs() {
           helperText="Email"
         ></TextField>
         <TextField
-          variant="outlined"
+          required
+          variant="filled"
           color="primary"
           type="phone"
           placeholder="Enter Phone Number"
@@ -165,7 +169,8 @@ export default function ContactUs() {
         ></TextField>
 
         <TextField
-          variant="outlined"
+          required
+          variant="filled"
           color="primary"
           select
           label="Please select an option"
@@ -188,7 +193,8 @@ export default function ContactUs() {
         </TextField>
 
         <TextField
-          variant="outlined"
+          required
+          variant="filled"
           color="primary"
           type="text"
           placeholder="Enter Make"
@@ -203,7 +209,8 @@ export default function ContactUs() {
         ></TextField>
 
         <TextField
-          variant="outlined"
+          required
+          variant="filled"
           color="primary"
           type="text"
           placeholder="Enter Model"
@@ -218,7 +225,8 @@ export default function ContactUs() {
         ></TextField>
 
         <TextField
-          variant="outlined"
+          required
+          variant="filled"
           color="primary"
           type="text"
           placeholder="Enter Description"
@@ -248,6 +256,6 @@ export default function ContactUs() {
           Submit
         </Button>
       </Paper>
-    </>
+    </ContactFormWrapper>
   );
 }
