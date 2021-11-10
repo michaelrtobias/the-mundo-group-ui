@@ -1,26 +1,26 @@
 export const HomeCarouselImages = [
   {
-    src: "444-4447220_clipart-earth-logo-clipart-earth-logo-transparent-globe.png",
+    src: "https://the-mundo-group-media.s3.amazonaws.com/254-2542243_world-grey-logo-svg-clip-arts-hd-png.png",
     alt: "First slide",
     name: "globe",
   },
   {
-    src: "batman.jpeg",
+    src: "https://the-mundo-group-media.s3.amazonaws.com/batman.jpeg",
     alt: "batman",
     name: "batman",
   },
   {
-    src: "datejust-wide.jpeg",
+    src: "https://the-mundo-group-media.s3.amazonaws.com/datejust-wide.jpeg",
     alt: "Silver Datejust",
     name: "datejust",
   },
   {
-    src: "01-AP-Cabinet-No-4.jpeg",
+    src: "https://the-mundo-group-media.s3.amazonaws.com/01-AP-Cabinet-No-4.jpeg",
     alt: "AP in pocket",
     name: "AP-pocket",
   },
   {
-    src: "breitling-top-time-car-watches-1.jpeg",
+    src: "https://the-mundo-group-media.s3.amazonaws.com/breitling-top-time-car-watches-1.jpeg",
     alt: "3 breitling watches",
     name: "breitling",
   },
