@@ -1,29 +1,44 @@
 import React, { useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-// import Row from "react-bootstrap/Row";
-import styled from "styled-components";
+
 import axios from "axios";
 import { useHistory } from "react-router";
 import UploadImage from "./components/UploadImage/index";
+import { makeStyles } from "@mui/styles";
+import { TextField, Paper, Button, MenuItem } from "@mui/material";
+import { ContactFormWrapper } from "./style.js";
+const useStyles = makeStyles(() => ({
+  root: {
+    margin: "8px",
+    padding: "8px",
+    display: "grid",
+    gridTemplateColumns: "3fr 3fr 3fr",
+    gridColumnGap: "30px",
+    gridRowGap: "10px",
+    background: "blue",
+  },
+}));
 
-const FormWrapper = styled.div`
-  border-width: 1rem 1rem 0;
-  border-radius: 8px 8px 0 0;
-  padding-left: 15px;
-  padding-right: 15px;
-  border: 0.2rem solid #ececec;
-`;
-const BorderWrapper = styled.div`
-  padding: 10px;
-`;
-
-const ContactUs: React.FC = () => {
+const leadType = [
+  "Watch",
+  "Parts & Accessories",
+  "Diamonds",
+  "Bracelets",
+  "Gold Link",
+  "Belts & Buckels",
+  "Leather Goods",
+  "Other",
+];
+export default function ContactUs() {
   const [wishlistEntry, setWishlistEnty] = useState({});
   const [loading, setLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
+
   const history = useHistory();
+  const classes = useStyles();
+
+  const handleSubmit = (e) => {
+    addWishlistEntry();
+  };
 
   const addWishlistEntry = () => {
     setLoading(true);
@@ -50,7 +65,8 @@ const ContactUs: React.FC = () => {
       .then((res) => {
         console.log(res);
         setLoading(false);
-        history.push("/");
+        history.push("/contact/success");
+        console.log("should have redirected");
       })
       .catch((e) => {
         console.log(e);
@@ -62,167 +78,183 @@ const ContactUs: React.FC = () => {
   useEffect(() => {
     const isEmailSet = !!wishlistEntry.email;
     const isPhoneSet = !!wishlistEntry.phone;
-    setFormValid(isEmailSet && isPhoneSet);
+    const isFirstNameSet = !!wishlistEntry.first_name;
+    const isLastNameSet = !!wishlistEntry.last_name;
+    const isTypeSet = !!wishlistEntry.type;
+    const isMakeSet = !!wishlistEntry.make;
+    const isModelSet = !!wishlistEntry.model;
+    const isDescriptionSet = !!wishlistEntry.description;
+    const isImageURLSet = !!wishlistEntry.image_URL;
+    setFormValid(
+      isEmailSet &&
+        isPhoneSet &&
+        isFirstNameSet &&
+        isLastNameSet &&
+        isTypeSet &&
+        isMakeSet &&
+        isModelSet &&
+        isDescriptionSet &&
+        isImageURLSet
+    );
   }, [wishlistEntry]);
 
   return (
-    <BorderWrapper>
-      <FormWrapper>
+    <ContactFormWrapper>
+      <div>
         <h2>Wishlist</h2>
         <p>Please fill out the form below to help us find your next piece</p>
-        <Form onSubmit={() => addWishlistEntry()}>
-          <Form.Row>
-            <Form.Group as={Col} controlId="formFirstName">
-              <Form.Label>First Name</Form.Label>
-              <Form.Control
-                type="text"
-                value={wishlistEntry.first_name || ""}
-                placeholder="Enter First Name"
-                onChange={(e) =>
-                  setWishlistEnty({
-                    ...wishlistEntry,
-                    first_name: e.target.value,
-                  })
-                }
-              ></Form.Control>
-            </Form.Group>
-            <Form.Group as={Col} controlId="formLastName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Last Name"
-                value={wishlistEntry.last_name || ""}
-                onChange={(e) =>
-                  setWishlistEnty({
-                    ...wishlistEntry,
-                    last_name: e.target.value,
-                  })
-                }
-              ></Form.Control>
-            </Form.Group>
-          </Form.Row>
-          <Form.Row>
-            <Form.Group as={Col} controlId="formEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter Email"
-                value={wishlistEntry.email || ""}
-                onChange={(e) =>
-                  setWishlistEnty({
-                    ...wishlistEntry,
-                    email: e.target.value,
-                  })
-                }
-              ></Form.Control>
-            </Form.Group>
-            <Form.Group as={Col} controlId="formPhone">
-              <Form.Label>Phone Number</Form.Label>
-              <Form.Control
-                type="phone"
-                placeholder="Enter Phone Number"
-                value={wishlistEntry.phone || ""}
-                onChange={(e) =>
-                  setWishlistEnty({
-                    ...wishlistEntry,
-                    phone: e.target.value,
-                  })
-                }
-              ></Form.Control>
-            </Form.Group>
-          </Form.Row>
-          <Form.Row>
-            <Form.Group>
-              <Form.Label>What type of goods are you looking for?</Form.Label>
-              <Form.Control
-                as="select"
-                defaultValue="Type..."
-                value={wishlistEntry.type || ""}
-                onChange={(e) =>
-                  setWishlistEnty({
-                    ...wishlistEntry,
-                    type: e.target.value,
-                  })
-                }
-              >
-                <option>Type...</option>
-                <option>Watch</option>
-                <option>Parts & Accessories</option>
-                <option>Diamonds</option>
-                <option>Bracelets</option>
-                <option>Gold Link</option>
-                <option>Belts & Buckels</option>
-                <option>Leather Goods</option>
-                <option>Other</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group as={Col} controlId="formMake">
-              <Form.Label>Make or Brand</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Make"
-                value={wishlistEntry.make || ""}
-                onChange={(e) =>
-                  setWishlistEnty({
-                    ...wishlistEntry,
-                    make: e.target.value,
-                  })
-                }
-              ></Form.Control>
-            </Form.Group>
-            <Form.Group as={Col} controlId="formModel">
-              <Form.Label>Model</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Model"
-                value={wishlistEntry.model || ""}
-                onChange={(e) =>
-                  setWishlistEnty({
-                    ...wishlistEntry,
-                    model: e.target.value,
-                  })
-                }
-              ></Form.Control>
-            </Form.Group>
-          </Form.Row>
-          <Form.Row>
-            <Form.Group as={Col} controlId="formDescription">
-              <Form.Label>
-                Add any extra details about item. Bracelets, Materials, Dials,
-                Bezel, etc...
-              </Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Description"
-                value={wishlistEntry.description || ""}
-                onChange={(e) =>
-                  setWishlistEnty({
-                    ...wishlistEntry,
-                    description: e.target.value,
-                  })
-                }
-              />
-            </Form.Group>
-          </Form.Row>
-          <Form.Row></Form.Row>
+      </div>
+      <Paper className={classes.root}>
+        <TextField
+          required
+          variant="filled"
+          color="primary"
+          type="text"
+          value={wishlistEntry.first_name}
+          placeholder="Enter First Name"
+          onChange={(e) =>
+            setWishlistEnty({
+              ...wishlistEntry,
+              first_name: e.target.value,
+            })
+          }
+          helperText="First Name"
+        ></TextField>
 
-          <UploadImage
-            setWishlistEnty={setWishlistEnty}
-            {...wishlistEntry}
-            loading={loading}
-          />
-          <Button
-            variant="primary"
-            type="submit"
-            disabled={!formValid || loading}
-            onClick={() => addWishlistEntry()}
-          >
-            Submit
-          </Button>
-        </Form>
-      </FormWrapper>
-    </BorderWrapper>
+        <TextField
+          required
+          variant="filled"
+          color="primary"
+          type="text"
+          placeholder="Enter Last Name"
+          value={wishlistEntry.last_name}
+          onChange={(e) =>
+            setWishlistEnty({
+              ...wishlistEntry,
+              last_name: e.target.value,
+            })
+          }
+          helperText="Last Name"
+        ></TextField>
+        <TextField
+          required
+          variant="filled"
+          color="primary"
+          type="email"
+          placeholder="Enter Email"
+          value={wishlistEntry.email}
+          onChange={(e) =>
+            setWishlistEnty({
+              ...wishlistEntry,
+              email: e.target.value,
+            })
+          }
+          helperText="Email"
+        ></TextField>
+        <TextField
+          required
+          variant="filled"
+          color="primary"
+          type="phone"
+          placeholder="Enter Phone Number"
+          value={wishlistEntry.phone}
+          onChange={(e) =>
+            setWishlistEnty({
+              ...wishlistEntry,
+              phone: e.target.value,
+            })
+          }
+          helperText="Phone Number"
+        ></TextField>
+
+        <TextField
+          required
+          variant="filled"
+          color="primary"
+          select
+          label="Please select an option"
+          placeholder="What type of goods are you looking for?"
+          defaultValue=""
+          value={wishlistEntry.type}
+          onChange={(e) =>
+            setWishlistEnty({
+              ...wishlistEntry,
+              type: e.target.value,
+            })
+          }
+          helperText="What type of goods are you looking for?"
+        >
+          {leadType.map((type) => (
+            <MenuItem key={type} value={type}>
+              {type}
+            </MenuItem>
+          ))}
+        </TextField>
+
+        <TextField
+          required
+          variant="filled"
+          color="primary"
+          type="text"
+          placeholder="Enter Make"
+          value={wishlistEntry.make}
+          onChange={(e) =>
+            setWishlistEnty({
+              ...wishlistEntry,
+              make: e.target.value,
+            })
+          }
+          helperText="Make or Brand"
+        ></TextField>
+
+        <TextField
+          required
+          variant="filled"
+          color="primary"
+          type="text"
+          placeholder="Enter Model"
+          value={wishlistEntry.model}
+          onChange={(e) =>
+            setWishlistEnty({
+              ...wishlistEntry,
+              model: e.target.value,
+            })
+          }
+          helperText="Model"
+        ></TextField>
+
+        <TextField
+          required
+          variant="filled"
+          color="primary"
+          type="text"
+          placeholder="Enter Description"
+          value={wishlistEntry.description}
+          onChange={(e) =>
+            setWishlistEnty({
+              ...wishlistEntry,
+              description: e.target.value,
+            })
+          }
+          helperText="Add any extra details about item. Bracelets, Materials, Dials, Bezel,
+          etc..."
+        />
+        <UploadImage
+          setWishlistEnty={setWishlistEnty}
+          {...wishlistEntry}
+          loading={loading}
+          wishlistEntry={wishlistEntry}
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          type="button"
+          disabled={!formValid || loading}
+          onClick={(e) => handleSubmit(e)}
+        >
+          Submit
+        </Button>
+      </Paper>
+    </ContactFormWrapper>
   );
-};
-
-export default ContactUs;
+}
