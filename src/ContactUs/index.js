@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-// import Row from "react-bootstrap/Row";
-import styled from "styled-components";
 import axios from "axios";
 import { useHistory } from "react-router";
 import UploadImage from "./components/UploadImage/index";
@@ -20,20 +18,21 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const leadType = [
+  "Watch",
+  "Parts & Accessories",
+  "Diamonds",
+  "Bracelets",
+  "Gold Link",
+  "Belts & Buckels",
+  "Leather Goods",
+  "Other",
+];
 export default function ContactUs() {
   const [wishlistEntry, setWishlistEnty] = useState({});
   const [loading, setLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
-  const [leadType, setLeadType] = useState([
-    "Watch",
-    "Parts & Accessories",
-    "Diamonds",
-    "Bracelets",
-    "Gold Link",
-    "Belts & Buckels",
-    "Leather Goods",
-    "Other",
-  ]);
+
   const history = useHistory();
   const classes = useStyles();
 
