@@ -9,11 +9,3 @@ export const Header = styled.header`
   justify-context: center;
   flex-direction: column;
 `;
-
-export const Title = styled.h1`
-  color: white;
-`;
-
-export const TitleBox = styled.div`
-  background-color: #343a40;
-`;
