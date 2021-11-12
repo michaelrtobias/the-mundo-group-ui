@@ -5,8 +5,8 @@ import { ContactUsContent as Content } from "./components/Content/index.js";
 export default function ContactUs() {
   return (
     <>
-      <WishList />
       <Content />
+      <WishList />
     </>
   );
 }
