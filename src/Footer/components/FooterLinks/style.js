@@ -10,7 +10,3 @@ export const ContentWrap = styled.div`
   justify-content: space-around;
   color: white;
 `;
-
-export const FooterTitle = styled.h4`
-  color: white;
-`;

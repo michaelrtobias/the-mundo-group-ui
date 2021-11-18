@@ -1,10 +1,10 @@
 import React from "react";
-import { FooterLink, ContentWrap, FooterTitle } from "./style.js";
+import { FooterLink, ContentWrap } from "./style.js";
 
 export default function FooterLinks() {
   return (
     <ContentWrap>
-      <FooterTitle>The Mundo Group</FooterTitle>
+      <h4>The Mundo Group</h4>
       <ul>
         <li>
           <FooterLink href="/">Home</FooterLink>

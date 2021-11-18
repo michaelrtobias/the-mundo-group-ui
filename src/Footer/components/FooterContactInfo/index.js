@@ -1,5 +1,5 @@
 import React from "react";
-import { ContactInfoWrapper, FooterTitle } from "./style.js";
+import { ContactInfoWrapper } from "./style.js";
 export default function FooterContactInfo() {
   return (
     <ContactInfoWrapper>
