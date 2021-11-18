@@ -1,8 +1,19 @@
 import React from "react";
+import { ContactInfoWrapper, FooterTitle } from "./style.js";
 export default function FooterContactInfo() {
   return (
-    <>
-      <h1>Footer Contact Info</h1>
-    </>
+    <ContactInfoWrapper>
+      <h4>Contact Info</h4>
+      <div>
+        <b>Email:</b>{" "}
+        <a href="mailto:info@themundogroup.com">info@themundogroup.com</a>
+      </div>
+      <div>
+        <b>Phone:</b> +1 (480)-709-7019
+      </div>
+      <div>
+        <b>Phone:</b> +1 (847)-525-5122
+      </div>
+    </ContactInfoWrapper>
   );
 }

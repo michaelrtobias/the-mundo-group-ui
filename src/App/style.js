@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Body = styled.div`
-  background-color: #f5f2e9;
-  height: 100vh;
+  flex: 1;
 `;
 
-export const Header = styled.header`
+export const Page = styled.header`
   display: flex;
-  justify-context: center;
   flex-direction: column;
+  justify-context: center;
+  min-height: 100vh;
 `;

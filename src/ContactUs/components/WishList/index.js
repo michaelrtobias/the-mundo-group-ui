@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 import UploadImage from "./components/UploadImage/index";
 import { makeStyles } from "@mui/styles";
 import { TextField, Paper, Button, MenuItem } from "@mui/material";
-import { ContactFormWrapper, WishListWrapper } from "./style.js";
+import { ContactFormWrapper, WishListCard } from "./style.js";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -101,13 +101,13 @@ export default function WishList() {
 
   return (
     <ContactFormWrapper>
-      <WishListWrapper>
+      <WishListCard>
         <h2>Send Us A Message</h2>
         <p>
           Please fill out the form below with what you are looking for and we
           will contact you as soon as possible
         </p>
-      </WishListWrapper>
+      </WishListCard>
       <Paper className={classes.root}>
         <TextField
           required
