@@ -5,7 +5,7 @@ export const ContactFormWrapper = styled.div`
   height: 50vh;
 `;
 
-export const WishListWrapper = styled.div`
+export const WishListCard = styled.div`
   padding: 20px;
   background-color: #cccccc;
   margin: 20px;

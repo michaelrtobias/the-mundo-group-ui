@@ -1,11 +1,13 @@
 import React from "react";
-import { FooterLink } from "./style.js";
+import { FooterLink, ContentWrap } from "./style.js";
+
 export default function FooterLinks() {
   return (
-    <>
+    <ContentWrap>
+      <h4>The Mundo Group</h4>
       <ul>
         <li>
-          <FooterLink href="/home">Home</FooterLink>
+          <FooterLink href="/">Home</FooterLink>
         </li>
         <li>
           <FooterLink href="/about">About</FooterLink>
@@ -17,6 +19,6 @@ export default function FooterLinks() {
           <FooterLink href="/watches">Pre-Owned Watches</FooterLink>
         </li>
       </ul>
-    </>
+    </ContentWrap>
   );
 }

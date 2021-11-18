@@ -2,7 +2,6 @@ import {
   MundoGroupTitle,
   TitleCard,
   ContactCard,
-  InqueryTypeTitle,
   GeneralQueries,
 } from "./style.js";
 
@@ -15,7 +14,6 @@ export function ContactUsContent() {
       <ContactCard>
         <MundoGroupTitle>The Mundo Group</MundoGroupTitle>
         <GeneralQueries>
-          {/* <InqueryTypeTitle>For general inqueries:</InqueryTypeTitle> */}
           <div>
             <b>Email:</b>{" "}
             <a href="mailto:info@themundogroup.com">info@themundogroup.com</a>
