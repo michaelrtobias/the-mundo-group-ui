@@ -10,3 +10,13 @@ export const ContentWrap = styled.div`
   justify-content: space-around;
   color: white;
 `;
+export const LeftSideWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  color: white;
+`;
+
+export const LinksList = styled.ul``;
+export const LinksListItem = styled.li`
+  list-style-type: none;
+`;
