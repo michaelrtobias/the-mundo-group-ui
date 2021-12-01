@@ -1,23 +1,22 @@
 import React from "react";
-import { FooterLink, ContentWrap } from "./style.js";
+import { FooterLink, ContentWrap, LinksListItem } from "./style.js";
 
 export default function FooterLinks() {
   return (
     <ContentWrap>
-      <h4>The Mundo Group</h4>
       <ul>
-        <li>
+        <LinksListItem>
           <FooterLink href="/">Home</FooterLink>
-        </li>
-        <li>
+        </LinksListItem>
+        <LinksListItem>
           <FooterLink href="/about">About</FooterLink>
-        </li>
-        <li>
+        </LinksListItem>
+        <LinksListItem>
           <FooterLink href="/contact">Contact Us</FooterLink>
-        </li>
-        <li>
+        </LinksListItem>
+        <LinksListItem>
           <FooterLink href="/watches">Pre-Owned Watches</FooterLink>
-        </li>
+        </LinksListItem>
       </ul>
     </ContentWrap>
   );

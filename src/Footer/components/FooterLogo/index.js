@@ -1,10 +1,9 @@
-import { FooterImage } from "./style.js";
+import { FooterImage, ContentWrap } from "./style.js";
 
 export default function FooterLogo() {
   return (
-    <div>
-      <h5>Footer Logo Here</h5>
+    <ContentWrap>
       <FooterImage />
-    </div>
+    </ContentWrap>
   );
 }
