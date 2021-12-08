@@ -10,13 +10,17 @@ export const ContentWrap = styled.div`
   justify-content: space-around;
   color: white;
 `;
-export const LeftSideWrap = styled.div`
-  display: flex;
-  flex-direction: row;
-  color: white;
-`;
 
 export const LinksList = styled.ul``;
 export const LinksListItem = styled.li`
   list-style-type: none;
+`;
+export const CopyrightListItem = styled.li`
+  list-style-type: none;
+  margin-top: 1.4em;
+`;
+
+export const Copyright = styled.text`
+  text-align: center;
+  left: 20px;
 `;

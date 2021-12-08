@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Paragraph = styled.p`
-  font-size: 16pt;
+  font-size: 12pt;
   margin: 10px 20px;
 `;
 
@@ -19,7 +19,7 @@ export const SplitTextImageContainer = styled.div`
 
 export const Image = styled.img`
   max-width: 40vw;
-  max-height: 500px;
+  max-height: 360px;
   margin-right: 20px;
 `;
 

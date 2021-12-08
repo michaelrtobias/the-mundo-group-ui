@@ -1,12 +1,9 @@
 import { Nav, Navbar } from "react-bootstrap";
-import { TitleBox, Title, Image } from "./style.js";
+import { Image } from "./style.js";
 
 export default function NavBar() {
   return (
-    <div>
-      <TitleBox>
-        <Title>The Mundo Group</Title>
-      </TitleBox>
+    <>
       <Navbar bg="dark" variant="dark" expand="md" sticky="top">
         <Navbar.Brand>
           {"  "}
@@ -23,13 +20,12 @@ export default function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/about">About</Nav.Link>
-            <Nav.Link href="/contact">Contact Us</Nav.Link>
             <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link>
-            <Nav.Link href="/jewlery">Jewlery</Nav.Link>
+            <Nav.Link href="/contact">Contact Us</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </div>
+    </>
   );
 }

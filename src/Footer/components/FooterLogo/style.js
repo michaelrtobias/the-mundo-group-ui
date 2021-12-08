@@ -14,4 +14,5 @@ export const ContentWrap = styled.div`
   flex-direction: column;
   justify-content: space-around;
   color: white;
+  margin-right: 40px;
 `;
