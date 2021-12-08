@@ -6,6 +6,6 @@ export const ContactInfoWrapper = styled.div`
   color: white;
 `;
 
-export const FooterTitle = styled.h4`
-  color: white;
+export const ContactPageLinkButton = styled.button`
+  margin-top: 0.5em;
 `;
