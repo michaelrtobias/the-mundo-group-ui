@@ -2,7 +2,6 @@ import styled from "styled-components";
 export const FooterBox = styled.div`
   background-color: #343a40;
   color: white;
-  margin-top: 3em;
   position: "relative";
   padding-bottom: 20px;
   width: "100%";

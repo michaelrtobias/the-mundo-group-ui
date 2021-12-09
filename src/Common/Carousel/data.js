@@ -42,4 +42,9 @@ export const WatchCarouselImages = [
     alt: "3 breitling watches",
     name: "breitling",
   },
+  {
+    src: "https://the-mundo-group-media.s3.amazonaws.com/Omega-Speedmaster-Chronoscope-main.jpeg",
+    alt: "omega up close",
+    name: "omegaClose",
+  },
 ];
