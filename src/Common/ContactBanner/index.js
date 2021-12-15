@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import Button from "@mui/material/Button";
 import Email from "@mui/icons-material/Email";
 
-export default function WatchContactLink() {
+export default function ContactBanner() {
   const history = useHistory();
 
   return (

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const IMG = styled.img`
-  max-height: 600px;
+  max-height: 500px;
 `;
 
 export const CarouselWrapper = styled.div`
