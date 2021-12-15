@@ -1,9 +1,9 @@
 import React from "react";
-
+import AboutContent from "./components/Content/index";
 export default function About() {
   return (
     <div>
-      <h2>About View Rendered</h2>
+      <AboutContent />
     </div>
   );
 }
