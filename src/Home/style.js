@@ -9,6 +9,4 @@ export const CarouselWrapper = styled.div`
   justify-content: center;
 `;
 
-export const HomePage = styled.div`
-  padding: 0px 4.5em;
-`;
+export const HomePage = styled.div``;
