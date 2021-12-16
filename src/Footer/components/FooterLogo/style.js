@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FooterImage = styled.img.attrs(() => ({
-  src: "https://the-mundo-group-media.s3.amazonaws.com/mundo-group-logo.png",
+  src: "https://the-mundo-group-media.s3.amazonaws.com/mundo-group-logo-white-text-01.png",
   alt: "mundo-group-logo",
 }))`
   width: 100%;

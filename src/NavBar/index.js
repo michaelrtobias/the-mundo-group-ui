@@ -2,7 +2,7 @@ import { Nav, Navbar } from "react-bootstrap";
 import { Image } from "./style.js";
 import { Button, useMediaQuery } from "@mui/material";
 import Email from "@mui/icons-material/Email";
-
+import Breadcrumb from "./compnents/Breadcrumbs";
 export default function NavBar() {
   const mediaQuery = useMediaQuery("(min-width:770px)");
 
@@ -35,6 +35,8 @@ export default function NavBar() {
           </Button>
         ) : null}
       </Navbar>
+
+      <Breadcrumb />
     </>
   );
 }

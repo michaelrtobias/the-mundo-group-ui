@@ -5,5 +5,5 @@ export const WatchPageContainer = styled.div`
 `;
 
 export const PageTitle = styled.h1`
-  font-size: 4.5vw;
+  font-size: 3.75vw;
 `;
