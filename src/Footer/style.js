@@ -11,9 +11,11 @@ export const FooterBox = styled.div`
 `;
 
 export const ContentWrap = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 `;
 
 export const FooterTitle = styled.div`

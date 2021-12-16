@@ -10,3 +10,9 @@ export const CarouselWrapper = styled.div`
 `;
 
 export const HomePage = styled.div``;
+
+export const Paragraph = styled.p`
+  font-size: 2vw;
+  text-align: center;
+  margin: 50px 200px;
+`;

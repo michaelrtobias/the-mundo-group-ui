@@ -1,5 +1,5 @@
 import React from "react";
-import { ContactInfoWrapper, ContactPageLinkButton } from "./style.js";
+import { ContactInfoWrapper } from "./style.js";
 import Button from "@mui/material/Button";
 import Email from "@mui/icons-material/Email";
 
