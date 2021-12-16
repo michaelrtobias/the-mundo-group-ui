@@ -12,12 +12,7 @@ export default function NavBar() {
         <Navbar.Brand>
           {"  "}
           <Nav.Link href="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>
-            <Image
-              src="https://the-mundo-group-media.s3.amazonaws.com/world-clock-logo.png"
-              alt=""
-              width="45"
-              height="45"
-            ></Image>
+            <Image />
             The Mundo Group
           </Nav.Link>
         </Navbar.Brand>
