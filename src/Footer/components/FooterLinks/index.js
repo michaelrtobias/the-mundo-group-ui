@@ -15,9 +15,9 @@ export default function FooterLinks() {
         <LinksListItem>
           <FooterLink href="/">Home</FooterLink>
         </LinksListItem>
-        <LinksListItem>
+        {/* <LinksListItem>
           <FooterLink href="/about">About</FooterLink>
-        </LinksListItem>
+        </LinksListItem> */}
         <LinksListItem>
           <FooterLink href="/contact">Contact Us</FooterLink>
         </LinksListItem>

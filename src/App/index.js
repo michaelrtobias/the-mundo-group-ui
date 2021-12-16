@@ -22,7 +22,7 @@ function App() {
             <NavBar />
 
             <Switch>
-              <Route path="/about" component={About}></Route>
+              {/* <Route path="/about" component={About}></Route> */}
               <Route path="/watches" component={Watches}></Route>
               <Route path="/jewlery" component={Jewlery}></Route>
               <Route path="/contact/success" component={FormSuccessful}></Route>
