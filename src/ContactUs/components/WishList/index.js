@@ -15,7 +15,6 @@ const useStyles = makeStyles(() => ({
     gridTemplateColumns: "3fr 3fr 3fr",
     gridColumnGap: "30px",
     gridRowGap: "10px",
-    background: "blue",
   },
 }));
 
