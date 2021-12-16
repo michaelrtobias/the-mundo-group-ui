@@ -1,17 +1,5 @@
 import styled from "styled-components";
 
-export const BrandList = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-`;
-export const LeftBrands = styled.ul`
-  margin-right: 45px;
-`;
-export const RightBrands = styled.ul`
-  margin-left: 45px;
-`;
-
 export const WatchParagraph = styled.p`
   font-size: 16pt;
   text-align: center;
@@ -43,9 +31,4 @@ export const ImageContainer = styled.div`
 export const Image = styled.img`
   max-height: 300px;
   width: 100%;
-`;
-
-export const BrandsSection = styled.div`
-  margin-top: 50px;
-  margin-bottom: 30px;
 `;

@@ -1,8 +1,4 @@
 import {
-  BrandList,
-  BrandsSection,
-  LeftBrands,
-  RightBrands,
   WatchParagraph,
   WatchSlogan,
   SloganBox,
@@ -11,7 +7,6 @@ import {
 } from "./style.js";
 
 import { Paper } from "@mui/material/";
-
 const Pictures = [
   {
     src: "Omega-Speedmaster-3861-2021-Unboxing-WatchGecko10.jpeg",
@@ -55,36 +50,6 @@ export default function WatchContent() {
           </Paper>
         ))}
       </WatchDualPictureContainer>
-      <BrandsSection>
-        <h2>Some of the brands that we have provided our clients with:</h2>
-        <BrandList>
-          <LeftBrands>
-            <li>Rolex</li>
-            <li>Audemars Piguet</li>
-            <li>Baume & Mercier</li>
-            <li>Blancpain</li>
-            <li>Breitling</li>
-            <li>Cartier</li>
-            <li>Dubey & Schaldenbrand</li>
-            <li>Franck Muller</li>
-            <li>Girard-Perregaux</li>
-            <li>Frederique Constant</li>
-            <li>Hublot</li>
-          </LeftBrands>
-          <RightBrands>
-            <li>IWC</li>
-            <li>Jaeger-LeCoultre</li>
-            <li>Maurice LeCroix</li>
-            <li>Omega</li>
-            <li>Panerai</li>
-            <li>Patek Philippe</li>
-            <li>Piaget</li>
-            <li>Tag-Heuer</li>
-            <li>Ulysse Nardin</li>
-            <li>Vacheron Constantin</li>
-          </RightBrands>
-        </BrandList>
-      </BrandsSection>
     </>
   );
 }
