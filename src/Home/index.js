@@ -20,9 +20,10 @@ export default function Home() {
       <ImageCarousel images={HomeCarouselImages} />
       <Paragraph>
         Based in both Scottsdale, AZ and Chicago, IL, The Mundo Group is an
-        family business that specializes in time. Ssving your time and helping
-        you keep it. No request is too big or small for The Mundo Group. Let us
-        know what you are looking for and we can make it a reality.
+        family business that specializes in time for over 20 years. Ssving your
+        time and helping you keep it. No request is too big or small for The
+        Mundo Group. Let us know what you are looking for and we can make it a
+        reality.
       </Paragraph>
       <ContactBanner />
     </HomePage>

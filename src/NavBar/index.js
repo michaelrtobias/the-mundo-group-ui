@@ -1,13 +1,17 @@
 import { Nav, Navbar } from "react-bootstrap";
 import { Image } from "./style.js";
+import { Button, useMediaQuery } from "@mui/material";
+import Email from "@mui/icons-material/Email";
 
 export default function NavBar() {
+  const mediaQuery = useMediaQuery("(min-width:770px)");
+
   return (
     <>
       <Navbar bg="dark" variant="dark" expand="md" sticky="top">
         <Navbar.Brand>
           {"  "}
-          <Nav.Link href="/">
+          <Nav.Link href="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>
             <Image
               src="https://the-mundo-group-media.s3.amazonaws.com/world-clock-logo.png"
               alt=""
@@ -24,7 +28,17 @@ export default function NavBar() {
             <Nav.Link href="/contact">Contact Us</Nav.Link>
             {/* <Nav.Link href="/about">About</Nav.Link> */}
           </Nav>
-        </Navbar.Collapse>
+        </Navbar.Collapse>{" "}
+        {mediaQuery ? (
+          <Button
+            href="/contact"
+            variant="contained"
+            color="info"
+            endIcon={<Email />}
+          >
+            Send Us A Message
+          </Button>
+        ) : null}
       </Navbar>
     </>
   );
