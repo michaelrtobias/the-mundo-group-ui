@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
-import { TextField, Button, colors } from "@mui/material";
-import DoneIcon from "@mui/icons-material/Done";
+import { TextField, Button, colors, Grid } from "@mui/material";
+import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
-  // root: {
-  //   // display: "flex",
-  //   // flexWrap: "wrap",
-  //   // "& > *": {
-  //   //   margin: theme.spacing(1),
-  //   //   padding: theme.spacing(1),
-  //   // },
-  //
-  // },
   doneicon: {
     color: colors.green[500],
   },
@@ -96,7 +87,8 @@ export default function UploadImage(props) {
             });
           })
           .catch((error) => {
-            throw error;
+            console.log(error.message);
+            throw error.message;
           });
       })
       .then(() => {
@@ -107,42 +99,73 @@ export default function UploadImage(props) {
       });
   };
   return (
-    <div>
-      <TextField
-        id="productFormImageUplaod"
-        type="file"
-        variant="filled"
-        helperText="Please upload a picture of item (Optional)"
-        onChange={(e) => {
-          handleFileSelected(e.target.files, e);
-        }}
-      ></TextField>
-      {"  "}
-      {loading ? (
-        <Button variant="contained" type="button" color="primary" disabled>
-          <Spinner
-            as="span"
-            animation="border"
-            size="sm"
-            role="status"
-            aria-hidden="true"
-          />
-          <span className="visually-hidden">Loading...</span>
-        </Button>
-      ) : (
-        <Button
-          variant="contained"
-          color="primary"
-          type="button"
-          disabled={!fileSelected || loading}
-          onClick={(e) => {
-            handleButtonClick(e);
+    <Grid container spacing={2}>
+      <Grid item xs={6}>
+        <TextField
+          id="productFormImageUplaod"
+          type="file"
+          variant="filled"
+          disabled={loading}
+          helperText="Please upload a picture of item (Optional)"
+          onChange={(e) => {
+            handleFileSelected(e.target.files, e);
           }}
-        >
-          Upload Image
-        </Button>
-      )}
-      {success && <DoneIcon className={classes.doneicon} fontSize="large" />}
-    </div>
+        ></TextField>
+      </Grid>
+      <Grid item xs={6}>
+        {loading && (
+          <Button
+            variant="contained"
+            type="button"
+            color="primary"
+            disabled
+            fullWidth
+            sx={{ padding: "1em 0px" }}
+          >
+            <Spinner
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+            <span className="visually-hidden">Loading...</span>
+          </Button>
+        )}
+        {!success && !loading && (
+          <Button
+            variant="contained"
+            color="primary"
+            type="button"
+            disabled={!fileSelected || loading}
+            onClick={(e) => {
+              handleButtonClick(e);
+            }}
+            sx={{ padding: "1em 0px" }}
+            fullWidth
+          >
+            Upload Image
+          </Button>
+        )}
+        {success && (
+          <Button
+            variant="contained"
+            color="primary"
+            type="button"
+            disabled={!fileSelected || loading}
+            onClick={(e) => {
+              handleButtonClick(e);
+            }}
+            endIcon={<LibraryAddCheckIcon fontSize="large" />}
+            fullWidth
+            fullHeight
+            size="large"
+            sx={{ padding: "1em 0px" }}
+          >
+            Image Uploaded
+          </Button>
+        )}
+      </Grid>
+    </Grid>
   );
 }
