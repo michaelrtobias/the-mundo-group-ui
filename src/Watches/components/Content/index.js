@@ -34,7 +34,7 @@ export default function WatchContent() {
       <WatchParagraph>
         The Mundo Group is dedicated to finding our clients the timepieces they
         desire at the best price possible. After being in the jewlery industry
-        for over 20 years we know exactly how to get the wtach that you have
+        for over 20 years we know exactly how to get the watch that you have
         been looking for. Working nationwide, The Mundo Group is commited to
         working with parteners all over the USA to source our products. No
         request is too small or too big. We work around the clock in order to
