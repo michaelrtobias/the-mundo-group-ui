@@ -31,13 +31,12 @@ export default function WatchContent() {
         desire at the best price possible. After being in the jewlery industry
         for over 20 years we know exactly how to get the watch that you have
         been looking for. Working nationwide, The Mundo Group is commited to
-        working with parteners all over the USA to source our products. No
-        request is too small or too big. We work around the clock in order to
-        find what you are looking for. Weither it be a different color dial on
-        that rolex or a diamond bezel to be added to you current timepiece, we
-        can make you wishes come true. Give us a call today, or send us a
-        message and we can work to find what you need. Let us help you find the
-        watch of your dreams!
+        working with parteners all over the USA to source our products. We work
+        around the clock in order to find what you are looking for. Weither it
+        be a different color dial on that rolex or a diamond bezel to be added
+        to you current timepiece, we can make you wishes come true. Give us a
+        call today, or send us a message and we can work to find what you need.
+        Let us help you find the watch of your dreams!
       </WatchParagraph>
 
       <WatchDualPictureContainer>
