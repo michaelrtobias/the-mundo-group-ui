@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - echo "building"
+  pre_build:
+    commands:
+      - npm install
+      - echo "insatlled npm package"
+  build:
+    commands:
+      - echo "bundling the applictaion"
+      - npm run build
+      - echo "build is successful"
+  post_build:
+    commands:
+      - echo "Uploading bundle to s3"
+      - npm run deploy
