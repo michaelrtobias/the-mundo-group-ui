@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SloganWrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding: 40px 0px;
+  padding: 3vh 0px;
   margin-bottom: 60px;
   color: #ffffff;
   background-color: #343a40;
