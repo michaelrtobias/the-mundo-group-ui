@@ -12,7 +12,7 @@ export default function WatchBrands() {
               <Grid item xs={4}>
                 <Card>
                   <CardContent>
-                    <Typography variant="h6">{brand.name}</Typography>
+                    <Typography variant="h7">{brand.name}</Typography>
                   </CardContent>
                 </Card>
               </Grid>
