@@ -1,10 +1,10 @@
 import {
-  WatchParagraph,
   WatchSlogan,
   SloganBox,
   WatchDualPictureContainer,
   Image,
 } from "./style.js";
+import { CenteredParagraph } from "../../../Common/Style/commonStyle";
 
 import { Paper } from "@mui/material/";
 const Pictures = [
@@ -26,7 +26,7 @@ export default function WatchContent() {
           Make your time even more valuable.
         </WatchSlogan>
       </SloganBox>
-      <WatchParagraph>
+      <CenteredParagraph>
         The Mundo Group is dedicated to finding our clients the timepieces they
         desire at the best price possible. After being in the jewlery industry
         for over 20 years we know exactly how to get the watch that you have
@@ -37,7 +37,7 @@ export default function WatchContent() {
         to you current timepiece, we can make you wishes come true. Give us a
         call today, or send us a message and we can work to find what you need.
         Let us help you find the watch of your dreams!
-      </WatchParagraph>
+      </CenteredParagraph>
 
       <WatchDualPictureContainer>
         {Pictures.map((picture) => (

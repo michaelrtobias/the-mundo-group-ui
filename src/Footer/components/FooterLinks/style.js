@@ -5,12 +5,14 @@ export const FooterLink = styled.a`
 `;
 
 export const ContentWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  color: white;
-  grid-area: 1 / 3 / 2 / 5;
-  margin-left: 90px;
+  @media (min-width: 1100px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: white;
+    grid-area: 1 / 3 / 2 / 5;
+    margin-left: 90px;
+  }
 `;
 
 export const LinksList = styled.ul``;

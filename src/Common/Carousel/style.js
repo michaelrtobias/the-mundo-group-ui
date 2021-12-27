@@ -1,10 +1,25 @@
 import styled from "styled-components";
 
 export const IMG = styled.img`
-  max-height: 500px;
+  width: auto;
+  height: 100vh;
+  max-height: 50vh;
+  max-width: 100vw;
+  display: block;
+  @media (max-width: 700px) {
+    max-height: 30vh;
+  }
 `;
 
 export const CarouselWrapper = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin: 0px 2vw 2vh 2vw;
 `;
+// max-height: 500px;
+
+// width: auto;
+//   height: 100%;
+//   max-height: 400px;
+//   display: block;

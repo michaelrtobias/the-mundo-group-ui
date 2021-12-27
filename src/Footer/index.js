@@ -4,7 +4,10 @@ import { FooterBox, ContentWrap, FooterTitle } from "./style.js";
 import FooterContactInfo from "./components/FooterContactInfo/index";
 import FooterLinks from "./components/FooterLinks/index";
 import FooterLogo from "./components/FooterLogo/index.js";
+import { useMediaQuery } from "@mui/material";
 export default function Footer() {
+  const mediaQuery = useMediaQuery("(min-width:1100px)");
+
   return (
     <FooterBox>
       <FooterTitle>
@@ -12,8 +15,17 @@ export default function Footer() {
       </FooterTitle>
       <ContentWrap>
         <FooterLogo />
-        <FooterLinks />
-        <FooterContactInfo />
+        {mediaQuery ? (
+          <>
+            <FooterLinks />
+            <FooterContactInfo />
+          </>
+        ) : (
+          <>
+            <FooterContactInfo />
+            <FooterLinks />
+          </>
+        )}
       </ContentWrap>
     </FooterBox>
   );
