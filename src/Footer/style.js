@@ -16,6 +16,12 @@ export const ContentWrap = styled.div`
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  @media (max-width: 1100px) {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 
 export const FooterTitle = styled.div`

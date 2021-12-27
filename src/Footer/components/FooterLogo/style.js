@@ -7,14 +7,19 @@ export const FooterImage = styled.img.attrs(() => ({
   width: 100%;
   height: auto;
   max-width: 250px;
-  margin: 10px 0px 10px 35px;
+  margin-top: 1vh;
+  @media (min-width: 1100px) {
+    margin: 10px 0px 10px 35px;
+  }
 `;
 
 export const ContentWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  color: white;
-  margin-right: 40px;
-  grid-area: 1 / 2 / 2 / 3;
+  @media (min-width: 1100px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: white;
+    margin-right: 40px;
+    grid-area: 1 / 2 / 2 / 3;
+  }
 `;

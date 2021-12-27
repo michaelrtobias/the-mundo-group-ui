@@ -13,4 +13,7 @@ export const Slogan = styled.h1`
   text-align: center;
   line-height: 150%;
   font-size: 3vw;
+  @media (max-width: 700px) {
+    font-size: 4.5vw;
+  }
 `;

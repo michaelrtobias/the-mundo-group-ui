@@ -27,12 +27,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && aws s3 sync --profile TMG_michael --acl public-read build/ s3://themundogroup.com"
+    "deploy": "aws s3 sync --profile TMG_michael --acl public-read build/ s3://themundogroup.com"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
