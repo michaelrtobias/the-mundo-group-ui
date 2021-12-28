@@ -6,7 +6,8 @@ export default function WatchBrands() {
     <Paper>
       <BrandsSection>
         <h2>
-          Some of the brands that we have provasdrfgsdided our clients with:
+          Some of the brands that we have provajklhgjkhsdrfgsdided our clients
+          with:
         </h2>
         <BrandList>
           <Grid container spacing={2}>
