@@ -5,7 +5,9 @@ export default function WatchBrands() {
   return (
     <Paper>
       <BrandsSection>
-        <h2>Some of the brands that we have provided our clients with:</h2>
+        <h2>
+          Some of the brands that we havelkajdfa provided our clients with:
+        </h2>
         <BrandList>
           <Grid container spacing={2}>
             {Brands.map((brand) => (
