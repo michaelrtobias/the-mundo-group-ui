@@ -1,7 +1,6 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import { IMG, CarouselWrapper } from "./style.js";
-import { Paper } from "@mui/material";
 
 export default function ImageCarousel({ images }) {
   return (
