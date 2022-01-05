@@ -2,13 +2,9 @@ import styled from "styled-components";
 
 export const IMG = styled.img`
   width: auto;
-  height: 100vh;
-  max-height: 50vh;
+  max-height: 100%;
   max-width: 100vw;
   display: block;
-  @media (max-width: 700px) {
-    max-height: 30vh;
-  }
 `;
 
 export const CarouselWrapper = styled.div`
