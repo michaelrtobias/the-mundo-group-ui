@@ -22,13 +22,13 @@ export const Brands = [
     name: "Dubey & Schaldenbrand",
   },
   {
+    name: "Frederique Constant",
+  },
+  {
     name: "Franck Muller",
   },
   {
     name: "Girard-Perregaux",
-  },
-  {
-    name: "Frederique Constant",
   },
   {
     name: "Hublot",
@@ -61,6 +61,6 @@ export const Brands = [
     name: "Ulysse Nardin",
   },
   {
-    name: "Vacheron Constantin",
+    name: "Zenith",
   },
 ];
