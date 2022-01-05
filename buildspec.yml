@@ -18,4 +18,4 @@ phases:
   post_build:
     commands:
       - echo "Uploading bundle to s3"
-      - npm run deploy
+      - npm run deployCodebuild
