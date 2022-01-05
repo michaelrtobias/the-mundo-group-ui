@@ -19,12 +19,6 @@ export const Brands = [
     name: "Cartier",
   },
   {
-    name: "Dubey & Schaldenbrand",
-  },
-  {
-    name: "Frederique Constant",
-  },
-  {
     name: "Franck Muller",
   },
   {
