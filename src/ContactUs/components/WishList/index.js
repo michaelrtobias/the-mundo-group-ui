@@ -9,7 +9,7 @@ import { ContactFormWrapper, WishListCard } from "./style.js";
 
 const useStyles = makeStyles(() => ({
   root: {
-    margin: "8px",
+    margin: "8px 8px 40px 8px",
     padding: "8px",
     display: "grid",
     gridTemplateColumns: "3fr 3fr 3fr",

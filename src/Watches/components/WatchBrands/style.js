@@ -12,14 +12,10 @@ export const BrandList = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  margin: 50px 75px 30px 75px;
-`;
-export const LeftBrands = styled.ul`
-  margin-right: 45px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-export const RightBrands = styled.ul`
-  margin-left: 45px;
+  @media (min-width: 810px) {
+    margin: 50px 75px 30px 75px;
+  }
+  @media (max-width: 810px) {
+    margin: 50px 20px 30px 20px;
+  }
 `;

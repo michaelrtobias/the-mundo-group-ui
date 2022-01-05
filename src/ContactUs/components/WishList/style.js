@@ -3,7 +3,10 @@ import styled from "styled-components";
 export const ContactFormWrapper = styled.div`
   background-color: #f5f2e9;
   height: 50vh;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  @media (max-width: 400px) {
+    margin-bottom: 450px;
+  }
 `;
 
 export const WishListCard = styled.div`

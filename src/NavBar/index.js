@@ -1,5 +1,5 @@
 import { Nav, Navbar } from "react-bootstrap";
-import { Image } from "./style.js";
+import { Image, LinkWrapper } from "./style.js";
 import { Button, useMediaQuery } from "@mui/material";
 import Email from "@mui/icons-material/Email";
 import Breadcrumb from "./compnents/Breadcrumbs";
@@ -19,8 +19,18 @@ export default function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link>
-            <Nav.Link href="/contact">Contact Us</Nav.Link>
+            {mediaQuery ? (
+              <>
+                {" "}
+                <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link>
+                <Nav.Link href="/contact">Contact Us</Nav.Link>
+              </>
+            ) : (
+              <LinkWrapper>
+                <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link>
+                <Nav.Link href="/contact">Contact Us</Nav.Link>
+              </LinkWrapper>
+            )}
             {/* <Nav.Link href="/about">About</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>{" "}
@@ -30,6 +40,7 @@ export default function NavBar() {
             variant="contained"
             color="info"
             endIcon={<Email />}
+            sx={{ "margin-right": "2vw" }}
           >
             Send Us A Message
           </Button>

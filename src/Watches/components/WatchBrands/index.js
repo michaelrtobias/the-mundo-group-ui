@@ -3,16 +3,20 @@ import { Paper, Card, CardContent, Typography, Grid } from "@mui/material/";
 import { Brands } from "./brandsList";
 export default function WatchBrands() {
   return (
-    <Paper>
+    <Paper elevation={8}>
       <BrandsSection>
-        <h2>
-          Some of the brands that we havelkajdfa provided our clients with:
-        </h2>
+        <h2>Some of the brands that we have provided our clients with:</h2>
         <BrandList>
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={1.5}
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+          >
             {Brands.map((brand) => (
-              <Grid item xs={4}>
-                <Card>
+              <Grid item xs={6} md={4}>
+                <Card sx={{ height: "100%" }}>
                   <CardContent>
                     <Typography variant="h7">{brand.name}</Typography>
                   </CardContent>

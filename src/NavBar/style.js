@@ -8,3 +8,7 @@ export const Image = styled.img.attrs(() => ({
 }))`
   margin-right: 10px;
 `;
+
+export const LinkWrapper = styled.div`
+  margin-left: 4vw;
+`;

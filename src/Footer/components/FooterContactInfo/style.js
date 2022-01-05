@@ -5,4 +5,5 @@ export const ContactInfoWrapper = styled.div`
   flex-direction: column;
   color: white;
   grid-area: 1 / 6 / 2 / 7;
+  margin-top: 2em;
 `;
