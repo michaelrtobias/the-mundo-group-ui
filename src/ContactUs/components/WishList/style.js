@@ -4,7 +4,7 @@ export const ContactFormWrapper = styled.div`
   background-color: #f5f2e9;
   height: 50vh;
   margin-bottom: 50px;
-  @media (max-width: 400px) {
+  @media (max-width: 475px) {
     margin-bottom: 450px;
   }
 `;
