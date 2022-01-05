@@ -5,7 +5,7 @@ import { IMG, CarouselWrapper } from "./style.js";
 export default function ImageCarousel({ images }) {
   return (
     <CarouselWrapper>
-      <Carousel variant="dark">
+      <Carousel variant="dark" prevLabel="" nextLabel="">
         {images.map((image, index) => (
           <Carousel.Item>
             <IMG src={image.src} alt={image.alt} key={index} />

@@ -11,7 +11,7 @@ export default function Home() {
     <HomePage>
       <HomeLogo />
       <CenteredParagraph>
-        The Mundo Groups is a premier watch broker to find your perfect time
+        The Mundo Group is a premier watch broker to find your perfect time
         piece. Working all around the USA, we are dedicated to locating the
         watch of your dreams, at the best price we can find. Stop worrying about
         the hassel of finding that specific watch or piece of jewlery, and let

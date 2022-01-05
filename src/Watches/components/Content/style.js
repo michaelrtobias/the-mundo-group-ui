@@ -31,4 +31,6 @@ export const ImageContainer = styled.div`
 export const Image = styled.img`
   max-height: 300px;
   width: 100%;
+  height: 100%;
+  max-width: 50vw;
 `;
