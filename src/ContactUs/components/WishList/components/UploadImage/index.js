@@ -112,7 +112,7 @@ export default function UploadImage(props) {
           }}
         ></TextField>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} md={6}>
         {loading && (
           <Button
             variant="contained"
