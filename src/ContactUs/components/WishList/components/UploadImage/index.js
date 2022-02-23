@@ -52,7 +52,7 @@ export default function UploadImage(props) {
     console.log("Preparing the upload");
     axios
       .post(
-        "https://omv9j6woq7.execute-api.us-east-1.amazonaws.com/dev/wishlist/images",
+        "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/images",
         {
           fileName: file.name,
           fileType: file.type,
@@ -78,7 +78,6 @@ export default function UploadImage(props) {
             setLoading(false);
           })
           .then(() => {
-            console.log("blaaaaaaaaaaheeeee");
             console.log(URL);
             console.log(url);
             props.setWishlistEnty({

@@ -2,7 +2,7 @@ import React from "react";
 import Home from "../Home/index";
 import ContactUs from "../ContactUs/index";
 import Watches from "../Watches/index";
-import About from "../About/index";
+// import About from "../About/index";
 import Jewlery from "../Jewlery/index";
 import Footer from "../Footer/index";
 import FormSuccessful from "../ContactUs/components/WishList/components/FormSuccessful";

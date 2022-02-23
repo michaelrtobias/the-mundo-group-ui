@@ -31,7 +31,6 @@ export default function NavBar() {
                 <Nav.Link href="/contact">Contact Us</Nav.Link>
               </LinkWrapper>
             )}
-            {/* <Nav.Link href="/about">About</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>{" "}
         {mediaQuery ? (

@@ -44,7 +44,7 @@ export default function WishList() {
     setLoading(true);
     axios
       .post(
-        "https://omv9j6woq7.execute-api.us-east-1.amazonaws.com/dev/wishlist",
+        "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/wishlist",
         {
           first_name: wishlistEntry.first_name,
           last_name: wishlistEntry.last_name,
