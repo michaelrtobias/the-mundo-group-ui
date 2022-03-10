@@ -1,4 +1,4 @@
-# Welcome to The Mundo Group UI
+# Welcome to Southwest Watches UI
 
 This is a repository containg the UI for Themundogroup.com
 

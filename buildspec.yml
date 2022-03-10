@@ -19,3 +19,4 @@ phases:
     commands:
       - echo "Uploading bundle to s3"
       - npm run deployCodeBuild
+      - npm run deployCodeBuildWWW
