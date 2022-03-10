@@ -25,7 +25,7 @@ export default function FooterLinks() {
           <FooterLink href="/watches">Pre-Owned Watches</FooterLink>
         </LinksListItem>
         <CopyrightListItem>
-          <Copyright>© 2021 The Mundo Group</Copyright>
+          <Copyright>© 2021 Southwest Watches</Copyright>
         </CopyrightListItem>
       </LinksList>
     </ContentWrap>

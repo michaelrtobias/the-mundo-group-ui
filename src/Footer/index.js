@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <FooterBox>
       <FooterTitle>
-        <h3>The Mundo Group </h3>
+        <h3>Southwest Watches</h3>
       </FooterTitle>
       <ContentWrap>
         <FooterLogo />

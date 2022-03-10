@@ -12,7 +12,7 @@ export function ContactUsContent() {
         <h1>Contact Info</h1>
       </TitleCard>
       <ContactCard>
-        <MundoGroupTitle>The Mundo Group</MundoGroupTitle>
+        <MundoGroupTitle>Southwest Watches</MundoGroupTitle>
         <GeneralQueries>
           <div>
             <b>Email:</b>{" "}

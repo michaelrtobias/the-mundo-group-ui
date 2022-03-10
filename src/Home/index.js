@@ -11,7 +11,7 @@ export default function Home() {
     <HomePage>
       <HomeLogo />
       <CenteredParagraph>
-        The Mundo Group is a premier watch broker to find your perfect time
+        Southwest Watches is a premier watch broker to find your perfect time
         piece. Working all around the USA, we are dedicated to locating the
         watch of your dreams, at the best price we can find. Stop worrying about
         the hassel of finding that specific watch or piece of jewlery, and let
@@ -20,11 +20,11 @@ export default function Home() {
       <SloganBox />
       <ImageCarousel images={HomeCarouselImages} />
       <CenteredParagraph>
-        Based in both Scottsdale, AZ and Chicago, IL, The Mundo Group is an
+        Based in both Scottsdale, AZ and Chicago, IL, Southwest Watches is an
         family business that specializes in time for over 20 years. Saving your
-        time and helping you keep it. No request is too big or small for The
-        Mundo Group. Let us know what you are looking for and we can make it a
-        reality.
+        time and helping you keep it. No request is too big or small for
+        Southwest Watches. Let us know what you are looking for and we can make
+        it a reality.
       </CenteredParagraph>
       <ContactBanner />
     </HomePage>

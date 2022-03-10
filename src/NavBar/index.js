@@ -13,7 +13,7 @@ export default function NavBar() {
           {"  "}
           <Nav.Link href="/" style={{ color: "rgba(255, 255, 255, 0.5)" }}>
             <Image />
-            The Mundo Group
+            Southwest Watches
           </Nav.Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
