@@ -16,7 +16,9 @@ export function ContactUsContent() {
         <GeneralQueries>
           <div>
             <b>Email:</b>{" "}
-            <a href="mailto:info@themundogroup.com">info@themundogroup.com</a>
+            <a href="mailto:info@southwestwatches.com">
+              info@southwestwatches.com
+            </a>
           </div>
           <div>
             <b>Phone:</b> +1 (480)-709-7019
