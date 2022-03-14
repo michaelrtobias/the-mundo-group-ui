@@ -1,8 +1,8 @@
 # Welcome to Southwest Watches UI
 
-This is a repository containg the UI for Themundogroup.com
+This is a repository containg the UI for southwestwatches.com
 
-If you have any quetsions or would like to contibute, please contact us at IT@themundogroup.com
+If you have any quetsions or would like to contibute, please contact us at IT@southwestwatches.com
 
 ## Available Scripts
 

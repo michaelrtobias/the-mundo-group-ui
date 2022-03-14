@@ -26,7 +26,7 @@ export default function FormSuccessful() {
     <SuccessPageWrapper>
       <ImgWrapper>
         <WatchImg
-          src="https://the-mundo-group-media.s3.amazonaws.com/Cigars_and_Watches_A_Classic_Combination_That_Will_Never_Go_Out_of_Style_a407e785-d8b0-492e-aae2-bbadc90b9cf1_1024x1024.png"
+          src="https://southwest-watches-media.s3.amazonaws.com/Cigars_and_Watches_A_Classic_Combination_That_Will_Never_Go_Out_of_Style_a407e785-d8b0-492e-aae2-bbadc90b9cf1_1024x1024.png"
           alt="diamond-watch"
           height="100%"
           max-width="30vw"

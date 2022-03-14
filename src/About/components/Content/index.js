@@ -78,7 +78,7 @@ export default function AboutContent() {
           </Paragraph>
         </VerticleContainer>
         <Image
-          src="https://the-mundo-group-media.s3.amazonaws.com/16405589-1dpez5ttkabdedhhkwa8gb2r-ExtraLarge.jpeg"
+          src="https://southwest-watches-media.s3.amazonaws.com/16405589-1dpez5ttkabdedhhkwa8gb2r-ExtraLarge.jpeg"
           alt="rolex-on-hand"
         ></Image>
       </SplitTextImageContainer>

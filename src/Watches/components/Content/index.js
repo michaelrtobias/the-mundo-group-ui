@@ -43,7 +43,7 @@ export default function WatchContent() {
         {Pictures.map((picture) => (
           <Paper elevation={18}>
             <Image
-              src={`https://the-mundo-group-media.s3.amazonaws.com/${picture.src}`}
+              src={`https://southwest-watches-media.s3.amazonaws.com/${picture.src}`}
               alt={picture.alt}
             />
           </Paper>

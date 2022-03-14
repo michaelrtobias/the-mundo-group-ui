@@ -11,7 +11,7 @@ export const ContentWrap = styled.div`
     justify-content: space-around;
     color: white;
     grid-area: 1 / 3 / 2 / 5;
-    margin-left: 90px;
+    margin-left: 80px;
   }
   @media (max-width: 1100px) {
     margin-top: 2em;

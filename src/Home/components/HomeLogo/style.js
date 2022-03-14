@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Logo = styled.img.attrs(() => ({
-  src: "https://the-mundo-group-media.s3.amazonaws.com/mundo-group-logo.png",
+  src: "https://southwest-watches-media.s3.amazonaws.com/southwest-watches-logo-2.png",
   alt: "logo",
 }))`
   width: 100%;
