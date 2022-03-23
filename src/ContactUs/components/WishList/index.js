@@ -32,6 +32,7 @@ export default function WishList() {
   const [wishlistEntry, setWishlistEnty] = useState({});
   const [loading, setLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
+  const [formError, setFormError] = useState(false);
 
   const history = useHistory();
   const classes = useStyles();
@@ -42,6 +43,7 @@ export default function WishList() {
 
   const addWishlistEntry = () => {
     setLoading(true);
+    setFormError(false);
     axios
       .post(
         "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/wishlist",
@@ -70,8 +72,8 @@ export default function WishList() {
       })
       .catch((e) => {
         console.log(e);
-        //setError(true)
         setLoading(false);
+        setFormError(true);
       });
   };
 
@@ -250,12 +252,12 @@ export default function WishList() {
         />
         <Button
           variant="contained"
-          color="primary"
+          color={formError ? "error" : "primary"}
           type="button"
           disabled={!formValid || loading}
           onClick={(e) => handleSubmit(e)}
         >
-          Submit
+          {formError ? "There was an error. Please try again" : "Submit"}
         </Button>
       </Paper>
     </ContactFormWrapper>

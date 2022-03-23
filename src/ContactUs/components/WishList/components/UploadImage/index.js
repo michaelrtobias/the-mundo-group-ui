@@ -15,7 +15,7 @@ export default function UploadImage(props) {
   const [success, setSuccess] = useState(false);
   const [uploadInput, setUploadInput] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [uploadError, setUploadError] = useState(false);
   const [fileSelected, setFileSelected] = useState(false);
   const classes = useStyles();
 
@@ -23,6 +23,7 @@ export default function UploadImage(props) {
     setUploadInput(files);
     setFileSelected(true);
     setSuccess(false);
+    setUploadError(false);
   };
 
   const handleButtonClick = (event) => {
@@ -43,6 +44,7 @@ export default function UploadImage(props) {
     var fileType = fileParts[1];
     console.log("file type: " + fileType);
     setSuccess(false);
+    setUploadError(false);
     setLoading(true);
     let headersConfig = {
       headers: {
@@ -94,6 +96,8 @@ export default function UploadImage(props) {
         console.log(props.wishlistEntry);
       })
       .catch((err) => {
+        setLoading(false);
+        setUploadError(true);
         throw err;
       });
   };
@@ -105,14 +109,18 @@ export default function UploadImage(props) {
           type="file"
           variant="filled"
           disabled={loading}
-          helperText="Please upload a picture of item (Optional)"
+          helperText={
+            uploadError
+              ? "Error with image upload. Please try again."
+              : "Please upload a picture of item (Optional)"
+          }
           onChange={(e) => {
             handleFileSelected(e.target.files, e);
           }}
         ></TextField>
       </Grid>
       <Grid item xs={12} md={6}>
-        {loading && (
+        {loading && !success && (
           <Button
             variant="contained"
             type="button"
@@ -131,10 +139,25 @@ export default function UploadImage(props) {
             <span className="visually-hidden">Loading...</span>
           </Button>
         )}
-        {!success && !loading && (
+        {!success && !loading && !uploadError && (
           <Button
             variant="contained"
             color="primary"
+            type="button"
+            disabled={!fileSelected || loading}
+            onClick={(e) => {
+              handleButtonClick(e);
+            }}
+            sx={{ padding: "1em 0px" }}
+            fullWidth
+          >
+            Upload Image
+          </Button>
+        )}
+        {!success && !!uploadError && (
+          <Button
+            variant="contained"
+            color="error"
             type="button"
             disabled={!fileSelected || loading}
             onClick={(e) => {
