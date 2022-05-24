@@ -78,25 +78,13 @@ export default function WishList() {
   };
 
   useEffect(() => {
-    const isEmailSet = !!wishlistEntry.email;
     const isPhoneSet = !!wishlistEntry.phone;
     const isFirstNameSet = !!wishlistEntry.first_name;
-    const isLastNameSet = !!wishlistEntry.last_name;
-    const isTypeSet = !!wishlistEntry.type;
-    const isMakeSet = !!wishlistEntry.make;
-    const isModelSet = !!wishlistEntry.model;
     const isDescriptionSet = !!wishlistEntry.description;
-    const isImageURLSet = !!wishlistEntry.image_URL;
+    const isEmailSet = !!wishlistEntry.email;
+
     setFormValid(
-      isEmailSet &&
-        isPhoneSet &&
-        isFirstNameSet &&
-        isLastNameSet &&
-        isTypeSet &&
-        isMakeSet &&
-        isModelSet &&
-        isDescriptionSet &&
-        isImageURLSet
+      isPhoneSet && isFirstNameSet && isDescriptionSet && isEmailSet
     );
   }, [wishlistEntry]);
 
@@ -145,6 +133,21 @@ export default function WishList() {
           required
           variant="filled"
           color="primary"
+          type="phone"
+          placeholder="Enter Phone Number"
+          value={wishlistEntry.phone}
+          onChange={(e) =>
+            setWishlistEnty({
+              ...wishlistEntry,
+              phone: e.target.value,
+            })
+          }
+          helperText="Phone Number"
+        ></TextField>
+        <TextField
+          required
+          variant="filled"
+          color="primary"
           type="email"
           placeholder="Enter Email"
           value={wishlistEntry.email}
@@ -160,78 +163,6 @@ export default function WishList() {
           required
           variant="filled"
           color="primary"
-          type="phone"
-          placeholder="Enter Phone Number"
-          value={wishlistEntry.phone}
-          onChange={(e) =>
-            setWishlistEnty({
-              ...wishlistEntry,
-              phone: e.target.value,
-            })
-          }
-          helperText="Phone Number"
-        ></TextField>
-
-        <TextField
-          required
-          variant="filled"
-          color="primary"
-          select
-          label="Please select an option"
-          placeholder="What type of goods are you looking for?"
-          defaultValue=""
-          value={wishlistEntry.type}
-          onChange={(e) =>
-            setWishlistEnty({
-              ...wishlistEntry,
-              type: e.target.value,
-            })
-          }
-          helperText="What type of goods are you looking for?"
-        >
-          {leadType.map((type) => (
-            <MenuItem key={type} value={type}>
-              {type}
-            </MenuItem>
-          ))}
-        </TextField>
-
-        <TextField
-          required
-          variant="filled"
-          color="primary"
-          type="text"
-          placeholder="Enter Make"
-          value={wishlistEntry.make}
-          onChange={(e) =>
-            setWishlistEnty({
-              ...wishlistEntry,
-              make: e.target.value,
-            })
-          }
-          helperText="Make or Brand"
-        ></TextField>
-
-        <TextField
-          required
-          variant="filled"
-          color="primary"
-          type="text"
-          placeholder="Enter Model"
-          value={wishlistEntry.model}
-          onChange={(e) =>
-            setWishlistEnty({
-              ...wishlistEntry,
-              model: e.target.value,
-            })
-          }
-          helperText="Model"
-        ></TextField>
-
-        <TextField
-          required
-          variant="filled"
-          color="primary"
           type="text"
           placeholder="Enter Description"
           value={wishlistEntry.description}
@@ -241,7 +172,7 @@ export default function WishList() {
               description: e.target.value,
             })
           }
-          helperText="Add any extra details about item. Bracelets, Materials, Dials, Bezel,
+          helperText="What are you looking for? Add any extra details about item. Bracelets, Materials, Dials, Bezel,
           etc..."
         />
         <UploadImage
