@@ -1,29 +1,36 @@
 import styled from "styled-components";
 
-export const Paragraph = styled.p`
-  font-size: 12pt;
-  margin: 10px 20px;
+export const WatchParagraph = styled.p`
+  font-size: 16pt;
+  text-align: center;
+  margin: 0px 20vw;
+  padding: 50px 0px;
 `;
 
-export const ContentContainer = styled.div`
-  display: flex;
+export const WatchSlogan = styled.h1`
   justify-content: center;
-  flex-direction: column;
-  padding-top: 40px;
 `;
 
-export const SplitTextImageContainer = styled.div`
+export const SloganBox = styled.div`
+  background-color: #343a40;
+  padding: 40px 0px;
+  color: #ffffff;
+`;
+
+export const WatchDualPictureContainer = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+`;
+
+export const ImageContainer = styled.div`
+  padding: 10px;
+  border: black solid 5pt;
 `;
 
 export const Image = styled.img`
-  max-width: 40vw;
-  max-height: 360px;
-  margin-right: 20px;
-`;
-
-export const VerticleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  max-height: 300px;
+  width: 100%;
+  height: 100%;
+  max-width: 50vw;
 `;

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import UploadImage from "./components/UploadImage/index";
 import { makeStyles } from "@mui/styles";
-import { TextField, Paper, Button, MenuItem } from "@mui/material";
+import { TextField, Paper, Button } from "@mui/material";
 import { ContactFormWrapper, WishListCard } from "./style.js";
 
 const useStyles = makeStyles(() => ({
@@ -18,16 +18,6 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const leadType = [
-  "Watch",
-  "Parts & Accessories",
-  "Diamonds",
-  "Bracelets",
-  "Gold Link",
-  "Belts & Buckels",
-  "Leather Goods",
-  "Other",
-];
 export default function WishList() {
   const [wishlistEntry, setWishlistEnty] = useState({});
   const [loading, setLoading] = useState(false);
