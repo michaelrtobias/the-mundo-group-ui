@@ -22,12 +22,14 @@ export default function NavBar() {
             {mediaQuery ? (
               <>
                 {" "}
-                <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link>
+                <Nav.Link href="/about">About</Nav.Link>
+                {/* <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link> */}
                 <Nav.Link href="/contact">Contact Us</Nav.Link>
               </>
             ) : (
               <LinkWrapper>
-                <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link>
+                <Nav.Link href="/about">About</Nav.Link>
+                {/* <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link> */}
                 <Nav.Link href="/contact">Contact Us</Nav.Link>
               </LinkWrapper>
             )}

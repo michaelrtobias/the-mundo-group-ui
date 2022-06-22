@@ -24,6 +24,11 @@ export const HomeCarouselImages = [
 
 export const WatchCarouselImages = [
   {
+    src: "https://southwest-watches-media.s3.amazonaws.com/southwest-watches-logo-plain-01.png",
+    alt: "omega up close",
+    name: "omegaClose",
+  },
+  {
     src: "https://southwest-watches-media.s3.amazonaws.com/rse-gold-ym2.jpeg",
     alt: "rose gold two-tone yacht master",
     name: "yachmaster-2",
@@ -40,11 +45,6 @@ export const WatchCarouselImages = [
   },
   {
     src: "https://southwest-watches-media.s3.amazonaws.com/Omega-Speedmaster-Chronoscope-main.jpeg",
-    alt: "omega up close",
-    name: "omegaClose",
-  },
-  {
-    src: "https://southwest-watches-media.s3.amazonaws.com/southwest-watches-logo-plain-01.png",
     alt: "omega up close",
     name: "omegaClose",
   },
