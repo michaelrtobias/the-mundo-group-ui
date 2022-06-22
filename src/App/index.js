@@ -23,7 +23,7 @@ function App() {
 
             <Switch>
               <Route path="/about" component={About}></Route>
-              <Route path="/watches" component={Inventory}></Route>
+              {/* <Route path="/watches" component={Inventory}></Route> */}
               <Route path="/contact/success" component={FormSuccessful}></Route>
               <Route path="/contact" component={ContactUs}></Route>
               <Route path="/" component={Home}></Route>
