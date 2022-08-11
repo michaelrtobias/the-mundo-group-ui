@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Home from "../Home/index";
 import ContactUs from "../ContactUs/index";
 import About from "../About/index";
-// import About from "../About/index";
 import Inventory from "../Inventory/index";
 import Footer from "../Footer/index";
 import FormSuccessful from "../ContactUs/components/WishList/components/FormSuccessful";
@@ -28,7 +27,6 @@ function App() {
   const getCurrentUserDetails = async () => {
     try {
       const { attributes: user } = await Auth.currentAuthenticatedUser();
-      console.log("user", user);
       setUserData(user);
     } catch (error) {
       console.log(error);
@@ -120,7 +118,7 @@ function App() {
           </Router>
         </Body>
 
-        <Footer />
+        <Footer isAdmin={isAdmin} />
       </Page>
     </>
   );
