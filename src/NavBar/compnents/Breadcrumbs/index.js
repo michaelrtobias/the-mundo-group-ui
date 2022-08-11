@@ -4,6 +4,8 @@ import { Typography, Breadcrumbs } from "@mui/material";
 const breadcrumbNameMap = {
   "/": "Home",
   "/about": "About",
+  "/admin": "Admin",
+  "/admin/edit-inventory": "Edit Inventory",
   "/watches": "Pre-Owned Watches",
   "/contact": "Contact",
   "/contact/success": "Success",

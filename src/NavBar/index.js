@@ -3,7 +3,7 @@ import { Image, LinkWrapper } from "./style.js";
 import { Button, useMediaQuery } from "@mui/material";
 import Email from "@mui/icons-material/Email";
 import Breadcrumb from "./compnents/Breadcrumbs";
-export default function NavBar() {
+export default function NavBar({ isAdmin }) {
   const mediaQuery = useMediaQuery("(min-width:770px)");
 
   return (
@@ -25,12 +25,14 @@ export default function NavBar() {
                 <Nav.Link href="/about">About</Nav.Link>
                 {/* <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link> */}
                 <Nav.Link href="/contact">Contact Us</Nav.Link>
+                {isAdmin && <Nav.Link href="/admin">Admin</Nav.Link>}
               </>
             ) : (
               <LinkWrapper>
                 <Nav.Link href="/about">About</Nav.Link>
                 {/* <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link> */}
                 <Nav.Link href="/contact">Contact Us</Nav.Link>
+                {isAdmin && <Nav.Link href="/admin">Admin</Nav.Link>}
               </LinkWrapper>
             )}
           </Nav>

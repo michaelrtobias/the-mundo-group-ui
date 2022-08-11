@@ -58,6 +58,7 @@ export default function UploadImage(props) {
         {
           fileName: file.name,
           fileType: file.type,
+          pathKey: "contactformupload",
         },
         headersConfig
       )
