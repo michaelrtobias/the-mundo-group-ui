@@ -10,7 +10,7 @@ const Admin = ({ userData }) => {
   const history = useHistory();
 
   const handleEditInventoryButtonCLick = () => {
-    let path = `/admin/edit-inventory`;
+    let path = `/admin/inventory`;
     history.push(path);
   };
   return (
@@ -23,12 +23,12 @@ const Admin = ({ userData }) => {
       <Paper variant="outlined" sx={{ margin: "1vh 2vw 1vh 2vw" }}>
         <Card sx={{ maxWidth: 345 }} onClick={handleEditInventoryButtonCLick}>
           <CardActionArea>
-            <CardMedia
+            {/* <CardMedia
               component="img"
               height="140"
               image="/static/images/cards/contemplative-reptile.jpg"
               alt="green iguana"
-            />
+            /> */}
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 Edit Inventory

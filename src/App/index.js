@@ -8,12 +8,21 @@ import FormSuccessful from "../ContactUs/components/WishList/components/FormSucc
 import { Body, Page } from "./style.js";
 import NavBar from "../NavBar/index";
 import Cookies from "js-cookie";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import Amplify, { Auth, Hub, API } from "aws-amplify";
+import Amplify, { Auth, Hub } from "aws-amplify";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import Admin from "../Admin/index";
-import EditInventory from "../Admin/components/EditInventory/index";
+import InventoryDashboard from "../Admin/components/InventoryDashboard/index";
+const queryClient = new QueryClient();
 function App() {
   const [userData, setUserData] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -87,39 +96,42 @@ function App() {
 
   return (
     <>
-      <Page>
-        <Body>
-          <Router>
-            <NavBar isAdmin={isAdmin} />
+      <QueryClientProvider client={queryClient}>
+        <Page>
+          <Body>
+            <Router>
+              <NavBar isAdmin={isAdmin} />
 
-            <Switch>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/admin/edit-inventory">
-                <EditInventory userData={userData} />
-              </Route>
-              <Route path="/admin">
-                <Admin isAdmin={isAdmin} userData={userData} />
-              </Route>
-              <Route path="/watches">
-                <Inventory />
-              </Route>
-              <Route path="/contact/success">
-                <FormSuccessful />
-              </Route>
-              <Route path="/contact">
-                <ContactUs />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
-          </Router>
-        </Body>
+              <Switch>
+                <Route path="/about">
+                  <About />
+                </Route>
+                <Route path="/admin/inventory">
+                  <InventoryDashboard userData={userData} />
+                </Route>
+                <Route path="/admin">
+                  <Admin isAdmin={isAdmin} userData={userData} />
+                </Route>
+                <Route path="/watches">
+                  <Inventory />
+                </Route>
+                <Route path="/contact/success">
+                  <FormSuccessful />
+                </Route>
+                <Route path="/contact">
+                  <ContactUs />
+                </Route>
+                <Route path="/">
+                  <Home />
+                </Route>
+              </Switch>
+            </Router>
+          </Body>
 
-        <Footer isAdmin={isAdmin} />
-      </Page>
+          <Footer isAdmin={isAdmin} />
+        </Page>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </>
   );
 }

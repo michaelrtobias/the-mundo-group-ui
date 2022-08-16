@@ -14,7 +14,6 @@ const breadcrumbNameMap = {
 export default function Breadcrumb() {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
-  console.log("pathnames", pathnames);
   return (
     <Breadcrumbs
       aria-label="breadcrumb"
