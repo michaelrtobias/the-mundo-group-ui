@@ -224,8 +224,16 @@ const EditInventory = ({ watch }) => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <LoadingButton onClick={handleSave}>Save</LoadingButton>
+          <Button variant="contained" color="primary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <LoadingButton
+            variant="contained"
+            color="primary"
+            onClick={handleSave}
+          >
+            Save
+          </LoadingButton>
         </DialogActions>
       </Dialog>
     </>

@@ -5,7 +5,7 @@ import { useGetAllInventory } from "../../../../api/index";
 import InventoryCard from "./InventoryItem/index";
 const InventoryList = ({ searchTerm }) => {
   // read query hook
-  const { data: items = [], isSuccess, isLoading } = useGetAllInventory();
+  const { data: items = [], isSuccess } = useGetAllInventory();
 
   return (
     <>

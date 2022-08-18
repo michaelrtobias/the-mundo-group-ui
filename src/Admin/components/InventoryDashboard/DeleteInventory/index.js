@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   Button,
   IconButton,
-  TextField,
   Dialog,
   DialogActions,
   DialogContent,
@@ -18,7 +17,7 @@ const DeleteInventory = ({ watch }) => {
   const {
     mutate: deleteInventory,
     isLoading,
-    isSuccess,
+    isError,
   } = useDeleteInventory({
     onSuccess: () => {
       setOpen(false);
@@ -34,25 +33,38 @@ const DeleteInventory = ({ watch }) => {
   };
 
   const handleDelete = () => {
-    deleteInventory({ brand: watch.brand, colorway: watch.colorway });
+    deleteInventory({ item: { brand: watch.brand, colorway: watch.colorway } });
   };
 
   return (
     <>
-      <IconButton aria-label="delete" onClick={handleClickOpen}>
+      <IconButton
+        aria-label="delete"
+        onClick={handleClickOpen}
+        color={isError ? "error" : "default"}
+      >
         <DeleteIcon />
       </IconButton>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Delete</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Are you sure you want to delete {watch.brand} {watch.model}
-            {watch.colorway}?
+            {watch.colorway}? All Information and data will be lost.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <LoadingButton onClick={handleDelete}>Yes</LoadingButton>
+          <Button onClick={handleClose} variant="contained" color="primary">
+            Cancel
+          </Button>
+          <LoadingButton
+            loading={isLoading}
+            onClick={handleDelete}
+            variant="contained"
+            color="warning"
+          >
+            Yes
+          </LoadingButton>
         </DialogActions>
       </Dialog>
     </>

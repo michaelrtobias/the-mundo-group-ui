@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 export const inventorySchema = yup.object().shape({
-  brand: yup.string(),
+  brand: yup.string().required(),
   model: yup.string(),
   model_number: yup.string().required(),
   dial: yup.string().required(),

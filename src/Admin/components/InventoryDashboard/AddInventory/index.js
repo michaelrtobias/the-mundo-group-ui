@@ -7,12 +7,13 @@ import {
   DialogTitle,
   TextField,
   Grid,
+  FormControlLabel,
 } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
-
+import DraftSwitch from "../../../../Common/DraftSwitch/index";
 import CancelModal from "./CancelModal/index";
 import { inventorySchema } from "../../../../utils/validate";
-import { useAddInventory } from "../../../../api/index";
+import { useAddInventory, useGetAllInventory } from "../../../../api/index";
 const defaultAddInventoryState = {
   brand: "",
   model: "",
@@ -29,12 +30,33 @@ const AddInventory = () => {
   const [addInventoryData, setAddInventoryData] = useState(
     defaultAddInventoryState
   );
+  const [isDraft, setIsDraft] = useState(false);
   const [isEdited, setIsEdited] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  const [inventory, setInventory] = useState([]);
+  const {
+    mutate: addInventory,
+    isLoading,
+    isSuccess,
+  } = useAddInventory({
+    onSuccess: () => {
+      setIsEdited(false);
+      setOpen(false);
+      setIsDraft(false);
+      setAddInventoryData(defaultAddInventoryState);
+    },
+  });
+  const {
+    data: items = [],
+    isGetInventorySuccess,
+    isGetInventoryLoading,
+  } = useGetAllInventory({
+    onSuccess: () => {
+      setInventory(items);
+    },
+  });
+
   useEffect(() => {
     const addData = Object.keys(addInventoryData);
     for (let key = 0; addData.length > key; key++) {
@@ -50,38 +72,53 @@ const AddInventory = () => {
     }
   }, [addInventoryData]);
 
+  const duplicateCheck = (newItem, items) => {
+    const colorways = items.map((item) => `${item.brand}-${item.colorway}`);
+    const newColorway = `${
+      newItem.brand
+    }-${newItem.model_number.toLowerCase()}-${newItem.dial.toLowerCase()}-${newItem.bezel.toLowerCase()}`;
+
+    if (colorways.includes(newColorway)) {
+      throw Error(
+        `Item: ${
+          newItem.brand
+        } ${newItem.model_number.toLowerCase()} ${newItem.dial.toLowerCase()} ${newItem.bezel.toLowerCase()} already exists. The combination of Brand, Model Number, Bezel & Dial values must be unique across all inventory`
+      );
+    }
+    return false;
+  };
+
   const isValid = async () => {
     try {
       await inventorySchema.validate(addInventoryData, {
         abortEarly: false,
       });
+      duplicateCheck(addInventoryData, items);
       setValidationErrors({});
       return true;
     } catch (e) {
-      const errors = e.inner.reduce((obj, error) => {
-        obj[error.path] = error.message;
-        return obj;
-      }, {});
-      setValidationErrors(errors);
+      if (e.inner) {
+        const errors = e.inner.reduce((obj, error) => {
+          obj[error.path] = error.message;
+          return obj;
+        }, {});
+        setValidationErrors(errors);
+      } else {
+        setValidationErrors({ brand: e.message });
+      }
       return false;
     }
   };
 
-  const {
-    mutate: addInventory,
-    isLoading,
-    isSuccess,
-  } = useAddInventory({
-    onSuccess: () => {
-      setIsEdited(false);
-      setOpen(false);
-      setAddInventoryData(defaultAddInventoryState);
-    },
-  });
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
   const handleConfirmCancelModal = () => {
     setIsEdited(false);
     setAddInventoryData(defaultAddInventoryState);
     setValidationErrors({});
+    setIsDraft(false);
     setIsCancelModalOpen(false);
     setOpen(false);
   };
@@ -95,7 +132,7 @@ const AddInventory = () => {
   };
   const handleSave = async () => {
     if (await isValid()) {
-      addInventory({ item: addInventoryData });
+      addInventory({ item: { ...addInventoryData, draft: isDraft } });
     }
   };
   return (
@@ -110,7 +147,18 @@ const AddInventory = () => {
         aria-describedby="alert-dialog-description"
         maxWidth="lg"
       >
-        <DialogTitle id="alert-dialog-title">Add Inventory</DialogTitle>
+        <DialogTitle id="alert-dialog-title">
+          Add Inventory
+          <FormControlLabel
+            label="Draft"
+            control={<DraftSwitch setIsDraft={setIsDraft} isDraft={isDraft} />}
+            sx={{
+              position: "absolute",
+              right: 8,
+              top: 8,
+            }}
+          ></FormControlLabel>
+        </DialogTitle>
         <DialogContent>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} lg={4}>
@@ -271,24 +319,40 @@ const AddInventory = () => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} variant="contained" color="warning">
-            Cancel
-          </Button>
           <CancelModal
+            isEdited={isEdited}
+            isDraft={isDraft}
+            setIsDraft={setIsDraft}
+            handleClose={handleClose}
             isCancelModalOpen={isCancelModalOpen}
             setIsCancelModalOpen={setIsCancelModalOpen}
             handleConfirmCancelModal={handleConfirmCancelModal}
+            handleSave={handleSave}
           />
-          <LoadingButton
-            onClick={handleSave}
-            variant="contained"
-            color="primary"
-            loading={isLoading}
-            disabled={!isEdited}
-            autoFocus
-          >
-            Create
-          </LoadingButton>
+          {!isDraft && (
+            <LoadingButton
+              onClick={handleSave}
+              variant="contained"
+              color="primary"
+              loading={isLoading}
+              disabled={!isEdited}
+              autoFocus
+            >
+              Create
+            </LoadingButton>
+          )}
+          {isDraft && (
+            <LoadingButton
+              onClick={handleSave}
+              variant="contained"
+              color="secondary"
+              loading={isLoading}
+              disabled={!isEdited}
+              autoFocus
+            >
+              Save Draft
+            </LoadingButton>
+          )}
         </DialogActions>
       </Dialog>
     </>

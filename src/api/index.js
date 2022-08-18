@@ -59,7 +59,8 @@ export const useAddInventory = (options) => {
     } = await axios.post(
       "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/inventory",
       {
-        body: { ...item, images: ["I", "Just", "Came", "To", "Say", "Hello"] },
+        ...item,
+        images: ["I", "Just", "Came", "To", "Say", "Hello"],
       },
       {
         headers: {
@@ -86,17 +87,19 @@ export const useDeleteInventory = (options) => {
   const queryClient = useQueryClient();
   const { onSuccess, onError } = defaultValue(options, {});
   const deleteInventory = async ({ item }) => {
+    console.log("item", item);
     const {
       data: { data, errors },
     } = await axios.delete(
       "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/inventory",
       {
-        body: { item },
+        data: { ...item },
       },
       {
         headers: {
           "Content-Type": "application/json",
         },
+        mode: "cors",
       }
     );
     formatErrors(errors);

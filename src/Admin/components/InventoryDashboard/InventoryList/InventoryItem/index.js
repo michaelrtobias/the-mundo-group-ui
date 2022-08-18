@@ -13,6 +13,7 @@ import {
 
 import { red } from "@mui/material/colors";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteInventory from "../../DeleteInventory/index";
@@ -37,6 +38,9 @@ const InventoryItem = ({ watch }) => {
             <DeleteInventory watch={watch} />
             <IconButton aria-label="preview">
               <VisibilityIcon />
+            </IconButton>
+            <IconButton aria-label="images">
+              <ImageSearchIcon />
             </IconButton>
             <IconButton aria-label="settings">
               <MoreVertIcon />
