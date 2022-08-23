@@ -6,6 +6,7 @@ import UploadImage from "../../../Common/UploadImage/index";
 import { makeStyles } from "@mui/styles";
 import { TextField, Paper, Button } from "@mui/material";
 import { ContactFormWrapper, WishListCard } from "./style.js";
+const uploadImageGridSizes = { xs: 12, md: 6 };
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -159,13 +160,9 @@ export default function WishList() {
           etc..."
         />
         <UploadImage
-          setWishlistEntry={setWishlistEntry}
-          {...wishlistEntry}
           handleImageChange={handleImageChange}
-          loading={loading}
-          wishlistEntry={wishlistEntry}
           pathKey="contactformupload"
-          handleChange={handleChange}
+          gridSizes={uploadImageGridSizes}
         />
         <Button
           variant="contained"

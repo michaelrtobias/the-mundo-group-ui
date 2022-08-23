@@ -13,6 +13,7 @@ export default function UploadImage({
   handleImageChange,
   pathKey,
   validationErrors = null,
+  gridSizes,
 }) {
   const [URL, setUrl] = useState("");
   const [success, setSuccess] = useState(false);
@@ -99,7 +100,7 @@ export default function UploadImage({
   };
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} md={6}>
+      <Grid item {...gridSizes}>
         <TextField
           id="productFormImageUplaod"
           type="file"
@@ -119,7 +120,7 @@ export default function UploadImage({
           }}
         ></TextField>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item {...gridSizes}>
         <LoadingButton
           fullWidth
           loading={loading}

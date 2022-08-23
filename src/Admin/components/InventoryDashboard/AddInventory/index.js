@@ -128,7 +128,7 @@ const AddInventory = () => {
     if (!isDuplicateImage(url)) {
       setAddInventoryData({
         ...addInventoryData,
-        images: [...addInventoryData.images, url],
+        images: [...addInventoryData.images, { image_url: url }],
       });
       const tempErrors = { ...validationErrors };
       delete tempErrors.images;
@@ -343,10 +343,11 @@ const AddInventory = () => {
                 }
               ></TextField>
             </Grid>
-            <Grid item xs={12} sm={6} lg={8}>
+            <Grid item xs={12}>
               <AddInventoryImageManager
                 handleImageChange={handleImageChange}
                 validationErrors={validationErrors.images}
+                images={addInventoryData.images}
               />
             </Grid>
           </Grid>
