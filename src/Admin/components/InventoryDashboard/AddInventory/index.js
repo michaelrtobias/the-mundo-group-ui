@@ -12,6 +12,7 @@ import {
 import LoadingButton from "@mui/lab/LoadingButton";
 import DraftSwitch from "../../../../Common/DraftSwitch/index";
 import CancelModal from "./CancelModal/index";
+import AddInventoryImageManager from "./AddInventoryImageManager/index";
 import { inventorySchema } from "../../../../utils/validate";
 import { useAddInventory, useGetAllInventory } from "../../../../api/index";
 const defaultAddInventoryState = {
@@ -23,6 +24,7 @@ const defaultAddInventoryState = {
   bracelet: "",
   size: "",
   description: "",
+  images: [],
 };
 
 const AddInventory = () => {
@@ -94,6 +96,7 @@ const AddInventory = () => {
         abortEarly: false,
       });
       duplicateCheck(addInventoryData, items);
+
       setValidationErrors({});
       return true;
     } catch (e) {
@@ -102,9 +105,9 @@ const AddInventory = () => {
           obj[error.path] = error.message;
           return obj;
         }, {});
-        setValidationErrors(errors);
+        setValidationErrors({ ...errors, images: validationErrors.images });
       } else {
-        setValidationErrors({ brand: e.message });
+        setValidationErrors(...validationErrors, { brand: e.message });
       }
       return false;
     }
@@ -112,6 +115,30 @@ const AddInventory = () => {
 
   const handleClickOpen = () => {
     setOpen(true);
+  };
+
+  const isDuplicateImage = (url) => {
+    if (addInventoryData.images.includes(url)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  const handleImageChange = (url, fileName) => {
+    if (!isDuplicateImage(url)) {
+      setAddInventoryData({
+        ...addInventoryData,
+        images: [...addInventoryData.images, url],
+      });
+      const tempErrors = { ...validationErrors };
+      delete tempErrors.images;
+      setValidationErrors({ ...tempErrors });
+    } else if (isDuplicateImage(url)) {
+      setValidationErrors({
+        ...validationErrors,
+        images: `Image: ${fileName} has already been added to this inventory item. Please choose a different image.`,
+      });
+    }
   };
 
   const handleConfirmCancelModal = () => {
@@ -315,6 +342,12 @@ const AddInventory = () => {
                   })
                 }
               ></TextField>
+            </Grid>
+            <Grid item xs={12} sm={6} lg={8}>
+              <AddInventoryImageManager
+                handleImageChange={handleImageChange}
+                validationErrors={validationErrors.images}
+              />
             </Grid>
           </Grid>
         </DialogContent>

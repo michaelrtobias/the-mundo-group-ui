@@ -60,7 +60,6 @@ export const useAddInventory = (options) => {
       "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/inventory",
       {
         ...item,
-        images: ["I", "Just", "Came", "To", "Say", "Hello"],
       },
       {
         headers: {

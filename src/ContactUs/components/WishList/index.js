@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 import { useHistory } from "react-router";
-import UploadImage from "./components/UploadImage/index";
+import UploadImage from "../../../Common/UploadImage/index";
 import { makeStyles } from "@mui/styles";
 import { TextField, Paper, Button } from "@mui/material";
 import { ContactFormWrapper, WishListCard } from "./style.js";
@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function WishList() {
-  const [wishlistEntry, setWishlistEnty] = useState({});
+  const [wishlistEntry, setWishlistEntry] = useState({});
   const [loading, setLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
   const [formError, setFormError] = useState(false);
@@ -31,6 +31,19 @@ export default function WishList() {
     addWishlistEntry();
   };
 
+  const handleChange = (e) => {
+    setWishlistEntry({
+      ...wishlistEntry,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleImageChange = (url) => {
+    setWishlistEntry({
+      ...wishlistEntry,
+      image_URL: url,
+    });
+  };
   const addWishlistEntry = () => {
     setLoading(true);
     setFormError(false);
@@ -93,14 +106,10 @@ export default function WishList() {
           variant="filled"
           color="primary"
           type="text"
+          name="first_name"
           value={wishlistEntry.first_name}
           placeholder="Enter First Name"
-          onChange={(e) =>
-            setWishlistEnty({
-              ...wishlistEntry,
-              first_name: e.target.value,
-            })
-          }
+          onChange={handleChange}
           helperText="First Name"
         ></TextField>
 
@@ -109,14 +118,10 @@ export default function WishList() {
           variant="filled"
           color="primary"
           type="text"
+          name="last_name"
           placeholder="Enter Last Name"
           value={wishlistEntry.last_name}
-          onChange={(e) =>
-            setWishlistEnty({
-              ...wishlistEntry,
-              last_name: e.target.value,
-            })
-          }
+          onChange={handleChange}
           helperText="Last Name"
         ></TextField>
         <TextField
@@ -124,14 +129,10 @@ export default function WishList() {
           variant="filled"
           color="primary"
           type="phone"
+          name="phone"
           placeholder="Enter Phone Number"
           value={wishlistEntry.phone}
-          onChange={(e) =>
-            setWishlistEnty({
-              ...wishlistEntry,
-              phone: e.target.value,
-            })
-          }
+          onChange={handleChange}
           helperText="Phone Number"
         ></TextField>
         <TextField
@@ -139,14 +140,10 @@ export default function WishList() {
           variant="filled"
           color="primary"
           type="email"
+          name="email"
           placeholder="Enter Email"
           value={wishlistEntry.email}
-          onChange={(e) =>
-            setWishlistEnty({
-              ...wishlistEntry,
-              email: e.target.value,
-            })
-          }
+          onChange={handleChange}
           helperText="Email"
         ></TextField>
         <TextField
@@ -154,22 +151,21 @@ export default function WishList() {
           variant="filled"
           color="primary"
           type="text"
+          name="text"
           placeholder="Enter Description"
           value={wishlistEntry.description}
-          onChange={(e) =>
-            setWishlistEnty({
-              ...wishlistEntry,
-              description: e.target.value,
-            })
-          }
+          onChange={handleChange}
           helperText="What are you looking for? Add any extra details about item. Bracelets, Materials, Dials, Bezel,
           etc..."
         />
         <UploadImage
-          setWishlistEnty={setWishlistEnty}
+          setWishlistEntry={setWishlistEntry}
           {...wishlistEntry}
+          handleImageChange={handleImageChange}
           loading={loading}
           wishlistEntry={wishlistEntry}
+          pathKey="contactformupload"
+          handleChange={handleChange}
         />
         <Button
           variant="contained"

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Spinner } from "react-bootstrap";
-import { TextField, Button, colors, Grid } from "@mui/material";
-import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
+import { TextField, colors, Grid } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -10,15 +9,17 @@ const useStyles = makeStyles((theme) => ({
     color: colors.green[500],
   },
 }));
-export default function UploadImage(props) {
+export default function UploadImage({
+  handleImageChange,
+  pathKey,
+  validationErrors = null,
+}) {
   const [URL, setUrl] = useState("");
   const [success, setSuccess] = useState(false);
   const [uploadInput, setUploadInput] = useState([]);
   const [loading, setLoading] = useState(false);
   const [uploadError, setUploadError] = useState(false);
   const [fileSelected, setFileSelected] = useState(false);
-  const classes = useStyles();
-
   const handleFileSelected = (files, e) => {
     setUploadInput(files);
     setFileSelected(true);
@@ -58,7 +59,7 @@ export default function UploadImage(props) {
         {
           fileName: file.name,
           fileType: file.type,
-          pathKey: "contactformupload",
+          pathKey: pathKey,
         },
         headersConfig
       )
@@ -81,20 +82,14 @@ export default function UploadImage(props) {
             setLoading(false);
           })
           .then(() => {
-            console.log(URL);
-            console.log(url);
-            props.setWishlistEnty({
-              ...props.wishlistEntry,
-              image_URL: url,
-            });
+            console.log("URL", URL);
+            console.log("url", url);
+            handleImageChange(url, fileName);
           })
           .catch((error) => {
             console.log(error.message);
             throw error.message;
           });
-      })
-      .then(() => {
-        console.log(props.wishlistEntry);
       })
       .catch((err) => {
         setLoading(false);
@@ -110,9 +105,13 @@ export default function UploadImage(props) {
           type="file"
           variant="filled"
           disabled={loading}
+          fullWidth
+          error={!!validationErrors}
           helperText={
             uploadError
               ? "Error with image upload. Please try again."
+              : validationErrors
+              ? validationErrors
               : "Please upload a picture of item (Optional)"
           }
           onChange={(e) => {
@@ -121,73 +120,21 @@ export default function UploadImage(props) {
         ></TextField>
       </Grid>
       <Grid item xs={12} md={6}>
-        {loading && !success && (
-          <Button
-            variant="contained"
-            type="button"
-            color="primary"
-            disabled
-            fullWidth
-            sx={{ padding: "1em 0px" }}
-          >
-            <Spinner
-              as="span"
-              animation="border"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />
-            <span className="visually-hidden">Loading...</span>
-          </Button>
-        )}
-        {!success && !loading && !uploadError && (
-          <Button
-            variant="contained"
-            color="primary"
-            type="button"
-            disabled={!fileSelected || loading}
-            onClick={(e) => {
-              handleButtonClick(e);
-            }}
-            sx={{ padding: "1em 0px" }}
-            fullWidth
-          >
-            Upload Image
-          </Button>
-        )}
-        {!success && !!uploadError && (
-          <Button
-            variant="contained"
-            color="error"
-            type="button"
-            disabled={!fileSelected || loading}
-            onClick={(e) => {
-              handleButtonClick(e);
-            }}
-            sx={{ padding: "1em 0px" }}
-            fullWidth
-          >
-            Upload Image
-          </Button>
-        )}
-        {success && (
-          <Button
-            variant="contained"
-            color="primary"
-            type="button"
-            disabled={!fileSelected || loading}
-            onClick={(e) => {
-              handleButtonClick(e);
-            }}
-            endIcon={<LibraryAddCheckIcon fontSize="large" />}
-            fullWidth
-            fullHeight
-            size="large"
-            sx={{ padding: "1em 0px" }}
-          >
-            Image Uploaded
-          </Button>
-        )}
+        <LoadingButton
+          fullWidth
+          loading={loading}
+          disabled={!fileSelected}
+          variant="contained"
+          sx={{ padding: "1em 0px" }}
+          onClick={(e) => {
+            handleButtonClick(e);
+          }}
+          color={
+            success ? "success" : !success && uploadError ? "error" : "primary"
+          }
+        >
+          Upload Image
+        </LoadingButton>
       </Grid>
     </Grid>
   );
