@@ -1,11 +1,11 @@
 import { Paper } from "@mui/material";
-const Preview = ({ url }) => {
+
+const Preview = ({ images, selectedImageIndex }) => {
   return (
     <>
       <Paper
         sx={{
-          minHeight: "30vh",
-          maxHeight: "30vh",
+          height: "20vh",
           overflow: "auto",
           display: "flex",
           justifyContent: "center;",
@@ -13,9 +13,9 @@ const Preview = ({ url }) => {
         elevation={4}
       >
         <img
-          src={url}
-          alt={url}
-          style={{ maxHeight: "30vh", maxWidth: "auto" }}
+          src={images[selectedImageIndex].image_url}
+          alt={images[selectedImageIndex].image_url}
+          style={{ maxHeight: "30vh", width: "auto" }}
         />
       </Paper>
     </>

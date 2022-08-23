@@ -118,7 +118,7 @@ const AddInventory = () => {
   };
 
   const isDuplicateImage = (url) => {
-    if (addInventoryData.images.includes(url)) {
+    if (addInventoryData.images.map((image) => image.image_url).includes(url)) {
       return true;
     } else {
       return false;
@@ -140,7 +140,15 @@ const AddInventory = () => {
       });
     }
   };
-
+  const handleDeleteImage = (index) => {
+    const tempImages = [...addInventoryData.images];
+    tempImages.splice(index, 1);
+    console.log("temp images", tempImages);
+    setAddInventoryData({
+      ...addInventoryData,
+      images: [...tempImages],
+    });
+  };
   const handleConfirmCancelModal = () => {
     setIsEdited(false);
     setAddInventoryData(defaultAddInventoryState);
@@ -348,6 +356,7 @@ const AddInventory = () => {
                 handleImageChange={handleImageChange}
                 validationErrors={validationErrors.images}
                 images={addInventoryData.images}
+                handleDeleteImage={handleDeleteImage}
               />
             </Grid>
           </Grid>

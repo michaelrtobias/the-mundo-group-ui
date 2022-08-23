@@ -6,18 +6,20 @@ const AddInventoryImageManager = ({
   handleImageChange,
   validationErrors,
   images,
+  handleDeleteImage,
 }) => {
   return (
     <>
-      {/*
-    list of images
-    carousel of images
-    */}
-      <Grid container spacing={2} direction="column">
-        <Grid item>
-          {images.length > 0 && <ImagePreview images={images} />}
+      <Grid container spacing={2}>
+        <Grid item xs={12} sx={6}>
+          {images.length > 0 && (
+            <ImagePreview
+              images={images}
+              handleDeleteImage={handleDeleteImage}
+            />
+          )}
         </Grid>
-        <Grid item>
+        <Grid item xs={12} sx={6}>
           <UploadImage
             handleImageChange={handleImageChange}
             validationErrors={validationErrors}

@@ -1,33 +1,31 @@
 import ImagePreviewCard from "./ImagePreviewCard/index";
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  TextField,
-  Paper,
-  List,
-  Grid,
-  FormControlLabel,
-} from "@mui/material";
+import { Paper, List } from "@mui/material";
 
-const ImagePreviewList = ({ images, setSelectedImage }) => {
+const ImagePreviewList = ({
+  images,
+  setSelectedImageIndex,
+  selectedImageIndex,
+  handleDeleteImage,
+}) => {
   return (
     <>
       <Paper
         sx={{
-          minHeight: "30vh",
-          maxHeight: "30vh",
+          height: "20vh",
+          width: "100%",
           overflow: "auto",
         }}
         elevation={4}
       >
         <List>
-          {images.map((image) => (
+          {images.map((image, i) => (
             <ImagePreviewCard
               url={image.image_url}
-              setSelectedImage={setSelectedImage}
+              setSelectedImageIndex={setSelectedImageIndex}
+              selectedImageIndex={selectedImageIndex}
+              handleDeleteImage={handleDeleteImage}
+              key={i}
+              index={i}
             />
           ))}
         </List>
