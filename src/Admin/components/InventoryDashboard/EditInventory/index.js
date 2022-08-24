@@ -12,22 +12,34 @@ import {
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
-import { useDeleteInventory } from "../../../../api/index";
+import { useEditInventory } from "../../../../api/index";
+const defaultEditInventoryData = (item) => ({
+  brand: item?.brand ?? "",
+  model: item?.model ?? "",
+  model_number: item?.model_number ?? "",
+  dial: item?.dial ?? "",
+  bezel: item?.bezel ?? "",
+  bracelet: item?.bracelet ?? "",
+  size: item?.size ?? "",
+  description: item?.description ?? "",
+  images: item?.images ?? [],
+});
 const EditInventory = ({ watch }) => {
   const [open, setOpen] = useState(false);
   const [editInventoryData, setEditInventoryData] = useState(watch);
-  const [startingEditInventoryData, setStartingEditInventoryData] =
-    useState(watch);
+  const [startingEditInventoryData, setStartingEditInventoryData] = useState(
+    defaultEditInventoryData(watch)
+  );
   const [isEdited, setIsEdited] = useState(false);
-  // const {
-  //   mutate: editInventory,
-  //   isLoading,
-  //   isSuccess,
-  // } = useEditInventory({
-  //   onSuccess: () => {
-  //     setOpen(false);
-  //   },
-  // });
+  const {
+    mutate: editInventory,
+    isLoading,
+    isSuccess,
+  } = useEditInventory({
+    onSuccess: () => {
+      setOpen(false);
+    },
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -38,7 +50,7 @@ const EditInventory = ({ watch }) => {
   };
 
   const handleSave = () => {
-    EditInventory({ brand: watch.brand, colorway: watch.colorway });
+    editInventory({ brand: watch.brand, colorway: watch.colorway });
     setStartingEditInventoryData(editInventoryData);
   };
 
@@ -230,6 +242,8 @@ const EditInventory = ({ watch }) => {
           <LoadingButton
             variant="contained"
             color="primary"
+            loading={isLoading}
+            disabled={!isEdited}
             onClick={handleSave}
           >
             Save

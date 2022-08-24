@@ -37,11 +37,7 @@ const AddInventory = () => {
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
   const [inventory, setInventory] = useState([]);
-  const {
-    mutate: addInventory,
-    isLoading,
-    isSuccess,
-  } = useAddInventory({
+  const { mutate: addInventory, isLoading } = useAddInventory({
     onSuccess: () => {
       setIsEdited(false);
       setOpen(false);

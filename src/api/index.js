@@ -147,3 +147,35 @@ export const useDeleteImage = (options) => {
     onError: onError && onError,
   });
 };
+
+export const useEditInventory = (options) => {
+  const queryClient = useQueryClient();
+  const { onSuccess, onError } = defaultValue(options, {});
+  const editInventory = async ({ item }) => {
+    const {
+      data: { data, errors },
+    } = await axios.post(
+      "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/inventory",
+      {
+        ...item,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    formatErrors(errors);
+
+    return data;
+  };
+  return useMutation(editInventory, {
+    onSuccess: async (results) => {
+      await queryClient.invalidateQueries(["inventory"], {
+        refetchInactive: true,
+      });
+      onSuccess && onSuccess(results);
+    },
+    onError: onError && onError,
+  });
+};

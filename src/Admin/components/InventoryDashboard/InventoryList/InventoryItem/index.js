@@ -19,7 +19,9 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteInventory from "../../DeleteInventory/index";
 import EditInventory from "../../EditInventory/index";
 const ContentFilter = (obj) => {
-  return Object.keys(obj).filter((key) => key !== "images");
+  return Object.keys(obj).filter(
+    (key) => key !== "images" && key !== "colorway" && key !== "timestamp"
+  );
 };
 
 const InventoryItem = ({ watch }) => {
@@ -54,7 +56,7 @@ const InventoryItem = ({ watch }) => {
         <CardMedia
           component="img"
           height="194"
-          image={watch.images.image_url}
+          image={image.image_url}
           alt="Paella dish"
         />
       ))} */}
