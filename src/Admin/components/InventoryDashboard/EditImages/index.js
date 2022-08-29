@@ -163,6 +163,7 @@ const EditImages = ({ watch }) => {
       setIsCancelModalOpen(true);
     } else {
       setIsOpen(false);
+      setSelectedImageIndex(0);
       setEditInventoryData(defaultEditInventoryData);
       setValidationErrors({});
       setImagesToBeDeleted([]);
