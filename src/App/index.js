@@ -8,6 +8,8 @@ import FormSuccessful from "../ContactUs/components/WishList/components/FormSucc
 import { Body, Page } from "./style.js";
 import NavBar from "../NavBar/index";
 import Cookies from "js-cookie";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import {
   useQuery,
   useMutation,
@@ -97,39 +99,40 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Page>
-          <Body>
-            <Router>
-              <NavBar isAdmin={isAdmin} />
+        <DndProvider backend={HTML5Backend}>
+          <Page>
+            <Body>
+              <Router>
+                <NavBar isAdmin={isAdmin} />
 
-              <Switch>
-                <Route path="/about">
-                  <About />
-                </Route>
-                <Route path="/admin/inventory">
-                  <InventoryDashboard userData={userData} />
-                </Route>
-                <Route path="/admin">
-                  <Admin isAdmin={isAdmin} userData={userData} />
-                </Route>
-                <Route path="/watches">
-                  <Inventory />
-                </Route>
-                <Route path="/contact/success">
-                  <FormSuccessful />
-                </Route>
-                <Route path="/contact">
-                  <ContactUs />
-                </Route>
-                <Route path="/">
-                  <Home />
-                </Route>
-              </Switch>
-            </Router>
-          </Body>
-
-          <Footer isAdmin={isAdmin} />
-        </Page>
+                <Switch>
+                  <Route path="/about">
+                    <About />
+                  </Route>
+                  <Route path="/admin/inventory">
+                    <InventoryDashboard userData={userData} />
+                  </Route>
+                  <Route path="/admin">
+                    <Admin isAdmin={isAdmin} userData={userData} />
+                  </Route>
+                  <Route path="/watches">
+                    <Inventory />
+                  </Route>
+                  <Route path="/contact/success">
+                    <FormSuccessful />
+                  </Route>
+                  <Route path="/contact">
+                    <ContactUs />
+                  </Route>
+                  <Route path="/">
+                    <Home />
+                  </Route>
+                </Switch>
+              </Router>
+            </Body>
+            <Footer isAdmin={isAdmin} />
+          </Page>
+        </DndProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
