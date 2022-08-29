@@ -37,6 +37,8 @@ const AddInventory = () => {
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
   const [inventory, setInventory] = useState([]);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
   const { mutate: addInventory, isLoading } = useAddInventory({
     onSuccess: () => {
       setIsEdited(false);
@@ -357,6 +359,9 @@ const AddInventory = () => {
                 validationErrors={validationErrors.images}
                 images={addInventoryData.images}
                 handleDeleteImage={handleDeleteImage}
+                isEdit={true}
+                selectedImageIndex={selectedImageIndex}
+                setSelectedImageIndex={setSelectedImageIndex}
               />
             </Grid>
           </Grid>
