@@ -49,6 +49,8 @@ const EditImages = ({ watch }) => {
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [isEdited, setIsEdited] = useState(false);
   const [imagesToBeDeleted, setImagesToBeDeleted] = useState([]);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
   const {
     mutate: editInventory,
     isLoading,
@@ -112,8 +114,9 @@ const EditImages = ({ watch }) => {
     }
   };
   const handleConfirmCancelModal = () => {
-    setIsEdited(false);
+    setSelectedImageIndex(0);
     setEditInventoryData(defaultEditInventoryData);
+    setIsEdited(false);
     setValidationErrors({});
     setImagesToBeDeleted([]);
     setIsCancelModalOpen(false);
@@ -159,10 +162,10 @@ const EditImages = ({ watch }) => {
     if (isEdited) {
       setIsCancelModalOpen(true);
     } else {
+      setIsOpen(false);
       setEditInventoryData(defaultEditInventoryData);
       setValidationErrors({});
       setImagesToBeDeleted([]);
-      setIsOpen(false);
     }
   };
 
@@ -204,6 +207,8 @@ const EditImages = ({ watch }) => {
                 images={editInventoryData.images}
                 handleDeleteImage={handleDeleteImage}
                 isEdit={true}
+                selectedImageIndex={selectedImageIndex}
+                setSelectedImageIndex={setSelectedImageIndex}
               />
             </Grid>
           </Grid>

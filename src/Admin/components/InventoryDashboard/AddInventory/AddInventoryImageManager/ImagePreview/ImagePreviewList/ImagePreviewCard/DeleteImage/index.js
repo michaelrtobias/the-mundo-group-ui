@@ -41,8 +41,8 @@ const DeleteImage = ({
         item: [{ fileName: url.split("inventory/")[1], pathKey: "inventory" }],
       });
     }
-    handleDeleteImage(index, url);
     setSelectedImageIndex(0);
+    handleDeleteImage(index, url);
     setIsDeleteImageModalOpen(false);
   };
   return (

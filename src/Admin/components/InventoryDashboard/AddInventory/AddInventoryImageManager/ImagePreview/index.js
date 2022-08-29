@@ -2,9 +2,13 @@ import { useState, useEffect } from "react";
 import ImagePreviewList from "./ImagePreviewList/index";
 import Preview from "./Preview/index";
 import { Grid } from "@mui/material";
-const ImagePreview = ({ images, handleDeleteImage, isEdit }) => {
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-
+const ImagePreview = ({
+  images,
+  handleDeleteImage,
+  isEdit,
+  selectedImageIndex,
+  setSelectedImageIndex,
+}) => {
   useEffect(() => {
     console.log("images", images);
     if (selectedImageIndex >= 0) {

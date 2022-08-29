@@ -8,6 +8,8 @@ const AddInventoryImageManager = ({
   images,
   handleDeleteImage,
   isEdit,
+  selectedImageIndex,
+  setSelectedImageIndex,
 }) => {
   return (
     <>
@@ -18,6 +20,8 @@ const AddInventoryImageManager = ({
               images={images}
               handleDeleteImage={handleDeleteImage}
               isEdit={isEdit}
+              selectedImageIndex={selectedImageIndex}
+              setSelectedImageIndex={setSelectedImageIndex}
             />
           )}
         </Grid>
