@@ -1,11 +1,11 @@
 import { Paper } from "@mui/material";
 
-const Preview = ({ images, selectedImageIndex }) => {
+const Preview = ({ images, selectedImageIndex, isEdit }) => {
   return (
     <>
       <Paper
         sx={{
-          height: "20vh",
+          height: isEdit ? "40vh" : "20vh",
           overflow: "auto",
           display: "flex",
           justifyContent: "center;",
@@ -15,7 +15,7 @@ const Preview = ({ images, selectedImageIndex }) => {
         <img
           src={images[selectedImageIndex].image_url}
           alt={images[selectedImageIndex].image_url}
-          style={{ maxHeight: "30vh", width: "auto" }}
+          style={{ maxHeight: "40vh", width: "auto" }}
         />
       </Paper>
     </>

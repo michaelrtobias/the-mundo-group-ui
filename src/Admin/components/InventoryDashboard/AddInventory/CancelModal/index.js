@@ -26,7 +26,6 @@ const CancelModal = ({
     handleSave();
     setIsCancelModalOpen(false);
   };
-  const handleOpenCancelModal = () => {};
   return (
     <>
       <Button
@@ -66,14 +65,6 @@ const CancelModal = ({
           </Grid>
         </DialogContent>
         <DialogActions>
-          {/* <Button
-          // onClick={handleSave} handle close all
-          variant="contained"
-          color="primary"
-          autoFocus
-        >
-          Save As Draft
-        </Button> */}
           {!isDraft && (
             <Button
               onClick={handleCloseCancelModal}

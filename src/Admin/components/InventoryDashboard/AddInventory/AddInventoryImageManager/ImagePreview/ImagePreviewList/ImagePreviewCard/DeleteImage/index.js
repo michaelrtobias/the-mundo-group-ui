@@ -17,6 +17,7 @@ const DeleteImage = ({
   handleDeleteImage,
   index,
   setSelectedImageIndex,
+  isEdit,
 }) => {
   const [isDeleteImageModalOpen, setIsDeleteImageModalOpen] = useState(false);
   const {
@@ -35,11 +36,14 @@ const DeleteImage = ({
     setIsDeleteImageModalOpen(true);
   };
   const handleDelete = () => {
-    deleteImage({
-      item: { fileName: url.split("inventory/")[1], pathKey: "inventory" },
-    });
-    handleDeleteImage(index);
+    if (!isEdit) {
+      deleteImage({
+        item: [{ fileName: url.split("inventory/")[1], pathKey: "inventory" }],
+      });
+    }
+    handleDeleteImage(index, url);
     setSelectedImageIndex(0);
+    setIsDeleteImageModalOpen(false);
   };
   return (
     <>
@@ -50,8 +54,9 @@ const DeleteImage = ({
         <DialogTitle>Delete</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to delete {url.split("inventory/")[1]}? All
-            Information and data will be lost.
+            Are you sure you want to delete {url.split("inventory/")[1]}? Image
+            will be permenantly deleted, even if you exit out of the edit modal
+            before saving.
           </DialogContentText>
         </DialogContent>
         <DialogActions>

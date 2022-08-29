@@ -6,12 +6,13 @@ const ImagePreviewList = ({
   setSelectedImageIndex,
   selectedImageIndex,
   handleDeleteImage,
+  isEdit,
 }) => {
   return (
     <>
       <Paper
         sx={{
-          height: "20vh",
+          height: isEdit ? "40vh" : "20vh",
           width: "100%",
           overflow: "auto",
         }}
@@ -26,6 +27,7 @@ const ImagePreviewList = ({
               handleDeleteImage={handleDeleteImage}
               key={i}
               index={i}
+              isEdit={isEdit}
             />
           ))}
         </List>

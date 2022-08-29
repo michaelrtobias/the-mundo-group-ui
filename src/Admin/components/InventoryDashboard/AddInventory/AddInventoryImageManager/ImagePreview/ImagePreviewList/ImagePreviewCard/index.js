@@ -24,6 +24,7 @@ const ImagePreviewCard = ({
   selectedImageIndex,
   handleDeleteImage,
   index,
+  isEdit,
 }) => {
   const classes = useStyles();
   const handleClick = () => {
@@ -41,6 +42,7 @@ const ImagePreviewCard = ({
         secondaryAction={
           <DeleteImage
             url={url}
+            isEdit={isEdit}
             handleDeleteImage={handleDeleteImage}
             setSelectedImageIndex={setSelectedImageIndex}
             index={index}

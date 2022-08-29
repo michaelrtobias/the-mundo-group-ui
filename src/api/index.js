@@ -124,7 +124,7 @@ export const useDeleteImage = (options) => {
     } = await axios.delete(
       "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/images",
       {
-        data: { ...item },
+        data: item,
       },
       {
         headers: {
@@ -154,7 +154,7 @@ export const useEditInventory = (options) => {
   const editInventory = async ({ item }) => {
     const {
       data: { data, errors },
-    } = await axios.post(
+    } = await axios.put(
       "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/inventory",
       {
         ...item,

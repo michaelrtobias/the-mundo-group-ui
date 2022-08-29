@@ -13,11 +13,10 @@ import {
 
 import { red } from "@mui/material/colors";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import ImageSearchIcon from "@mui/icons-material/ImageSearch";
-import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteInventory from "../../DeleteInventory/index";
 import EditInventory from "../../EditInventory/index";
+import EditImages from "../../EditImages/index";
 const ContentFilter = (obj) => {
   return Object.keys(obj).filter(
     (key) => key !== "images" && key !== "colorway" && key !== "timestamp"
@@ -31,18 +30,16 @@ const InventoryItem = ({ watch }) => {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            {watch.brand.charAt(0).toUpperCase()}
           </Avatar>
         }
         action={
           <>
             <EditInventory watch={watch} />
+            <EditImages watch={watch} />
             <DeleteInventory watch={watch} />
             <IconButton aria-label="preview">
               <VisibilityIcon />
-            </IconButton>
-            <IconButton aria-label="images">
-              <ImageSearchIcon />
             </IconButton>
             <IconButton aria-label="settings">
               <MoreVertIcon />

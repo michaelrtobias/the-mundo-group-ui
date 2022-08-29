@@ -103,7 +103,11 @@ const AddInventory = () => {
         }, {});
         setValidationErrors({ ...errors, images: validationErrors.images });
       } else {
-        setValidationErrors(...validationErrors, { brand: e.message });
+        if (Object.keys(validationErrors).length === 0) {
+          setValidationErrors({ brand: e.message });
+        } else {
+          setValidationErrors(...validationErrors, { brand: e.message });
+        }
       }
       return false;
     }

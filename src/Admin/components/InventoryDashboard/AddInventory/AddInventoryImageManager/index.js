@@ -7,6 +7,7 @@ const AddInventoryImageManager = ({
   validationErrors,
   images,
   handleDeleteImage,
+  isEdit,
 }) => {
   return (
     <>
@@ -16,6 +17,7 @@ const AddInventoryImageManager = ({
             <ImagePreview
               images={images}
               handleDeleteImage={handleDeleteImage}
+              isEdit={isEdit}
             />
           )}
         </Grid>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ImagePreviewList from "./ImagePreviewList/index";
 import Preview from "./Preview/index";
 import { Grid } from "@mui/material";
-const ImagePreview = ({ images, handleDeleteImage }) => {
+const ImagePreview = ({ images, handleDeleteImage, isEdit }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   useEffect(() => {
@@ -20,10 +20,15 @@ const ImagePreview = ({ images, handleDeleteImage }) => {
           setSelectedImageIndex={setSelectedImageIndex}
           selectedImageIndex={selectedImageIndex}
           handleDeleteImage={handleDeleteImage}
+          isEdit={isEdit}
         />
       </Grid>
       <Grid item xs={12} sm={6} lg={8}>
-        <Preview images={images} selectedImageIndex={selectedImageIndex} />
+        <Preview
+          images={images}
+          selectedImageIndex={selectedImageIndex}
+          isEdit={isEdit}
+        />
       </Grid>
     </Grid>
   );
