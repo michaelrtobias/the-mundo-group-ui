@@ -10,7 +10,7 @@ import {
   Button,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import { useDeleteImage } from "../../../../../../../../../api/index";
+import { useDeleteImage } from "../../../../../../api/index";
 import DeleteIcon from "@mui/icons-material/Delete";
 const DeleteImage = ({
   url,

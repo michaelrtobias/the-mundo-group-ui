@@ -23,7 +23,7 @@ import {
 } from "../../../../api/index";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 import LoadingButton from "@mui/lab/LoadingButton";
-import AddInventoryImageManager from "../AddInventory/AddInventoryImageManager/index";
+import AddInventoryImageManager from "../../../../Common/AddInventoryImageManager/index";
 import CancelEditModal from "../EditInventory/CancelEditModal";
 import { inventorySchema } from "../../../../utils/validate";
 

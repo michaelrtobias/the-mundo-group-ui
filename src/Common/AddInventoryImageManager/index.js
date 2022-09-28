@@ -1,4 +1,4 @@
-import UploadImage from "../../../../../Common/UploadImage/index";
+import UploadImage from "../UploadImage/index";
 import ImagePreview from "./ImagePreview/index";
 import { Grid } from "@mui/material";
 const uploadImageGridSizes = { xs: 12, sm: 6, lg: 4 };
