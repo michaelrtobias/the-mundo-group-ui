@@ -3,13 +3,16 @@ import ImagePreview from "./ImagePreview/index";
 import { Grid } from "@mui/material";
 const uploadImageGridSizes = { xs: 12, sm: 6, lg: 4 };
 const AddInventoryImageManager = ({
-  handleImageChange,
+  handleAddImage,
   validationErrors,
   images,
   handleDeleteImage,
   isEdit,
   selectedImageIndex,
   setSelectedImageIndex,
+  handleMoveImage,
+  isMove,
+  setIsMove,
 }) => {
   return (
     <>
@@ -22,12 +25,15 @@ const AddInventoryImageManager = ({
               isEdit={isEdit}
               selectedImageIndex={selectedImageIndex}
               setSelectedImageIndex={setSelectedImageIndex}
+              handleMoveImage={handleMoveImage}
+              isMove={isMove}
+              setIsMove={setIsMove}
             />
           )}
         </Grid>
         <Grid item xs={12} sx={6}>
           <UploadImage
-            handleImageChange={handleImageChange}
+            handleImageChange={handleAddImage}
             validationErrors={validationErrors}
             pathKey="inventory"
             gridSizes={uploadImageGridSizes}

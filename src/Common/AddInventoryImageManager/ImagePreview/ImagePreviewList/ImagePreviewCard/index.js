@@ -1,12 +1,7 @@
-import {
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  IconButton,
-} from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { ListItem, ListItemButton, ListItemText, Box } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import DeleteImage from "./DeleteImage/index";
+import ImageOrderButtons from "./ImageOrderButtons";
 const useStyles = makeStyles({
   root: {
     "&$selected": {
@@ -23,8 +18,10 @@ const ImagePreviewCard = ({
   setSelectedImageIndex,
   selectedImageIndex,
   handleDeleteImage,
+  handleMoveImage,
   index,
   isEdit,
+  length,
 }) => {
   const classes = useStyles();
   const handleClick = () => {
@@ -40,13 +37,20 @@ const ImagePreviewCard = ({
         selected={selectedImageIndex === index}
         classes={{ root: classes.root, selected: classes.selected }}
         secondaryAction={
-          <DeleteImage
-            url={url}
-            isEdit={isEdit}
-            handleDeleteImage={handleDeleteImage}
-            setSelectedImageIndex={setSelectedImageIndex}
-            index={index}
-          />
+          <>
+            <ImageOrderButtons
+              index={index}
+              length={length}
+              handleMoveImage={handleMoveImage}
+            />
+            <DeleteImage
+              url={url}
+              isEdit={isEdit}
+              handleDeleteImage={handleDeleteImage}
+              setSelectedImageIndex={setSelectedImageIndex}
+              index={index}
+            />
+          </>
         }
       >
         <ListItemButton onClick={handleClick}>
@@ -58,6 +62,7 @@ const ImagePreviewCard = ({
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
+                maxWidth: "16vw",
               },
             }}
           />

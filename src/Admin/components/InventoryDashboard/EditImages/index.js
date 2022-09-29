@@ -50,6 +50,7 @@ const EditImages = ({ watch }) => {
   const [isEdited, setIsEdited] = useState(false);
   const [imagesToBeDeleted, setImagesToBeDeleted] = useState([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [isMove, setIsMove] = useState(false);
 
   const {
     mutate: editInventory,
@@ -132,7 +133,7 @@ const EditImages = ({ watch }) => {
     }
   };
 
-  const handleImageChange = (url, fileName) => {
+  const handleAddImage = (url, fileName) => {
     if (!isDuplicateImage(url)) {
       setEditInventoryData({
         ...editInventoryData,
@@ -148,16 +149,29 @@ const EditImages = ({ watch }) => {
       });
     }
   };
+
   const handleDeleteImage = (index, image) => {
     const tempImages = [...editInventoryData.images];
     tempImages.splice(index, 1);
-    console.log("temp images", tempImages);
     setEditInventoryData({
       ...editInventoryData,
       images: [...tempImages],
     });
     setImagesToBeDeleted([...imagesToBeDeleted, image]);
   };
+
+  const handleMoveImage = (destinationIndex, currentIndex) => {
+    setIsMove(true);
+    const tempImages = [...editInventoryData.images];
+    const removedItem = tempImages.splice(currentIndex, 1)[0];
+    tempImages.splice(destinationIndex, 0, removedItem);
+    setEditInventoryData({
+      ...editInventoryData,
+      images: [...tempImages],
+    });
+    setSelectedImageIndex(destinationIndex);
+  };
+
   const handleClose = () => {
     if (isEdited) {
       setIsCancelModalOpen(true);
@@ -203,13 +217,16 @@ const EditImages = ({ watch }) => {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <AddInventoryImageManager
-                handleImageChange={handleImageChange}
+                handleAddImage={handleAddImage}
                 validationErrors={validationErrors.images}
                 images={editInventoryData.images}
                 handleDeleteImage={handleDeleteImage}
                 isEdit={true}
+                isMove={isMove}
+                setIsMove={setIsMove}
                 selectedImageIndex={selectedImageIndex}
                 setSelectedImageIndex={setSelectedImageIndex}
+                handleMoveImage={handleMoveImage}
               />
             </Grid>
           </Grid>

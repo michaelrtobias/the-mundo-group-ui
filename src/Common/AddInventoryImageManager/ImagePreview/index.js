@@ -8,12 +8,15 @@ const ImagePreview = ({
   isEdit,
   selectedImageIndex,
   setSelectedImageIndex,
+  handleMoveImage,
+  setIsMove,
+  isMove,
 }) => {
   useEffect(() => {
-    console.log("images", images);
-    if (selectedImageIndex >= 0) {
+    if (!isMove && selectedImageIndex >= 0) {
       setSelectedImageIndex(images.length - 1);
     }
+    setIsMove(false);
   }, [images]);
 
   return (
@@ -25,6 +28,7 @@ const ImagePreview = ({
           selectedImageIndex={selectedImageIndex}
           handleDeleteImage={handleDeleteImage}
           isEdit={isEdit}
+          handleMoveImage={handleMoveImage}
         />
       </Grid>
       <Grid item xs={12} sm={6} lg={8}>

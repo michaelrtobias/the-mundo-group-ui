@@ -38,6 +38,7 @@ const AddInventory = () => {
   const [validationErrors, setValidationErrors] = useState({});
   const [inventory, setInventory] = useState([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [isMove, setIsMove] = useState(false);
 
   const { mutate: addInventory, isLoading } = useAddInventory({
     onSuccess: () => {
@@ -126,7 +127,7 @@ const AddInventory = () => {
       return false;
     }
   };
-  const handleImageChange = (url, fileName) => {
+  const handleAddImage = (url, fileName) => {
     if (!isDuplicateImage(url)) {
       setAddInventoryData({
         ...addInventoryData,
@@ -142,6 +143,19 @@ const AddInventory = () => {
       });
     }
   };
+
+  const handleMoveImage = (destinationIndex, currentIndex) => {
+    setIsMove(true);
+    const tempImages = [...addInventoryData.images];
+    const removedItem = tempImages.splice(currentIndex, 1)[0];
+    tempImages.splice(destinationIndex, 0, removedItem);
+    setAddInventoryData({
+      ...addInventoryData,
+      images: [...tempImages],
+    });
+    setSelectedImageIndex(destinationIndex);
+  };
+
   const handleDeleteImage = (index) => {
     const tempImages = [...addInventoryData.images];
     tempImages.splice(index, 1);
@@ -355,13 +369,16 @@ const AddInventory = () => {
             </Grid>
             <Grid item xs={12}>
               <AddInventoryImageManager
-                handleImageChange={handleImageChange}
+                handleAddImage={handleAddImage}
                 validationErrors={validationErrors.images}
                 images={addInventoryData.images}
                 handleDeleteImage={handleDeleteImage}
                 isEdit={true}
+                isMove={isMove}
+                setIsMove={setIsMove}
                 selectedImageIndex={selectedImageIndex}
                 setSelectedImageIndex={setSelectedImageIndex}
+                handleMoveImage={handleMoveImage}
               />
             </Grid>
           </Grid>
