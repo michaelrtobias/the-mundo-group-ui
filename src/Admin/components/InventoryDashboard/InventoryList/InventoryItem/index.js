@@ -17,6 +17,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteInventory from "../../DeleteInventory/index";
 import EditInventory from "../../EditInventory/index";
 import EditImages from "../../EditImages/index";
+import CardImagePreview from "./CardImagePreview";
 const ContentFilter = (obj) => {
   return Object.keys(obj).filter(
     (key) => key !== "images" && key !== "colorway" && key !== "timestamp"
@@ -49,14 +50,8 @@ const InventoryItem = ({ watch }) => {
         title={`${watch.brand} ${watch.model}`}
         subheader={watch.model_number}
       />
-      {/* {watch.images.map((image) => (
-        <CardMedia
-          component="img"
-          height="194"
-          image={image.image_url}
-          alt="Paella dish"
-        />
-      ))} */}
+
+      <CardImagePreview images={watch.images} />
       <CardContent>
         <Grid container spacing={1}>
           {ContentFilter(watch).map((data, i) => (
