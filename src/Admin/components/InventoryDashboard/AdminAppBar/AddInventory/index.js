@@ -10,11 +10,11 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
-import DraftSwitch from "../../../../Common/DraftSwitch/index";
+import DraftSwitch from "../../../../../Common/DraftSwitch/index";
 import CancelModal from "./CancelModal/index";
-import AddInventoryImageManager from "../../../../Common/AddInventoryImageManager/index";
-import { inventorySchema } from "../../../../utils/validate";
-import { useAddInventory, useGetAllInventory } from "../../../../api/index";
+import AddInventoryImageManager from "../../../../../Common/AddInventoryImageManager/index";
+import { inventorySchema } from "../../../../../utils/validate";
+import { useAddInventory, useGetAllInventory } from "../../../../../api/index";
 const defaultAddInventoryState = {
   brand: "",
   model: "",
@@ -24,6 +24,7 @@ const defaultAddInventoryState = {
   bracelet: "",
   size: "",
   description: "",
+  draft: false,
   images: [],
 };
 
@@ -188,7 +189,14 @@ const AddInventory = () => {
   };
   return (
     <>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleClickOpen}
+        size="large"
+        sx={{ minHeight: "4.25vh" }}
+        fullWidth
+      >
         Add Inventory
       </Button>
       <Dialog

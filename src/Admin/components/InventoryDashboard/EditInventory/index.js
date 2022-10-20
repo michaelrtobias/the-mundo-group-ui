@@ -167,7 +167,11 @@ const EditInventory = ({ watch }) => {
   }, [editInventoryData]);
   return (
     <>
-      <IconButton aria-label="settings" onClick={handleClickOpen}>
+      <IconButton
+        aria-label="settings"
+        onClick={handleClickOpen}
+        color={watch.draft === true ? "secondary" : "primary"}
+      >
         <AutoFixHighIcon />
       </IconButton>
       <Dialog open={isOpen} onClose={handleClose} maxWidth="lg">

@@ -20,7 +20,11 @@ import EditImages from "../../EditImages/index";
 import CardImagePreview from "./CardImagePreview";
 const ContentFilter = (obj) => {
   return Object.keys(obj).filter(
-    (key) => key !== "images" && key !== "colorway" && key !== "timestamp"
+    (key) =>
+      key !== "images" &&
+      key !== "colorway" &&
+      key !== "timestamp" &&
+      key !== "draft"
   );
 };
 
@@ -51,7 +55,7 @@ const InventoryItem = ({ watch }) => {
         subheader={watch.model_number}
       />
 
-      <CardImagePreview images={watch.images} />
+      {watch.images.length > 0 && <CardImagePreview images={watch.images} />}
       <CardContent>
         <Grid container spacing={1}>
           {ContentFilter(watch).map((data, i) => (

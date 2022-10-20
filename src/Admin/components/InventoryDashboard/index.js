@@ -1,35 +1,35 @@
 import { useState } from "react";
-import { Grid } from "@mui/material";
+import { Grid, Typography, Box, AppBar } from "@mui/material";
 import InventoryList from "./InventoryList/index";
-import AddInventory from "../InventoryDashboard/AddInventory/index";
-import FilterInventory from "./FilterInventory/index";
+import AdminAppBar from "./AdminAppBar";
 const InventoryDashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [showDrafts, setShowDrafts] = useState(false);
+  const [showOnlyDrafts, setShowOnlyDrafts] = useState(false);
+
   return (
     <>
-      <Grid container spacing={2} sx={{ padding: 3 }}>
-        <Grid
-          item
-          xs={12}
-          sx={{ textAlign: "center" }}
-          alignItems="center"
-          direction="column"
-          justifyContent="center"
-        >
-          <h1>Inventory Dashboard</h1>
-        </Grid>
-        <Grid item>
-          {/* //one line
-              //search bar, add item and
+      <Box
+        display="flex"
+        sx={{ display: "flex", justifyContent: "center", marginBottom: "2vh" }}
+      >
+        <Typography variant="h2" alignCenter>
+          Inventory Dashboard
+        </Typography>
+      </Box>
+      <AdminAppBar
+        setSearchTerm={setSearchTerm}
+        setShowDrafts={setShowDrafts}
+        showDrafts={showDrafts}
+        showOnlyDrafts={showOnlyDrafts}
+        setShowOnlyDrafts={setShowOnlyDrafts}
+      />
 
-            */}
-          <AddInventory />
-        </Grid>
-        <Grid item>
-          <FilterInventory setSearchTerm={setSearchTerm} />
-        </Grid>
-      </Grid>
-      <InventoryList searchTerm={searchTerm} />
+      <InventoryList
+        searchTerm={searchTerm}
+        showDrafts={showDrafts}
+        showOnlyDrafts={showOnlyDrafts}
+      />
     </>
   );
 };

@@ -21,8 +21,11 @@ const CardImagePreview = ({ images }) => {
       <CardMedia
         component="img"
         height="180"
-        image={images[currentImageIndex].image_url}
-        alt="Paella dish"
+        image={
+          images[currentImageIndex].image_url ||
+          "https://southwest-watches-media.s3.amazonaws.com/southwest-watches-logo-plain-01.png"
+        }
+        alt={images[currentImageIndex].alt || "southwest-watches-logo"}
       />
       {images.length > 1 && (
         <Grid

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DraftSwitch from "../../../../../Common/DraftSwitch/index";
+import DraftSwitch from "../../../../../../Common/DraftSwitch/index";
 import {
   Button,
   Dialog,

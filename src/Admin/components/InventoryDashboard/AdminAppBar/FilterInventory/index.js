@@ -6,6 +6,7 @@ const FilterInventory = ({ setSearchTerm }) => {
       id="outlined"
       label="Search for inventory"
       defaultValue=""
+      fullWidth
       onChange={(e) => setSearchTerm(e.target.value)}
     />
   );
