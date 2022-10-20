@@ -15,20 +15,21 @@ const FilterInventory = ({ setSearchTerm, searchTerm }) => {
       fullWidth
       onChange={(e) => setSearchTerm(e.target.value)}
       InputProps={{
-        endAdornment: (
-          <InputAdornment position="end">
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={() => {
-                setSearchTerm("");
-              }}
-              // onMouseDown={handleMouseDownPassword}
-              edge="end"
-            >
-              <ClearIcon />
-            </IconButton>
-          </InputAdornment>
-        ),
+        endAdornment:
+          searchTerm.length > 0 ? (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={() => {
+                  setSearchTerm("");
+                }}
+                // onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                <ClearIcon />
+              </IconButton>
+            </InputAdornment>
+          ) : null,
       }}
     ></TextField>
   );
