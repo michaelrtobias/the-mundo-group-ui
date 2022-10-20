@@ -19,6 +19,7 @@ const InventoryDashboard = () => {
       </Box>
       <AdminAppBar
         setSearchTerm={setSearchTerm}
+        searchTerm={searchTerm}
         setShowDrafts={setShowDrafts}
         showDrafts={showDrafts}
         showOnlyDrafts={showOnlyDrafts}

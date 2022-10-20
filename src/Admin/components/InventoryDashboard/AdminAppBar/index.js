@@ -5,6 +5,7 @@ import ShowDrafts from "./ShowDrafts";
 const AdminAppBar = ({
   setSearchTerm,
   setShowDrafts,
+  searchTerm,
   showDrafts,
   showOnlyDrafts,
   setShowOnlyDrafts,
@@ -21,7 +22,10 @@ const AdminAppBar = ({
         <AddInventory />
       </Grid>
       <Grid item xs={4}>
-        <FilterInventory setSearchTerm={setSearchTerm} />
+        <FilterInventory
+          setSearchTerm={setSearchTerm}
+          searchTerm={searchTerm}
+        />
       </Grid>
       <Grid item xs={4}>
         <ShowDrafts
