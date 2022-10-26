@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Home from "../Home/index";
 import ContactUs from "../ContactUs/index";
 import About from "../About/index";
-import Inventory from "../Inventory/index";
+import Products from "../Products/index";
 import Footer from "../Footer/index";
 import FormSuccessful from "../ContactUs/components/WishList/components/FormSuccessful";
 import { Body, Page } from "./style.js";
@@ -116,7 +116,7 @@ function App() {
                     <Admin isAdmin={isAdmin} userData={userData} />
                   </Route>
                   <Route path="/watches">
-                    <Inventory />
+                    <Products />
                   </Route>
                   <Route path="/contact/success">
                     <FormSuccessful />

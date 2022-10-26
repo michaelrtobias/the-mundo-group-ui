@@ -87,8 +87,9 @@ const EditInventory = ({ watch }) => {
       await inventorySchema.validate(editInventoryData, {
         abortEarly: false,
       });
-      duplicateCheck(editInventoryData, items);
-
+      if (isBrandColorwayEdited) {
+        duplicateCheck(editInventoryData, items);
+      }
       setValidationErrors({});
       return true;
     } catch (e) {
