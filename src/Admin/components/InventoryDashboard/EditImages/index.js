@@ -1,31 +1,22 @@
 import { useState, useEffect } from "react";
 import {
-  Card,
   Grid,
-  CardContent,
-  CardHeader,
-  CardActions,
-  Avatar,
   IconButton,
-  Typography,
-  CardMedia,
-  TextField,
   Dialog,
   DialogActions,
   DialogContent,
   Tooltip,
   DialogTitle,
+  FormControlLabel,
 } from "@mui/material";
-import {
-  useEditInventory,
-  useGetAllInventory,
-  useDeleteImage,
-} from "../../../../api/index";
+import { useEditInventory, useDeleteImage } from "../../../../api/index";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 import LoadingButton from "@mui/lab/LoadingButton";
+import RotateLeftIcon from "@mui/icons-material/RotateLeft";
 import AddInventoryImageManager from "../../../../Common/AddInventoryImageManager/index";
-import CancelEditModal from "../EditInventory/CancelEditModal";
 import { inventorySchema } from "../../../../utils/validate";
+import DraftSwitch from "../../../../Common/DraftSwitch/index";
+import CancelModal from "../CancelModal/index";
 
 const defaultEditInventoryDataSetter = (item) => ({
   brand: item?.brand ?? "",
@@ -36,6 +27,7 @@ const defaultEditInventoryDataSetter = (item) => ({
   bracelet: item?.bracelet ?? "",
   size: item?.size ?? "",
   description: item?.description ?? "",
+  draft: item?.draft ?? false,
   images: item?.images ?? [],
 });
 
@@ -47,16 +39,13 @@ const EditImages = ({ watch }) => {
   );
   const [validationErrors, setValidationErrors] = useState({});
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [isDraft, setIsDraft] = useState(false);
   const [isEdited, setIsEdited] = useState(false);
   const [imagesToBeDeleted, setImagesToBeDeleted] = useState([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isMove, setIsMove] = useState(false);
 
-  const {
-    mutate: editInventory,
-    isLoading,
-    isSuccess,
-  } = useEditInventory({
+  const { mutate: editInventory, isLoading } = useEditInventory({
     onSuccess: () => {
       // setEditInventoryData(defaultEditInventoryData);
       setIsEdited(false);
@@ -96,6 +85,8 @@ const EditImages = ({ watch }) => {
   };
 
   const handleOpen = () => {
+    setEditInventoryData(defaultEditInventoryData);
+    setIsDraft(defaultEditInventoryData.draft);
     setIsOpen(true);
   };
 
@@ -109,7 +100,7 @@ const EditImages = ({ watch }) => {
           })),
         });
       }
-      editInventory({ item: { ...editInventoryData } });
+      editInventory({ item: { ...editInventoryData, draft: isDraft } });
       setIsOpen(false);
       setImagesToBeDeleted([]);
     }
@@ -184,6 +175,12 @@ const EditImages = ({ watch }) => {
     }
   };
 
+  const handleResetChanges = () => {
+    setEditInventoryData(defaultEditInventoryData);
+    setIsDraft(defaultEditInventoryData.draft);
+    setValidationErrors({});
+  };
+
   useEffect(() => {
     const editData = Object.keys(editInventoryData);
     for (let key = 0; editData.length > key; key++) {
@@ -191,7 +188,8 @@ const EditImages = ({ watch }) => {
         editInventoryData[editData[key]] !==
           defaultEditInventoryData[editData[key]] ||
         editInventoryData.images.length !==
-          defaultEditInventoryData.images.length
+          defaultEditInventoryData.images.length ||
+        defaultEditInventoryData.draft !== isDraft
       ) {
         setIsEdited(true);
         break;
@@ -199,7 +197,7 @@ const EditImages = ({ watch }) => {
         setIsEdited(false);
       }
     }
-  }, [editInventoryData]);
+  }, [editInventoryData, defaultEditInventoryData]);
   return (
     <>
       <IconButton aria-label="images" onClick={handleOpen}>
@@ -212,7 +210,40 @@ const EditImages = ({ watch }) => {
         aria-describedby="alert-dialog-description"
         maxWidth="lg"
       >
-        <DialogTitle id="alert-dialog-title">Edit Images</DialogTitle>
+        <DialogTitle id="alert-dialog-title">
+          Edit Images
+          <Grid container>
+            <Grid item xs={12}>
+              <FormControlLabel
+                label="Draft"
+                control={
+                  <DraftSwitch setIsDraft={setIsDraft} isDraft={isDraft} />
+                }
+                sx={{
+                  position: "absolute",
+                  right: 48,
+                  top: 16,
+                }}
+              ></FormControlLabel>{" "}
+            </Grid>
+            <Grid item xs={12}>
+              <Tooltip title="Reset Changes" placement="left">
+                <IconButton
+                  onClick={handleResetChanges}
+                  disabled={!isEdited}
+                  color="warning"
+                  sx={{
+                    position: "absolute",
+                    right: 24,
+                    top: 16,
+                  }}
+                >
+                  <RotateLeftIcon />
+                </IconButton>
+              </Tooltip>
+            </Grid>
+          </Grid>
+        </DialogTitle>
         <DialogContent>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -232,8 +263,10 @@ const EditImages = ({ watch }) => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <CancelEditModal
-            isEdited={false}
+          <CancelModal
+            isEdited={isEdited}
+            isDraft={isDraft}
+            setIsDraft={setIsDraft}
             handleClose={handleClose}
             isCancelModalOpen={isCancelModalOpen}
             setIsCancelModalOpen={setIsCancelModalOpen}

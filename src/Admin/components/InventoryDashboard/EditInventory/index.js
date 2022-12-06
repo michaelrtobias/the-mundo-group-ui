@@ -8,6 +8,7 @@ import {
   Tooltip,
   DialogTitle,
   Grid,
+  FormControlLabel,
 } from "@mui/material";
 import RotateLeftIcon from "@mui/icons-material/RotateLeft";
 import { LoadingButton } from "@mui/lab";
@@ -17,8 +18,9 @@ import {
   useGetAllInventory,
   useDeleteInventory,
 } from "../../../../api/index";
-import CancelEditModal from "./CancelEditModal/index";
+import CancelModal from "../CancelModal/index";
 import { inventorySchema } from "../../../../utils/validate";
+import DraftSwitch from "../../../../Common/DraftSwitch/index";
 
 const defaultEditInventoryDataSetter = (item) => ({
   brand: item?.brand ?? "",
@@ -29,6 +31,7 @@ const defaultEditInventoryDataSetter = (item) => ({
   bracelet: item?.bracelet ?? "",
   size: item?.size ?? "",
   description: item?.description ?? "",
+  draft: item?.draft ?? false,
   images: item?.images ?? [],
 });
 const EditInventory = ({ watch }) => {
@@ -38,6 +41,7 @@ const EditInventory = ({ watch }) => {
   const [editInventoryData, setEditInventoryData] = useState(
     defaultEditInventoryData
   );
+  const [isDraft, setIsDraft] = useState(false);
   const [isEdited, setIsEdited] = useState(false);
   const [isBrandColorwayEdited, setIsBrandColorwayEdited] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
@@ -107,6 +111,8 @@ const EditInventory = ({ watch }) => {
   };
 
   const handleClickOpen = () => {
+    setEditInventoryData(defaultEditInventoryData);
+    setIsDraft(defaultEditInventoryData.draft);
     setIsOpen(true);
   };
 
@@ -132,13 +138,14 @@ const EditInventory = ({ watch }) => {
       deleteInventory({
         item: { brand: watch.brand, colorway: watch.colorway },
       });
-      editInventory({ item: { ...editInventoryData } });
+      editInventory({ item: { ...editInventoryData, draft: isDraft } });
     } else if (await isValid()) {
-      editInventory({ item: { ...editInventoryData } });
+      editInventory({ item: { ...editInventoryData, draft: isDraft } });
     }
   };
   const handleResetChanges = () => {
     setEditInventoryData(defaultEditInventoryData);
+    setIsDraft(defaultEditInventoryData.draft);
     setValidationErrors({});
   };
 
@@ -156,7 +163,8 @@ const EditInventory = ({ watch }) => {
         break;
       } else if (
         editInventoryData[editData[key]] !==
-        defaultEditInventoryData[editData[key]]
+          defaultEditInventoryData[editData[key]] ||
+        editInventoryData.draft !== isDraft
       ) {
         setIsEdited(true);
         break;
@@ -165,7 +173,7 @@ const EditInventory = ({ watch }) => {
         setIsBrandColorwayEdited(false);
       }
     }
-  }, [editInventoryData]);
+  }, [editInventoryData, defaultEditInventoryData, isDraft]);
   return (
     <>
       <IconButton
@@ -179,20 +187,37 @@ const EditInventory = ({ watch }) => {
         <DialogTitle>
           {`Edit ${watch.brand} ${watch.model}
             ${watch.colorway}`}
-          <Tooltip title="Reset Changes" placement="left">
-            <IconButton
-              onClick={handleResetChanges}
-              disabled={!isEdited}
-              color="warning"
-              sx={{
-                position: "absolute",
-                right: 24,
-                top: 16,
-              }}
-            >
-              <RotateLeftIcon />
-            </IconButton>
-          </Tooltip>
+          <Grid container>
+            <Grid item xs={12}>
+              <FormControlLabel
+                label="Draft"
+                control={
+                  <DraftSwitch setIsDraft={setIsDraft} isDraft={isDraft} />
+                }
+                sx={{
+                  position: "absolute",
+                  right: 48,
+                  top: 16,
+                }}
+              ></FormControlLabel>
+            </Grid>
+            <Grid item xs={12}>
+              <Tooltip title="Reset Changes" placement="left">
+                <IconButton
+                  onClick={handleResetChanges}
+                  disabled={!isEdited}
+                  color="warning"
+                  sx={{
+                    position: "absolute",
+                    right: 24,
+                    top: 16,
+                  }}
+                >
+                  <RotateLeftIcon />
+                </IconButton>
+              </Tooltip>
+            </Grid>{" "}
+          </Grid>
         </DialogTitle>
         <DialogContent>
           <Grid container spacing={2}>
@@ -346,12 +371,15 @@ const EditInventory = ({ watch }) => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <CancelEditModal
+          <CancelModal
             isEdited={isEdited}
+            isDraft={isDraft}
+            setIsDraft={setIsDraft}
             handleClose={handleClose}
             isCancelModalOpen={isCancelModalOpen}
             setIsCancelModalOpen={setIsCancelModalOpen}
             handleConfirmCancelModal={handleConfirmCancelModal}
+            handleSave={handleSave}
           />
           <LoadingButton
             variant="contained"

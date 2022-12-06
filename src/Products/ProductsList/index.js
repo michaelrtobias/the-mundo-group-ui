@@ -13,7 +13,7 @@ const ProductList = () => {
             //  && includesValue(searchTerm, item);
           )
           .map((watch, i) => (
-            <Grid item xs={4} key={i}>
+            <Grid item xs={3} key={i}>
               <ProductCard watch={watch} />
             </Grid>
           ))}
@@ -22,15 +22,3 @@ const ProductList = () => {
 };
 
 export default ProductList;
-
-// model: ""
-// colorway: "cubs-blue-white"
-// model_number: "cubs"
-// timestamp: "2022-10-01T04:30:30.703Z"
-// brand: "chicago"
-// draft: false
-// dial: "blue"
-// bracelet: ""
-// bezel: "white"
-// ▶ images 2 items
-// description: ""

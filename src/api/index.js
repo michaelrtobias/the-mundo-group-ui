@@ -22,33 +22,43 @@ export const useGetAllInventory = (options) => {
     const {
       data: { items, errors },
     } = await axios.get(
-      "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/inventory"
+      "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/products"
     );
     formatErrors(errors);
     return items;
   };
-  return useQuery(["inventory"], getAllInventory, {
+  return useQuery(["products"], getAllInventory, {
     onSuccess: onSuccess && onSuccess,
     onError: onError && onError,
   });
 };
-// export const useGetAllInventory = (options) => {
-//   const { onSuccess, onError } = defaultValue(options, {});
+export const useGetInventoryByColorway = ({ brand, colorway, options }) => {
+  const { onSuccess, onError } = defaultValue(options, {});
 
-//   const getAllInventory = async () => {
-//     //axios call
-//     const {
-//       data: { items },
-//     } = await axios.get(
-//       "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/inventory"
-//     );
-//     return items;
-//   };
-//   return useQuery(["inventory"], getAllInventory, {
-//     onSuccess: onSuccess && onSuccess,
-//     onError: onError && onError,
-//   });
-// };
+  const getInventoryByColorway = async () => {
+    const {
+      data: { items },
+      errors,
+    } = await axios.get(
+      `https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/products/product`,
+      {
+        params: { brand, colorway },
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+      }
+    );
+    formatErrors(errors);
+    return items;
+  };
+  return useQuery(["product"], getInventoryByColorway, {
+    onSuccess: onSuccess && onSuccess,
+    onError: onError && onError,
+  });
+};
 
 export const useAddInventory = (options) => {
   const queryClient = useQueryClient();
@@ -57,7 +67,7 @@ export const useAddInventory = (options) => {
     const {
       data: { data, errors },
     } = await axios.post(
-      "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/inventory",
+      "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/products",
       {
         ...item,
       },
@@ -73,7 +83,7 @@ export const useAddInventory = (options) => {
   };
   return useMutation(addInventory, {
     onSuccess: async (results) => {
-      await queryClient.invalidateQueries(["inventory"], {
+      await queryClient.invalidateQueries(["products"], {
         refetchInactive: true,
       });
       onSuccess && onSuccess(results);
@@ -89,7 +99,7 @@ export const useDeleteInventory = (options) => {
     const {
       data: { data, errors },
     } = await axios.delete(
-      "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/inventory",
+      "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/products",
       {
         data: { ...item },
       },
@@ -106,7 +116,7 @@ export const useDeleteInventory = (options) => {
   };
   return useMutation(deleteInventory, {
     onSuccess: async (results) => {
-      await queryClient.invalidateQueries(["inventory"], {
+      await queryClient.invalidateQueries(["products"], {
         refetchInactive: true,
       });
       onSuccess && onSuccess(results);
@@ -139,7 +149,7 @@ export const useDeleteImage = (options) => {
   };
   return useMutation(deleteInventory, {
     onSuccess: async (results) => {
-      await queryClient.invalidateQueries(["inventory"], {
+      await queryClient.invalidateQueries(["products"], {
         refetchInactive: true,
       });
       onSuccess && onSuccess(results);
@@ -155,7 +165,7 @@ export const useEditInventory = (options) => {
     const {
       data: { data, errors },
     } = await axios.put(
-      "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/inventory",
+      "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/products",
       {
         ...item,
       },
@@ -163,6 +173,7 @@ export const useEditInventory = (options) => {
         headers: {
           "Content-Type": "application/json",
         },
+        mode: "cors",
       }
     );
     formatErrors(errors);
@@ -171,7 +182,7 @@ export const useEditInventory = (options) => {
   };
   return useMutation(editInventory, {
     onSuccess: async (results) => {
-      await queryClient.invalidateQueries(["inventory"], {
+      await queryClient.invalidateQueries(["products"], {
         refetchInactive: true,
       });
       onSuccess && onSuccess(results);

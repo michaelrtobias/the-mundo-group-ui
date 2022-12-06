@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import DraftSwitch from "../../../../../Common/DraftSwitch/index";
-import CancelModal from "./CancelModal/index";
+import CancelModal from "../../CancelModal/index";
 import AddInventoryImageManager from "../../../../../Common/AddInventoryImageManager/index";
 import { inventorySchema } from "../../../../../utils/validate";
 import { useAddInventory, useGetAllInventory } from "../../../../../api/index";
