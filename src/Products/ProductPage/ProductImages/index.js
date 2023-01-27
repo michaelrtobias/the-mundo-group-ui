@@ -22,7 +22,7 @@ const ProductImages = ({ images, isSuccess, data }) => {
     // </Grid>
     <>
       {isSuccess && (
-        <ImageList sx={{ width: 500, height: 450 }} cols={1}>
+        <ImageList sx={{ width: "100%", maxHeight: "600px" }} cols={1}>
           {images.map((image) => (
             <ImageListItem key={image.img}>
               <img

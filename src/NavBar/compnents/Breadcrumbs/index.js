@@ -33,7 +33,7 @@ export default function Breadcrumb() {
 
         return last ? (
           <Typography color="text.primary" key={to}>
-            {breadcrumbNameMap[to]}
+            {breadcrumbNameMap[to] || value}
           </Typography>
         ) : (
           <RouterLink
@@ -43,7 +43,7 @@ export default function Breadcrumb() {
             key={to}
             style={{ color: "black" }}
           >
-            {breadcrumbNameMap[to]}
+            {breadcrumbNameMap[to] || value}
           </RouterLink>
         );
       })}

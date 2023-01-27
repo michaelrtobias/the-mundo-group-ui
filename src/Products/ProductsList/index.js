@@ -13,7 +13,7 @@ const ProductList = () => {
             //  && includesValue(searchTerm, item);
           )
           .map((watch, i) => (
-            <Grid item xs={3} key={i}>
+            <Grid item xs={12} sm={4} key={i}>
               <ProductCard watch={watch} />
             </Grid>
           ))}

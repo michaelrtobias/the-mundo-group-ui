@@ -30,21 +30,14 @@ export default function UploadImage({
 
   const handleButtonClick = (event) => {
     uploadImage();
-    console.log("before");
     event.preventDefault();
-    console.log("after");
   };
 
   const uploadImage = () => {
     var file = uploadInput[0];
-    console.log("file:");
-    console.log(file);
     var fileParts = uploadInput[0].name.split(".");
-    console.log("file parts: " + fileParts);
     var fileName = fileParts[0];
-    console.log("filename: " + fileName);
     var fileType = fileParts[1];
-    console.log("file type: " + fileType);
     setSuccess(false);
     setUploadError(false);
     setLoading(true);
@@ -53,7 +46,6 @@ export default function UploadImage({
         "Content-Type": file.type,
       },
     };
-    console.log("Preparing the upload");
     axios
       .post(
         "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/images",
@@ -69,7 +61,7 @@ export default function UploadImage({
         var signedRequest = returnedData.signedRequest;
         var url = returnedData.url;
         setUrl(url);
-        console.log("Recieved a signed request " + signedRequest);
+
         var options = {
           headers: {
             "Content-Type": file.type,
@@ -78,17 +70,13 @@ export default function UploadImage({
         axios
           .put(signedRequest, file, options)
           .then((result) => {
-            console.log("Response from s3");
             setSuccess(true);
             setLoading(false);
           })
           .then(() => {
-            console.log("URL", URL);
-            console.log("url", url);
             handleImageChange(url, fileName);
           })
           .catch((error) => {
-            console.log(error.message);
             throw error.message;
           });
       })

@@ -10,7 +10,7 @@ import {
   Typography,
   CardMedia,
 } from "@mui/material";
-
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { red } from "@mui/material/colors";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -29,7 +29,6 @@ const ContentFilter = (obj) => {
 };
 
 const InventoryItem = ({ watch }) => {
-  //handle change image click
   return (
     <Card sx={{ minHeight: "100%" }}>
       <CardHeader
@@ -43,8 +42,11 @@ const InventoryItem = ({ watch }) => {
             <EditInventory watch={watch} />
             <EditImages watch={watch} />
             <DeleteInventory watch={watch} />
-            <IconButton aria-label="preview">
-              <VisibilityIcon />
+            <IconButton
+              aria-label="preview"
+              href={`/watches/${watch.brand}/${watch.colorway}`}
+            >
+              <OpenInNewIcon />
             </IconButton>
             <IconButton aria-label="settings">
               <MoreVertIcon />

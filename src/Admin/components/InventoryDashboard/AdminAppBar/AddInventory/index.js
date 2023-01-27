@@ -160,7 +160,6 @@ const AddInventory = () => {
   const handleDeleteImage = (index) => {
     const tempImages = [...addInventoryData.images];
     tempImages.splice(index, 1);
-    console.log("temp images", tempImages);
     setAddInventoryData({
       ...addInventoryData,
       images: [...tempImages],

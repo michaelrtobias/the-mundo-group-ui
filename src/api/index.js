@@ -128,7 +128,6 @@ export const useDeleteImage = (options) => {
   const queryClient = useQueryClient();
   const { onSuccess, onError } = defaultValue(options, {});
   const deleteInventory = async ({ item }) => {
-    console.log("item", item);
     const {
       data: { data, errors },
     } = await axios.delete(
@@ -187,6 +186,34 @@ export const useEditInventory = (options) => {
       });
       onSuccess && onSuccess(results);
     },
+    onError: onError && onError,
+  });
+};
+
+export const useSendLeadMessage = (options) => {
+  const { onSuccess, onError } = defaultValue(options, {});
+
+  const sendLeadMessage = async ({ body, redirectFunc }) => {
+    const {
+      data: { data, errors },
+    } = await axios.post(
+      "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/wishlist",
+      {
+        ...body,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+      }
+    );
+    formatErrors(errors);
+
+    return data;
+  };
+  return useMutation(sendLeadMessage, {
+    onSuccess: onSuccess && onSuccess,
     onError: onError && onError,
   });
 };

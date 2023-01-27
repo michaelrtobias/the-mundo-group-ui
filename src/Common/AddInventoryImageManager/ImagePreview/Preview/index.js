@@ -1,9 +1,6 @@
 import { Paper } from "@mui/material";
 
 const Preview = ({ images, selectedImageIndex = 0, isEdit }) => {
-  console.log("selectedImageIndex", selectedImageIndex);
-  console.log("preview images", images);
-  console.log("image", images[selectedImageIndex]);
   return (
     <>
       <Paper

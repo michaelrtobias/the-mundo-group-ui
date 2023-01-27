@@ -1,5 +1,13 @@
-import { Typography, Grid } from "@mui/material";
-
+import {
+  Typography,
+  Grid,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+} from "@mui/material";
 const ProductInfo = ({ watch }) => {
   const ContentFilter = (obj) => {
     const order = [
@@ -12,40 +20,59 @@ const ProductInfo = ({ watch }) => {
       "bracelet",
       "description",
     ];
-    let orderedList = [];
     const filteredList = Object.keys(obj).filter(
       (key) =>
         key !== "images" &&
         key !== "colorway" &&
         key !== "timestamp" &&
-        key !== "draft"
+        key !== "draft" &&
+        key !== "brand" &&
+        key !== "description"
+    );
+    let orderedList = filteredList.sort(
+      (a, b) => order.indexOf(a) - order.indexOf(b)
     );
 
-    console.log(orderedList);
     return filteredList;
   };
   const formatKey = (key) => {
     let tempKey = key
       .split("_")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1));
-    console.log("tempKey", tempKey);
-    return tempKey.join(" ");
+    if (key === "brand") {
+      return "Manufacturer";
+    } else {
+      return tempKey.join(" ");
+    }
   };
   return (
     <>
-      <Grid container spacing={1}>
+      <List>
+        <ListItem disablePadding>
+          <Typography variant="h6" color="text">
+            <Typography variant="h6" color="text" display="inline">
+              {`Manufacturer: `}
+            </Typography>
+
+            {`${watch.brand}`}
+          </Typography>
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
         {ContentFilter(watch).map((data, i) => (
-          <Grid item xs={12}>
-            <Typography variant="body1" color="text" key={i}>
+          <ListItem disablePadding>
+            <Typography variant="h6" color="text" key={i}>
               <Typography variant="h6" color="text" display="inline" key={i}>
                 {`${formatKey(data)}: `}
               </Typography>
 
               {`${watch[data]}`}
             </Typography>
-          </Grid>
+          </ListItem>
         ))}
-      </Grid>
+      </List>
+      <Divider />
     </>
   );
 };

@@ -7,7 +7,7 @@ const ProductHeader = ({ data }) => {
         {data.brand} {data.model}
       </Typography>
       <Typography align="center" variant="h3">
-        {data.model_number}
+        {data.model_number} {data.size}
       </Typography>
     </Box>
   );

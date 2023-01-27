@@ -69,10 +69,8 @@ export default function WishList() {
         }
       )
       .then((res) => {
-        console.log(res);
         setLoading(false);
         history.push("/contact/success");
-        console.log("should have redirected");
       })
       .catch((e) => {
         console.log(e);
