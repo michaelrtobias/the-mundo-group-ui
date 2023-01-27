@@ -27,7 +27,7 @@ export default function ContactBanner() {
           history.push("/contact");
         }}
       >
-        Send A Message{" "}
+        Send A Message
       </Button>
     </ContactLinkBox>
   );

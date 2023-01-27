@@ -226,7 +226,7 @@ const EditImages = ({ watch }) => {
                   right: 48,
                   top: 16,
                 }}
-              ></FormControlLabel>{" "}
+              ></FormControlLabel>
             </Grid>
             <Grid item xs={12}>
               <Tooltip title="Reset Changes" placement="left">

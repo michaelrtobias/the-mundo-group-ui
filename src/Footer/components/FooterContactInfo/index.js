@@ -10,7 +10,7 @@ export default function FooterContactInfo() {
     <ContactInfoWrapper>
       <h4>Contact Info</h4>
       <div>
-        <b>Email:</b>{" "}
+        <b>Email:</b>
         <a href="mailto:info@southwestwatches.com">info@southwestwatches.com</a>
       </div>
       <div>

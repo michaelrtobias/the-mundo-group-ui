@@ -21,7 +21,6 @@ export default function NavBar({ isAdmin }) {
           <Nav className="mr-auto">
             {mediaQuery ? (
               <>
-                {" "}
                 <Nav.Link href="/about">About</Nav.Link>
                 <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link>
                 <Nav.Link href="/contact">Contact Us</Nav.Link>
@@ -36,7 +35,7 @@ export default function NavBar({ isAdmin }) {
               </LinkWrapper>
             )}
           </Nav>
-        </Navbar.Collapse>{" "}
+        </Navbar.Collapse>
         {mediaQuery ? (
           <Button
             href="/contact"

@@ -1,10 +1,10 @@
 import { useGetAllInventory } from "../../api";
-import { Grid } from "@mui/material";
+import { Grid, Skeleton } from "@mui/material";
 import ProductCard from "./ProductCard";
 import _ from "lodash";
 
 const ProductList = ({ searchTerm }) => {
-  const { data: items = [], isSuccess } = useGetAllInventory();
+  const { data: items = [], isSuccess, isLoading } = useGetAllInventory();
   const toLowerCaseObjStringValues = (item) => {
     return Object.fromEntries(
       Object.entries(item).map(([key, value]) => [
@@ -19,6 +19,12 @@ const ProductList = ({ searchTerm }) => {
     );
   return (
     <Grid container spacing={2} sx={{ padding: 3 }}>
+      {isLoading &&
+        Array.from(new Array(6)).map((item, i) => (
+          <Grid item xs={12} sm={6} md={4} key={i}>
+            <Skeleton height="30vh" width="100%" variant="rectangular" />
+          </Grid>
+        ))}
       {isSuccess &&
         items
           .filter(

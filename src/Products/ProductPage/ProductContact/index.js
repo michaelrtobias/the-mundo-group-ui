@@ -80,9 +80,12 @@ const ProductContact = ({ watch }) => {
     [messageData]
   );
 
-  // const handleClearSuccess
   return (
-    <Stack spacing={2} justifyContent={isSuccess ? "center" : "end"}>
+    <Stack
+      spacing={2}
+      alignItems="center"
+      justifyContent={isSuccess ? "center" : "end"}
+    >
       <Typography variant="h5">Send Us A Message!</Typography>
 
       {(!isSuccess || isIdle || isLoading) && (
@@ -138,22 +141,18 @@ const ProductContact = ({ watch }) => {
         </>
       )}
       {isSuccess && (
-        <Grid container alignItems="center" direction="column" spacing={4}>
-          <Grid item xs={12}>
-            <MarkEmailReadIcon
-              fontSize="large"
-              color="success"
-            ></MarkEmailReadIcon>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography align="center">Message Succesfull</Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography align="center">
-              We will reach put as soon as we can!
-            </Typography>
-          </Grid>
-        </Grid>
+        <>
+          <MarkEmailReadIcon
+            fontSize="large"
+            color="success"
+          ></MarkEmailReadIcon>
+
+          <Typography align="center">Message Succesfull</Typography>
+
+          <Typography align="center">
+            We will reach put as soon as we can!
+          </Typography>
+        </>
       )}
       <LoadingButton
         variant="contained"

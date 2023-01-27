@@ -216,7 +216,7 @@ const EditInventory = ({ watch }) => {
                   <RotateLeftIcon />
                 </IconButton>
               </Tooltip>
-            </Grid>{" "}
+            </Grid>
           </Grid>
         </DialogTitle>
         <DialogContent>

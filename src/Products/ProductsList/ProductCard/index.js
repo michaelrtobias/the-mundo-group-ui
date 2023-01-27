@@ -33,12 +33,10 @@ const ProductCard = ({
     });
     return results;
   };
-  const { brand, model, dial, bracelet, bezel } = formatData({
+  const { brand, model, bracelet } = formatData({
     brand: brandDefault,
     model: modelDefault,
-    dial: dialDefault,
     bracelet: braceletDefault,
-    bezel: bezelDefault,
   });
 
   return (
@@ -76,7 +74,7 @@ const ProductCard = ({
           <Button
             variant="outlined"
             size="small"
-            href={`/watches/${brand}/${colorway}`}
+            href={`/watches/${brandDefault}/${colorway}`}
           >
             Learn More
           </Button>
