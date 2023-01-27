@@ -1,10 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import ProductList from "./ProductsList";
-import { Grid, Typography, Box, AppBar } from "@mui/material";
+import SearchFilter from "../Common/SearchFilter";
+import { Typography, Stack, Box, Paper, Grid } from "@mui/material";
 
 const Products = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
-    <div>
+    <Stack>
       <Box
         display="flex"
         sx={{ display: "flex", justifyContent: "center", marginBottom: "2vh" }}
@@ -13,8 +15,15 @@ const Products = () => {
           Pre-Owned Watches
         </Typography>
       </Box>
-      <ProductList />
-    </div>
+      <Paper sx={{ margin: "0px 1.5vw" }} elevation={1}>
+        <SearchFilter
+          setSearchTerm={setSearchTerm}
+          searchTerm={searchTerm}
+          fullWidth
+        />
+      </Paper>
+      <ProductList searchTerm={searchTerm} />
+    </Stack>
   );
 };
 

@@ -1,18 +1,13 @@
-import {
-  TextField,
-  OutlinedInput,
-  InputAdornment,
-  IconButton,
-} from "@mui/material";
+import { TextField, InputAdornment, IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
-const FilterInventory = ({ setSearchTerm, searchTerm }) => {
+const SearchFilter = ({ setSearchTerm, searchTerm, fullWidth = true }) => {
   return (
     <TextField
       id="outlined"
       label="Search for inventory"
       defaultValue=""
       value={searchTerm}
-      fullWidth
+      fullWidth={fullWidth}
       onChange={(e) => setSearchTerm(e.target.value)}
       InputProps={{
         endAdornment:
@@ -23,7 +18,6 @@ const FilterInventory = ({ setSearchTerm, searchTerm }) => {
                 onClick={() => {
                   setSearchTerm("");
                 }}
-                // onMouseDown={handleMouseDownPassword}
                 edge="end"
               >
                 <ClearIcon />
@@ -35,4 +29,4 @@ const FilterInventory = ({ setSearchTerm, searchTerm }) => {
   );
 };
 
-export default FilterInventory;
+export default SearchFilter;

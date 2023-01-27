@@ -1,13 +1,4 @@
-import {
-  Typography,
-  Grid,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Divider,
-} from "@mui/material";
+import { Typography, List, ListItem, Divider } from "@mui/material";
 const ProductInfo = ({ watch }) => {
   const ContentFilter = (obj) => {
     const order = [
@@ -20,6 +11,7 @@ const ProductInfo = ({ watch }) => {
       "bracelet",
       "description",
     ];
+    console.log("object", obj);
     const filteredList = Object.keys(obj).filter(
       (key) =>
         key !== "images" &&
@@ -27,11 +19,12 @@ const ProductInfo = ({ watch }) => {
         key !== "timestamp" &&
         key !== "draft" &&
         key !== "brand" &&
-        key !== "description"
+        key !== "description" &&
+        obj[key] !== "" &&
+        obj[key] !== null
     );
-    let orderedList = filteredList.sort(
-      (a, b) => order.indexOf(a) - order.indexOf(b)
-    );
+    console.log("filteredList", filteredList);
+    filteredList.sort((a, b) => order.indexOf(a) - order.indexOf(b));
 
     return filteredList;
   };
@@ -39,11 +32,7 @@ const ProductInfo = ({ watch }) => {
     let tempKey = key
       .split("_")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1));
-    if (key === "brand") {
-      return "Manufacturer";
-    } else {
-      return tempKey.join(" ");
-    }
+    return tempKey.join(" ");
   };
   return (
     <>
@@ -57,17 +46,15 @@ const ProductInfo = ({ watch }) => {
             {`${watch.brand}`}
           </Typography>
         </ListItem>
-      </List>
-      <Divider />
-      <List>
-        {ContentFilter(watch).map((data, i) => (
+        <Divider component="li" />
+        {ContentFilter(watch).map((key, i) => (
           <ListItem disablePadding>
             <Typography variant="h6" color="text" key={i}>
               <Typography variant="h6" color="text" display="inline" key={i}>
-                {`${formatKey(data)}: `}
+                {`${formatKey(key)}: `}
               </Typography>
 
-              {`${watch[data]}`}
+              {`${watch[key]}`}
             </Typography>
           </ListItem>
         ))}

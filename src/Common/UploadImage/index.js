@@ -36,7 +36,7 @@ export default function UploadImage({
   const uploadImage = () => {
     var file = uploadInput[0];
     var fileParts = uploadInput[0].name.split(".");
-    var fileName = fileParts[0];
+    var fileName = `${fileParts[0]}`;
     var fileType = fileParts[1];
     setSuccess(false);
     setUploadError(false);

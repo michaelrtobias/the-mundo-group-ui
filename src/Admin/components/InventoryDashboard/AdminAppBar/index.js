@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import FilterInventory from "./FilterInventory/index";
+import SearchFilter from "../../../../Common/SearchFilter";
 import AddInventory from "./AddInventory";
 import ShowDrafts from "./ShowDrafts";
 const AdminAppBar = ({
@@ -22,10 +22,7 @@ const AdminAppBar = ({
         <AddInventory />
       </Grid>
       <Grid item xs={4}>
-        <FilterInventory
-          setSearchTerm={setSearchTerm}
-          searchTerm={searchTerm}
-        />
+        <SearchFilter setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
       </Grid>
       <Grid item xs={4}>
         <ShowDrafts

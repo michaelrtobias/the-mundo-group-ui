@@ -116,7 +116,9 @@ const EditImages = ({ watch }) => {
   };
   const isDuplicateImage = (url) => {
     if (
-      editInventoryData.images.map((image) => image.image_url).includes(url)
+      editInventoryData.images
+        .map((image) => image.image_url.split("Z-")[1])
+        .includes(url.split("Z-")[1])
     ) {
       return true;
     } else {
@@ -197,7 +199,7 @@ const EditImages = ({ watch }) => {
         setIsEdited(false);
       }
     }
-  }, [editInventoryData, defaultEditInventoryData]);
+  }, [editInventoryData, defaultEditInventoryData, isDraft]);
   return (
     <>
       <IconButton aria-label="images" onClick={handleOpen}>

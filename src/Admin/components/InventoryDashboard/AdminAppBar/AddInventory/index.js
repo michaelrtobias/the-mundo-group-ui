@@ -122,7 +122,11 @@ const AddInventory = () => {
   };
 
   const isDuplicateImage = (url) => {
-    if (addInventoryData.images.map((image) => image.image_url).includes(url)) {
+    if (
+      addInventoryData.images
+        .map((image) => image.image_url.split("Z-")[1])
+        .includes(url.split("Z-")[1])
+    ) {
       return true;
     } else {
       return false;

@@ -27,7 +27,7 @@ const ImagePreviewCard = ({
   const handleClick = () => {
     setSelectedImageIndex(index);
   };
-
+  console.log("url", url);
   return (
     <>
       <ListItem
@@ -55,7 +55,7 @@ const ImagePreviewCard = ({
       >
         <ListItemButton onClick={handleClick}>
           <ListItemText
-            primary={url.split("inventory/")[1]}
+            primary={url.split("Z-")[1]}
             primaryTypographyProps={{
               variant: "subtitle2",
               style: {
