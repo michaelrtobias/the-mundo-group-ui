@@ -48,9 +48,6 @@ const InventoryItem = ({ watch }) => {
             >
               <OpenInNewIcon />
             </IconButton>
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
           </>
         }
         title={`${watch.brand} ${watch.model}`}
