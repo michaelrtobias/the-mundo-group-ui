@@ -29,7 +29,7 @@ const ProductPage = () => {
           {isLoading ? (
             <Skeleton
               width="100%"
-              height="15vh"
+              height="30vh"
               variant="rectangular"
               align="center"
             />
@@ -39,7 +39,7 @@ const ProductPage = () => {
         </Grid>
         <Grid item xs={12} md={8}>
           {isLoading ? (
-            <Skeleton width="100%" height="40vh" variant="rectangular" />
+            <Skeleton width="100%" height="50vh" variant="rectangular" />
           ) : (
             <ProductCanvas minHeight="620px">
               <ProductImages
@@ -54,14 +54,14 @@ const ProductPage = () => {
         <Grid item xs={12} md={4}>
           <Stack spacing={2}>
             {isLoading ? (
-              <Skeleton width="100%" height="20vh" variant="rectangular" />
+              <Skeleton width="100%" height="25vh" variant="rectangular" />
             ) : (
               <ProductCanvas minHeight="200px" padding="10px">
                 <ProductInfo watch={data} isLoading={isLoading} />
               </ProductCanvas>
             )}
             {isLoading ? (
-              <Skeleton width="100%" height="20vh" variant="rectangular" />
+              <Skeleton width="100%" height="25vh" variant="rectangular" />
             ) : (
               <ProductCanvas minHeight="24vh" padding="10px">
                 <ProductContact watch={data} isLoading={isLoading} />

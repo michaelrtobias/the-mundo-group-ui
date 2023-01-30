@@ -22,7 +22,7 @@ const InventoryList = ({ searchTerm, showDrafts, showOnlyDrafts }) => {
     <>
       <Grid container spacing={2} sx={{ padding: 3 }}>
         {isLoading &&
-          Array.from(new Array(6)).map((item, i) => (
+          Array.from(new Array(9)).map((item, i) => (
             <Grid item xs={12} sm={6} md={4} key={i}>
               <Skeleton height="30vh" width="100%" variant="rectangular" />
             </Grid>
