@@ -8,7 +8,7 @@ import {
   CopyrightListItem,
 } from "./style.js";
 import { Auth } from "aws-amplify";
-import Button from "@mui/material/Button";
+import { Button, Typography } from "@mui/material";
 
 export default function FooterLinks({ isAdmin }) {
   return (
@@ -31,7 +31,7 @@ export default function FooterLinks({ isAdmin }) {
             <Button
               variant="contained"
               color="info"
-              sx={{ "margin-top": "0.5em" }}
+              sx={{ marginTop: "0.5em" }}
               onClick={() => Auth.federatedSignIn()}
             >
               Login
@@ -41,7 +41,7 @@ export default function FooterLinks({ isAdmin }) {
             <Button
               variant="contained"
               color="info"
-              sx={{ "margin-top": "0.5em" }}
+              sx={{ marginTop: "0.5em" }}
               onClick={() => Auth.signOut()}
             >
               Logout
@@ -49,7 +49,7 @@ export default function FooterLinks({ isAdmin }) {
           )}
         </LinksListItem>
         <CopyrightListItem>
-          <Copyright>© 2022 Southwest Watches</Copyright>
+          <Typography align="center">© 2022 Southwest Watches</Typography>
         </CopyrightListItem>
       </LinksList>
     </ContentWrap>

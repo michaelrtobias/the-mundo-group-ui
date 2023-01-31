@@ -14,11 +14,11 @@ const AdminAppBar = ({
     <Grid
       container
       spacing={2}
-      noWrap
+      wrap="nowrap"
       flexDirection="row"
       sx={{ padding: "0 2vw" }}
     >
-      <Grid item xs={4} FullWidth>
+      <Grid item xs={4}>
         <AddInventory />
       </Grid>
       <Grid item xs={4}>

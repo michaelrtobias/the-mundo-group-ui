@@ -13,7 +13,7 @@ const InventoryDashboard = () => {
         display="flex"
         sx={{ display: "flex", justifyContent: "center", marginBottom: "2vh" }}
       >
-        <Typography variant="h2" alignCenter>
+        <Typography variant="h2" align="center">
           Inventory Dashboard
         </Typography>
       </Box>

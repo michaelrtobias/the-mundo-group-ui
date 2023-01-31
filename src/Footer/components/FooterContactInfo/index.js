@@ -24,7 +24,7 @@ export default function FooterContactInfo() {
           href="/contact"
           variant="contained"
           color="info"
-          sx={{ "margin-top": "0.5em" }}
+          sx={{ marginTop: "0.5em" }}
           endIcon={<Email />}
         >
           Send Us A Message

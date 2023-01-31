@@ -5,7 +5,6 @@ const SearchFilter = ({ setSearchTerm, searchTerm, fullWidth = true }) => {
     <TextField
       id="outlined"
       label="Search for inventory"
-      defaultValue=""
       value={searchTerm}
       fullWidth={fullWidth}
       onChange={(e) => setSearchTerm(e.target.value)}

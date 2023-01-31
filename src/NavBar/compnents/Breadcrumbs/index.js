@@ -18,8 +18,6 @@ function LinkRouter(props) {
 export default function Breadcrumb() {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
-  const path = location.pathname.split();
-  console.log(pathnames);
   return (
     <Breadcrumbs
       aria-label="breadcrumb"
@@ -34,9 +32,6 @@ export default function Breadcrumb() {
       {pathnames.map((value, index) => {
         const isLast = index === pathnames.length - 1;
         const to = `/${pathnames.slice(0, index + 1).join("/")}`;
-        console.log("isLast:", isLast);
-        console.log(`to ${index}`, to);
-        console.log("value", value);
         return isLast ? (
           <Typography color="text.primary" key={to}>
             {breadcrumbNameMap[to] || value}
@@ -45,7 +40,7 @@ export default function Breadcrumb() {
           <LinkRouter
             underline="hover"
             to={to}
-            key={to}
+            key={index}
             style={{ color: "black" }}
           >
             {breadcrumbNameMap[to] || value}

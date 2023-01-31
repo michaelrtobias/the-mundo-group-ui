@@ -42,7 +42,7 @@ export default function NavBar({ isAdmin }) {
             variant="contained"
             color="info"
             endIcon={<Email />}
-            sx={{ "margin-right": "2vw" }}
+            sx={{ marginRight: "2vw" }}
           >
             Send Us A Message
           </Button>
