@@ -16,10 +16,10 @@ export default function ContactBanner() {
         variant="contained"
         color="info"
         sx={{
-          "margin-top": "0.5em",
-          "max-width": "70vw",
+          marginTop: "0.5em",
+          maxWidth: "70vw",
           "@media (max-width: 1230px)": {
-            "margin-left": "15vw",
+            marginLeft: "15vw",
           },
         }}
         endIcon={<Email />}

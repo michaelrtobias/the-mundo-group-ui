@@ -12,10 +12,10 @@ export const inventorySchema = yup.object().shape({
 });
 
 export const sendMessageSchema = yup.object().shape({
-  first_name: yup.string().required(),
-  last_name: yup.string().required(),
-  email: yup.string().required(),
-  phone: yup.string().required(),
+  first_name: yup.string().required("First name is required"),
+  last_name: yup.string().required("Last name is required"),
+  email: yup.string().required("Email is required"),
+  phone: yup.string().required("Phone number is required"),
   type: yup.string(),
   make: yup.string(),
   model: yup.string(),

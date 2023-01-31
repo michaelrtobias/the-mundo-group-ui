@@ -40,8 +40,8 @@ export default function WatchContent() {
       </CenteredParagraph>
 
       <WatchDualPictureContainer>
-        {Pictures.map((picture) => (
-          <Paper elevation={18}>
+        {Pictures.map((picture, i) => (
+          <Paper elevation={18} key={i}>
             <Image
               src={`https://southwest-watches-media.s3.amazonaws.com/${picture.src}`}
               alt={picture.alt}

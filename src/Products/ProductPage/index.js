@@ -20,7 +20,6 @@ const ProductPage = () => {
         spacing={{ xs: 2, sm: 4 }}
         justifyContent="center"
         alignItems="center"
-        direction="coulmn"
         sx={{
           padding: "0vh 2vw 5vh 2vw",
         }}

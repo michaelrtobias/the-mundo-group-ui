@@ -230,18 +230,20 @@ const EditImages = ({ watch }) => {
             </Grid>
             <Grid item xs={12}>
               <Tooltip title="Reset Changes" placement="left">
-                <IconButton
-                  onClick={handleResetChanges}
-                  disabled={!isEdited}
-                  color="warning"
-                  sx={{
-                    position: "absolute",
-                    right: 24,
-                    top: 16,
-                  }}
-                >
-                  <RotateLeftIcon />
-                </IconButton>
+                <span>
+                  <IconButton
+                    onClick={handleResetChanges}
+                    disabled={!isEdited}
+                    color="warning"
+                    sx={{
+                      position: "absolute",
+                      right: 24,
+                      top: 16,
+                    }}
+                  >
+                    <RotateLeftIcon />
+                  </IconButton>
+                </span>
               </Tooltip>
             </Grid>
           </Grid>

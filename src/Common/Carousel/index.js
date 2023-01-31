@@ -7,8 +7,8 @@ export default function ImageCarousel({ images }) {
     <CarouselWrapper>
       <Carousel variant="dark" prevLabel="" nextLabel="">
         {images.map((image, index) => (
-          <Carousel.Item>
-            <IMG src={image.src} alt={image.alt} key={index} />
+          <Carousel.Item key={index}>
+            <IMG src={image.src} alt={image.alt} />
           </Carousel.Item>
         ))}
       </Carousel>

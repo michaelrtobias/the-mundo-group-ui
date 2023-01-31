@@ -5,8 +5,8 @@ const ProductImages = ({ images, isSuccess, data }) => {
     <>
       {isSuccess && (
         <ImageList sx={{ width: "100%", maxHeight: "600px" }} cols={1}>
-          {images.map((image) => (
-            <ImageListItem key={image.img}>
+          {images.map((image, i) => (
+            <ImageListItem key={i}>
               <img src={image.image_url} alt={image.alt} loading="lazy" />
             </ImageListItem>
           ))}

@@ -27,7 +27,6 @@ const ImagePreviewCard = ({
   const handleClick = () => {
     setSelectedImageIndex(index);
   };
-  console.log("url", url);
   return (
     <>
       <ListItem

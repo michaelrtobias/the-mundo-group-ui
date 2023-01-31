@@ -11,7 +11,6 @@ const ProductInfo = ({ watch }) => {
       "bracelet",
       "description",
     ];
-    console.log("object", obj);
     const filteredList = Object.keys(obj).filter(
       (key) =>
         key !== "images" &&
@@ -23,7 +22,6 @@ const ProductInfo = ({ watch }) => {
         obj[key] !== "" &&
         obj[key] !== null
     );
-    console.log("filteredList", filteredList);
     filteredList.sort((a, b) => order.indexOf(a) - order.indexOf(b));
 
     return filteredList;
@@ -38,23 +36,15 @@ const ProductInfo = ({ watch }) => {
     <>
       <List>
         <ListItem disablePadding>
-          <Typography variant="h6" color="text">
-            <Typography variant="h6" color="text" display="inline">
-              {`Manufacturer: `}
-            </Typography>
-
-            {`${watch.brand}`}
+          <Typography variant="h6" color="text" display="inline">
+            {`Manufacturer: ${watch.brand}`}
           </Typography>
         </ListItem>
         <Divider component="li" />
         {ContentFilter(watch).map((key, i) => (
-          <ListItem disablePadding>
-            <Typography variant="h6" color="text" key={i}>
-              <Typography variant="h6" color="text" display="inline" key={i}>
-                {`${formatKey(key)}: `}
-              </Typography>
-
-              {`${watch[key]}`}
+          <ListItem disablePadding key={i}>
+            <Typography variant="h6" color="text" display="inline">
+              {`${formatKey(key)}: ${watch[key]}`}
             </Typography>
           </ListItem>
         ))}

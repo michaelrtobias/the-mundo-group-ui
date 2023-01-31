@@ -17,7 +17,7 @@ const AddInventoryImageManager = ({
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item xs={12} sx={6}>
+        <Grid item xs={12}>
           {images.length > 0 && (
             <ImagePreview
               images={images}
@@ -31,7 +31,7 @@ const AddInventoryImageManager = ({
             />
           )}
         </Grid>
-        <Grid item xs={12} sx={6}>
+        <Grid item xs={12}>
           <UploadImage
             handleImageChange={handleAddImage}
             validationErrors={validationErrors}

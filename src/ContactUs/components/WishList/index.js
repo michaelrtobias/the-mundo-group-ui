@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import UploadImage from "../../../Common/UploadImage/index";
 import { makeStyles } from "@mui/styles";
-import { TextField, Paper, Button } from "@mui/material";
+import { TextField, Paper } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import { ContactFormWrapper, WishListCard } from "./style.js";
+import { sendMessageSchema } from "../../../utils/validate";
+import { useSendLeadMessage } from "../../../api/index";
 const uploadImageGridSizes = { xs: 12, md: 6 };
 
 const useStyles = makeStyles(() => ({
@@ -19,17 +20,70 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const defaultWishListPayload = {
+  first_name: "",
+  last_name: "",
+  email: "",
+  phone: "",
+  type: "",
+  make: "",
+  model: "",
+  description: "",
+  image_URL: "",
+};
 export default function WishList() {
-  const [wishlistEntry, setWishlistEntry] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [formValid, setFormValid] = useState(false);
+  const [wishlistEntry, setWishlistEntry] = useState(defaultWishListPayload);
   const [formError, setFormError] = useState(false);
-
+  const [validationErrors, setValidationErrors] = useState({});
+  const [wishlistIsEmpty, setWishlistIsEmpty] = useState(true);
   const history = useHistory();
   const classes = useStyles();
 
-  const handleSubmit = (e) => {
-    addWishlistEntry();
+  const { mutate: sendLeadMessage, isLoading } = useSendLeadMessage({
+    onSuccess: async () => {
+      setWishlistEntry(defaultWishListPayload);
+      setValidationErrors({});
+      history.push("/contact/success");
+    },
+    onError: () => setFormError(true),
+  });
+
+  useEffect(() => {
+    const nonEmptyValueCount = Object.values(wishlistEntry).filter(
+      (value) => value !== ""
+    ).length;
+    if (nonEmptyValueCount > 0) {
+      setWishlistIsEmpty(false);
+    } else if (nonEmptyValueCount === 0) {
+      setWishlistIsEmpty(true);
+    }
+  }, [wishlistEntry]);
+
+  const isValid = async () => {
+    try {
+      await sendMessageSchema.validate(wishlistEntry, {
+        abortEarly: false,
+      });
+
+      setValidationErrors({});
+      return true;
+    } catch (e) {
+      if (e.inner) {
+        const errors = e.inner.reduce((obj, error) => {
+          obj[error.path] = error.message;
+          return obj;
+        }, {});
+        setValidationErrors(errors);
+      }
+      return false;
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (await isValid()) {
+      setFormError(false);
+      sendLeadMessage({ body: wishlistEntry });
+    }
   };
 
   const handleChange = (e) => {
@@ -45,50 +99,6 @@ export default function WishList() {
       image_URL: url,
     });
   };
-  const addWishlistEntry = () => {
-    setLoading(true);
-    setFormError(false);
-    axios
-      .post(
-        "https://8zrqystn2h.execute-api.us-east-1.amazonaws.com/prod/wishlist",
-        {
-          first_name: wishlistEntry.first_name,
-          last_name: wishlistEntry.last_name,
-          email: wishlistEntry.email,
-          phone: wishlistEntry.phone,
-          type: wishlistEntry.type,
-          make: wishlistEntry.make,
-          model: wishlistEntry.model,
-          description: wishlistEntry.description,
-          image_URL: wishlistEntry.image_URL,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((res) => {
-        setLoading(false);
-        history.push("/contact/success");
-      })
-      .catch((e) => {
-        console.log(e);
-        setLoading(false);
-        setFormError(true);
-      });
-  };
-
-  useEffect(() => {
-    const isPhoneSet = !!wishlistEntry.phone;
-    const isFirstNameSet = !!wishlistEntry.first_name;
-    const isDescriptionSet = !!wishlistEntry.description;
-    const isEmailSet = !!wishlistEntry.email;
-
-    setFormValid(
-      isPhoneSet && isFirstNameSet && isDescriptionSet && isEmailSet
-    );
-  }, [wishlistEntry]);
 
   return (
     <ContactFormWrapper>
@@ -104,73 +114,71 @@ export default function WishList() {
           required
           variant="filled"
           color="primary"
-          type="text"
+          label="First Name"
           name="first_name"
           value={wishlistEntry.first_name}
-          placeholder="Enter First Name"
+          error={!!validationErrors.first_name}
+          helperText={validationErrors.first_name}
           onChange={handleChange}
-          helperText="First Name"
         ></TextField>
 
         <TextField
           required
           variant="filled"
           color="primary"
-          type="text"
           name="last_name"
-          placeholder="Enter Last Name"
+          label="Last Name"
           value={wishlistEntry.last_name}
+          error={!!validationErrors.last_name}
+          helperText={validationErrors.last_name}
           onChange={handleChange}
-          helperText="Last Name"
         ></TextField>
         <TextField
           required
           variant="filled"
           color="primary"
-          type="phone"
+          label="Phone Number"
           name="phone"
-          placeholder="Enter Phone Number"
           value={wishlistEntry.phone}
+          error={!!validationErrors.phone}
+          helperText={validationErrors.phone}
           onChange={handleChange}
-          helperText="Phone Number"
         ></TextField>
         <TextField
           required
           variant="filled"
           color="primary"
-          type="email"
+          label="Email"
           name="email"
-          placeholder="Enter Email"
           value={wishlistEntry.email}
+          error={!!validationErrors.email}
+          helperText={validationErrors.email}
           onChange={handleChange}
-          helperText="Email"
         ></TextField>
         <TextField
-          required
           variant="filled"
           color="primary"
-          type="text"
-          name="text"
-          placeholder="Enter Description"
+          name="description"
+          label="Description"
           value={wishlistEntry.description}
+          error={!!validationErrors.description}
+          helperText={validationErrors.description}
           onChange={handleChange}
-          helperText="What are you looking for? Add any extra details about item. Bracelets, Materials, Dials, Bezel,
-          etc..."
         />
         <UploadImage
           handleImageChange={handleImageChange}
           pathKey="contactformupload"
           gridSizes={uploadImageGridSizes}
         />
-        <Button
+        <LoadingButton
           variant="contained"
+          loading={isLoading}
           color={formError ? "error" : "primary"}
-          type="button"
-          disabled={!formValid || loading}
-          onClick={(e) => handleSubmit(e)}
+          disabled={wishlistIsEmpty}
+          onClick={() => handleSubmit()}
         >
           {formError ? "There was an error. Please try again" : "Submit"}
-        </Button>
+        </LoadingButton>
       </Paper>
     </ContactFormWrapper>
   );

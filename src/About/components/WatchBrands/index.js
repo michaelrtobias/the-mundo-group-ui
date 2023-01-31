@@ -14,8 +14,8 @@ export default function WatchBrands() {
             justifyContent="center"
             alignItems="center"
           >
-            {Brands.map((brand) => (
-              <Grid item xs={6} md={4}>
+            {Brands.map((brand, i) => (
+              <Grid item xs={6} md={4} key={i}>
                 <Card sx={{ height: "100%" }}>
                   <CardContent>
                     <Typography variant="h7">{brand.name}</Typography>

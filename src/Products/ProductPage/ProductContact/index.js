@@ -95,9 +95,9 @@ const ProductContact = ({ watch }) => {
               <TextField
                 fullWidth
                 label="First Name"
+                name="first_name"
                 value={messageData.first_name}
                 onChange={handleChange}
-                name="first_name"
                 error={!!validationErrors.first_name}
                 helperText={validationErrors.first_name}
                 disabled={isLoading}
@@ -107,9 +107,9 @@ const ProductContact = ({ watch }) => {
               <TextField
                 fullWidth
                 label="Last Name"
+                name="last_name"
                 value={messageData.last_name}
                 onChange={handleChange}
-                name="last_name"
                 error={!!validationErrors.last_name}
                 helperText={validationErrors.last_name}
                 disabled={isLoading}
@@ -120,9 +120,9 @@ const ProductContact = ({ watch }) => {
           <TextField
             fullWidth
             label="Phone"
+            name="phone"
             value={messageData.phone}
             onChange={handleChange}
-            name="phone"
             error={!!validationErrors.phone}
             helperText={validationErrors.phone}
             disabled={isLoading}
@@ -131,9 +131,9 @@ const ProductContact = ({ watch }) => {
           <TextField
             fullWidth
             label="Email"
+            name="email"
             value={messageData.email}
             onChange={handleChange}
-            name="email"
             error={!!validationErrors.email}
             helperText={validationErrors.email}
             disabled={isLoading}
