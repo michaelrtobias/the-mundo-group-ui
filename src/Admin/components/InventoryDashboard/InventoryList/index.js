@@ -1,4 +1,4 @@
-import { Grid, Skeleton } from "@mui/material";
+import { Alert, Grid, Skeleton } from "@mui/material";
 import _ from "lodash";
 
 import { useGetAllInventory } from "../../../../api/index";
@@ -28,6 +28,19 @@ const InventoryList = ({ searchTerm, showDrafts, showOnlyDrafts }) => {
             </Grid>
           ))}
         {isSuccess &&
+          items.filter((item) => {
+            if (!showDrafts) {
+              return item.draft !== true && includesValue(searchTerm, item);
+            } else if (showDrafts && !showOnlyDrafts) {
+              return (
+                (item.draft !== true || item.draft !== false) &&
+                includesValue(searchTerm, item)
+              );
+            } else if (showDrafts && showOnlyDrafts) {
+              return item.draft === true && includesValue(searchTerm, item);
+            }
+            return item;
+          }).length > 0 &&
           items
             .filter((item) => {
               if (!showDrafts) {
@@ -47,6 +60,22 @@ const InventoryList = ({ searchTerm, showDrafts, showOnlyDrafts }) => {
                 <InventoryCard watch={watch} />
               </Grid>
             ))}
+        {isSuccess &&
+          items.filter((item) => {
+            if (!showDrafts) {
+              return item.draft !== true && includesValue(searchTerm, item);
+            } else if (showDrafts && !showOnlyDrafts) {
+              return (
+                (item.draft !== true || item.draft !== false) &&
+                includesValue(searchTerm, item)
+              );
+            } else if (showDrafts && showOnlyDrafts) {
+              return item.draft === true && includesValue(searchTerm, item);
+            }
+            return item;
+          }).length === 0 && (
+            <Alert severity="info">There is no current inventory</Alert>
+          )}
       </Grid>
     </>
   );

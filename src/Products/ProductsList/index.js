@@ -1,5 +1,5 @@
 import { useGetAllInventory } from "../../api";
-import { Grid, Skeleton } from "@mui/material";
+import { Alert, Grid, Skeleton } from "@mui/material";
 import ProductCard from "./ProductCard";
 import _ from "lodash";
 
@@ -26,6 +26,9 @@ const ProductList = ({ searchTerm }) => {
           </Grid>
         ))}
       {isSuccess &&
+        items.filter(
+          (item) => item.draft !== true && includesValue(searchTerm, item)
+        ).length > 0 &&
         items
           .filter(
             (item) => item.draft !== true && includesValue(searchTerm, item)
@@ -35,6 +38,12 @@ const ProductList = ({ searchTerm }) => {
               <ProductCard watch={watch} />
             </Grid>
           ))}
+      {isSuccess &&
+        items.filter(
+          (item) => item.draft !== true && includesValue(searchTerm, item)
+        ).length === 0 && (
+          <Alert severity="info">There is no current inventory</Alert>
+        )}
     </Grid>
   );
 };
