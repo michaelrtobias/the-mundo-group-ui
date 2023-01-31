@@ -5,6 +5,7 @@ import About from "../About/index";
 import Products from "../Products/index";
 import Footer from "../Footer/index";
 import ProductPage from "../Products/ProductPage/index";
+import BrandPage from "../Products/BrandPage";
 import FormSuccessful from "../ContactUs/components/WishList/components/FormSuccessful";
 import { Body, Page } from "./style.js";
 import NavBar from "../NavBar/index";
@@ -117,6 +118,9 @@ function App() {
                   </Route>
                   <Route path="/watches/:brand/:colorway">
                     <ProductPage />
+                  </Route>
+                  <Route path="/watches/:brand">
+                    <BrandPage />
                   </Route>
                   <Route path="/watches">
                     <Products />

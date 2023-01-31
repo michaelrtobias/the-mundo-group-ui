@@ -1,50 +1,55 @@
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import { Typography, Breadcrumbs } from "@mui/material";
+import { Typography, Breadcrumbs, Link } from "@mui/material";
 
 const breadcrumbNameMap = {
   "/": "Home",
   "/about": "About",
   "/admin": "Admin",
-  "/admin/edit-inventory": "Edit Inventory",
+  "/admin/inventory": "Edit Inventory",
   "/watches": "Pre-Owned Watches",
   "/contact": "Contact",
   "/contact/success": "Success",
 };
 
+function LinkRouter(props) {
+  return <Link {...props} component={RouterLink} />;
+}
+
 export default function Breadcrumb() {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
+  const path = location.pathname.split();
+  console.log(pathnames);
   return (
     <Breadcrumbs
       aria-label="breadcrumb"
       sx={{ marginLeft: "2.3vw", marginTop: "1vh" }}
+      maxItems={3}
+      itemsBeforeCollapse={2}
+      itemsAfterCollapse={1}
     >
-      <RouterLink
-        underline="hover"
-        color="inherit"
-        to="/"
-        style={{ color: "black" }}
-      >
+      <LinkRouter underline="hover" to="/" style={{ color: "black" }}>
         Home
-      </RouterLink>
+      </LinkRouter>
       {pathnames.map((value, index) => {
-        const last = index === pathnames.length - 1;
+        const isLast = index === pathnames.length - 1;
         const to = `/${pathnames.slice(0, index + 1).join("/")}`;
-
-        return last ? (
+        console.log("isLast:", isLast);
+        console.log(`to ${index}`, to);
+        console.log("value", value);
+        return isLast ? (
           <Typography color="text.primary" key={to}>
             {breadcrumbNameMap[to] || value}
           </Typography>
         ) : (
-          <RouterLink
+          <LinkRouter
             underline="hover"
-            color="inherit"
             to={to}
             key={to}
             style={{ color: "black" }}
           >
             {breadcrumbNameMap[to] || value}
-          </RouterLink>
+          </LinkRouter>
         );
       })}
     </Breadcrumbs>
