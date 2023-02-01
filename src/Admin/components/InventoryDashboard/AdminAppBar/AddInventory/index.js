@@ -1,20 +1,20 @@
-import { useState, useEffect } from "react";
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  TextField,
-  Grid,
   FormControlLabel,
+  Grid,
+  TextField,
 } from "@mui/material";
-import LoadingButton from "@mui/lab/LoadingButton";
-import DraftSwitch from "../../../../../Common/DraftSwitch/index";
-import CancelModal from "../../CancelModal/index";
-import AddInventoryImageManager from "../../../../../Common/AddInventoryImageManager/index";
-import { inventorySchema } from "../../../../../utils/validate";
+import React, { useEffect, useState } from "react";
 import { useAddInventory, useGetAllInventory } from "../../../../../api/index";
+import AddInventoryImageManager from "../../../../../Common/AddInventoryImageManager/index";
+import CancelModal from "../../CancelModal/index";
+import DraftSwitch from "../../../../../Common/DraftSwitch/index";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { inventorySchema } from "../../../../../utils/validate";
 const defaultAddInventoryState = {
   brand: "",
   model: "",
@@ -37,7 +37,6 @@ const AddInventory = () => {
   const [isEdited, setIsEdited] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
-  const [inventory, setInventory] = useState([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isMove, setIsMove] = useState(false);
 
@@ -49,15 +48,7 @@ const AddInventory = () => {
       setAddInventoryData(defaultAddInventoryState);
     },
   });
-  const {
-    data: items = [],
-    isGetInventorySuccess,
-    isGetInventoryLoading,
-  } = useGetAllInventory({
-    onSuccess: () => {
-      setInventory(items);
-    },
-  });
+  const { data: items = [] } = useGetAllInventory();
 
   useEffect(() => {
     const addData = Object.keys(addInventoryData);

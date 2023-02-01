@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Paper } from "@mui/material";
 
 const Preview = ({ images, selectedImageIndex = 0, isEdit }) => {

@@ -1,19 +1,15 @@
-import * as React from "react";
+import React from "react";
 import {
   Card,
   Grid,
   CardContent,
   CardHeader,
-  CardActions,
   Avatar,
   IconButton,
   Typography,
-  CardMedia,
 } from "@mui/material";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { red } from "@mui/material/colors";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteInventory from "../../DeleteInventory/index";
 import EditInventory from "../../EditInventory/index";
 import EditImages from "../../EditImages/index";

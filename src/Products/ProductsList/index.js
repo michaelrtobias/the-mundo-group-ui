@@ -1,7 +1,8 @@
-import { useGetAllInventory } from "../../api";
 import { Alert, Grid, Skeleton } from "@mui/material";
 import ProductCard from "./ProductCard";
+import React from "react";
 import _ from "lodash";
+import { useGetAllInventory } from "../../api";
 
 const ProductList = ({ searchTerm }) => {
   const { data: items = [], isSuccess, isLoading } = useGetAllInventory();

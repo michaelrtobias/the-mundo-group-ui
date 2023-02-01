@@ -1,5 +1,5 @@
-import update from "immutability-helper";
-import { useCallback, useState } from "react";
+import React from "react";
+
 import ImagePreviewCard from "./ImagePreviewCard/index";
 import { Paper, List } from "@mui/material";
 

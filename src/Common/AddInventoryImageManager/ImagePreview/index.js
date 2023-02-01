@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import React from "react";
+
+import { useEffect } from "react";
 import ImagePreviewList from "./ImagePreviewList/index";
 import Preview from "./Preview/index";
 import { Grid } from "@mui/material";

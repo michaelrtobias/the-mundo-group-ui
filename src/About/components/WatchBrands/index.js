@@ -1,3 +1,4 @@
+import React from "react";
 import { BrandList, BrandsSection } from "./style.js";
 import { Paper, Card, CardContent, Typography, Grid } from "@mui/material/";
 import { Brands } from "./brandsList";

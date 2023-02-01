@@ -193,7 +193,7 @@ export const useEditInventory = (options) => {
 export const useSendLeadMessage = (options) => {
   const { onSuccess, onError } = defaultValue(options, {});
 
-  const sendLeadMessage = async ({ body, redirectFunc }) => {
+  const sendLeadMessage = async ({ body }) => {
     const {
       data: { data, errors },
     } = await axios.post(

@@ -1,4 +1,6 @@
-import { ListItem, ListItemButton, ListItemText, Box } from "@mui/material";
+import React from "react";
+
+import { ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import DeleteImage from "./DeleteImage/index";
 import ImageOrderButtons from "./ImageOrderButtons";

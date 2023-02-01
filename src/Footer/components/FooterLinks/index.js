@@ -4,7 +4,6 @@ import {
   ContentWrap,
   LinksListItem,
   LinksList,
-  Copyright,
   CopyrightListItem,
 } from "./style.js";
 import { Auth } from "aws-amplify";

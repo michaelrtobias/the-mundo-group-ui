@@ -1,3 +1,4 @@
+import React from "react";
 import UploadImage from "../UploadImage/index";
 import ImagePreview from "./ImagePreview/index";
 import { Grid } from "@mui/material";

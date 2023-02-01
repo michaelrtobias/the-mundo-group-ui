@@ -1,27 +1,21 @@
+import { Grid, TextField } from "@mui/material";
 import React, { useState } from "react";
-import axios from "axios";
-import { TextField, colors, Grid } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import { makeStyles } from "@mui/styles";
+import axios from "axios";
 
-const useStyles = makeStyles((theme) => ({
-  doneicon: {
-    color: colors.green[500],
-  },
-}));
 export default function UploadImage({
   handleImageChange,
   pathKey,
   validationErrors = null,
   gridSizes,
 }) {
-  const [URL, setUrl] = useState("");
+  // const [URL, setUrl] = useState("");
   const [success, setSuccess] = useState(false);
   const [uploadInput, setUploadInput] = useState([]);
   const [loading, setLoading] = useState(false);
   const [uploadError, setUploadError] = useState(false);
   const [fileSelected, setFileSelected] = useState(false);
-  const handleFileSelected = (files, e) => {
+  const handleFileSelected = (files) => {
     setUploadInput(files);
     setFileSelected(true);
     setSuccess(false);
@@ -37,7 +31,6 @@ export default function UploadImage({
     var file = uploadInput[0];
     var fileParts = uploadInput[0].name.split(".");
     var fileName = `${fileParts[0]}`;
-    var fileType = fileParts[1];
     setSuccess(false);
     setUploadError(false);
     setLoading(true);
@@ -60,7 +53,6 @@ export default function UploadImage({
         var returnedData = response.data;
         var signedRequest = returnedData.signedRequest;
         var url = returnedData.url;
-        setUrl(url);
 
         var options = {
           headers: {
@@ -69,7 +61,7 @@ export default function UploadImage({
         };
         axios
           .put(signedRequest, file, options)
-          .then((result) => {
+          .then(() => {
             setSuccess(true);
             setLoading(false);
           })

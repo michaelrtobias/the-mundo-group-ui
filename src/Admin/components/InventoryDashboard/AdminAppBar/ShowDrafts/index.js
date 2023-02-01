@@ -1,6 +1,5 @@
-import * as React from "react";
-import { Button, FormControlLabel, Grid } from "@mui/material";
-import DraftSwitch from "../../../../../Common/DraftSwitch";
+import { Button, Grid } from "@mui/material";
+import React from "react";
 const ShowDrafts = ({
   setShowDrafts,
   showDrafts,

@@ -1,9 +1,12 @@
-import { Paper } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import React from "react";
+
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  Paper,
+  Typography,
+} from "@mui/material";
 import { useHistory } from "react-router-dom";
 
 const Admin = ({ userData }) => {

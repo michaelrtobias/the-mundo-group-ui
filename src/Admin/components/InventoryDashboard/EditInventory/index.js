@@ -1,3 +1,5 @@
+import React from "react";
+
 import { useState, useEffect } from "react";
 import {
   IconButton,
@@ -46,11 +48,7 @@ const EditInventory = ({ watch }) => {
   const [isBrandColorwayEdited, setIsBrandColorwayEdited] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
-  const {
-    mutate: editInventory,
-    isLoading,
-    isSuccess,
-  } = useEditInventory({
+  const { mutate: editInventory, isLoading } = useEditInventory({
     onSuccess: () => {
       setEditInventoryData(defaultEditInventoryData);
       setIsEdited(false);
@@ -59,17 +57,10 @@ const EditInventory = ({ watch }) => {
       setIsOpen(false);
     },
   });
-  const {
-    data: items = [],
-    isGetInventorySuccess,
-    isGetInventoryLoading,
-  } = useGetAllInventory();
+  const { data: items = [] } = useGetAllInventory();
 
-  const {
-    mutate: deleteInventory,
-    isDeleteInventoryLoading,
-    isError,
-  } = useDeleteInventory();
+  const { mutate: deleteInventory, isDeleteInventoryLoading } =
+    useDeleteInventory();
   const duplicateCheck = (newItem, items) => {
     const colorways = items.map((item) => `${item.brand}-${item.colorway}`);
     const newColorway = `${
@@ -383,19 +374,36 @@ const EditInventory = ({ watch }) => {
             handleConfirmCancelModal={handleConfirmCancelModal}
             handleSave={handleSave}
           />
-          <LoadingButton
-            variant="contained"
-            color="primary"
-            loading={
-              isBrandColorwayEdited
-                ? isLoading || isDeleteInventoryLoading
-                : isLoading
-            }
-            disabled={!isEdited}
-            onClick={handleSave}
-          >
-            Save
-          </LoadingButton>
+          {!isDraft && (
+            <LoadingButton
+              variant="contained"
+              color="primary"
+              loading={
+                isBrandColorwayEdited
+                  ? isLoading || isDeleteInventoryLoading
+                  : isLoading
+              }
+              disabled={!isEdited}
+              onClick={handleSave}
+            >
+              Save
+            </LoadingButton>
+          )}
+          {isDraft && (
+            <LoadingButton
+              variant="contained"
+              color="secondary"
+              loading={
+                isBrandColorwayEdited
+                  ? isLoading || isDeleteInventoryLoading
+                  : isLoading
+              }
+              disabled={!isEdited}
+              onClick={handleSave}
+            >
+              Save Draft
+            </LoadingButton>
+          )}
         </DialogActions>
       </Dialog>
     </>

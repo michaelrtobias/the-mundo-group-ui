@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Grid, Typography, Box, AppBar } from "@mui/material";
+import React, { useState } from "react";
+import { Typography, Box } from "@mui/material";
 import InventoryList from "./InventoryList/index";
 import AdminAppBar from "./AdminAppBar";
 const InventoryDashboard = () => {

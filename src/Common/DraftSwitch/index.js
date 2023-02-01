@@ -8,12 +8,11 @@ const DraftSwitch = ({ isDraft, setIsDraft, size }) => {
   return (
     <>
       <Switch
-        color="primary"
+        color="secondary"
         value={isDraft}
         onClick={handleSwitch}
         checked={isDraft}
         size={size}
-        color="secondary"
       />
     </>
   );

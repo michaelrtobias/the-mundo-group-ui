@@ -1,3 +1,4 @@
+import React from "react";
 import {
   WatchSlogan,
   SloganBox,
@@ -5,7 +6,6 @@ import {
   Image,
 } from "./style.js";
 import { CenteredParagraph } from "../../../Common/Style/commonStyle";
-
 import { Paper } from "@mui/material/";
 const Pictures = [
   {

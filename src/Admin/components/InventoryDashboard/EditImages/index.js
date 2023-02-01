@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import {
   Grid,
@@ -52,11 +53,7 @@ const EditImages = ({ watch }) => {
       setValidationErrors({});
     },
   });
-  const {
-    mutate: deleteImage,
-    isDeleteLoading,
-    isError,
-  } = useDeleteImage({
+  const { mutate: deleteImage, isDeleteLoading } = useDeleteImage({
     onSuccess: () => {
       setImagesToBeDeleted([]);
     },

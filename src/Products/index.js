@@ -1,7 +1,8 @@
+import React from "react";
 import { useState } from "react";
 import ProductList from "./ProductsList";
 import SearchFilter from "../Common/SearchFilter";
-import { Typography, Stack, Box, Paper, Grid } from "@mui/material";
+import { Typography, Stack, Box, Paper } from "@mui/material";
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");

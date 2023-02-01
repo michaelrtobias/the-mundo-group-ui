@@ -1,3 +1,4 @@
+import React from "react";
 import ImageCarousel from "../Common/Carousel/index";
 import { WatchCarouselImages } from "../Common/Carousel/data";
 import WatchContent from "./components/Content/index";

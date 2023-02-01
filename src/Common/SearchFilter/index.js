@@ -1,3 +1,4 @@
+import React from "react";
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 const SearchFilter = ({ setSearchTerm, searchTerm, fullWidth = true }) => {

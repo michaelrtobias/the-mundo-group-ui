@@ -1,6 +1,8 @@
+import React from "react";
+
 import { ImageList, ImageListItem } from "@mui/material";
 
-const ProductImages = ({ images, isSuccess, data }) => {
+const ProductImages = ({ images, isSuccess }) => {
   return (
     <>
       {isSuccess && (

@@ -1,12 +1,13 @@
 import {
-  Card,
-  CardContent,
-  Typography,
-  CardMedia,
-  CardActions,
-  Button,
   Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
 } from "@mui/material";
+import React from "react";
 
 const ProductCard = ({
   watch: {
@@ -15,12 +16,8 @@ const ProductCard = ({
     size,
     colorway,
     model_number: modelNumber,
-    timestamp,
-    dial: dialDefault,
     bracelet: braceletDefault,
-    bezel: bezelDefault,
     images,
-    description,
   },
 }) => {
   const capitalizeFirstLetter = (string) =>
