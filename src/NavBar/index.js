@@ -1,9 +1,9 @@
-import React from "react";
-import { Nav, Navbar } from "react-bootstrap";
-import { Image, LinkWrapper } from "./style.js";
 import { Button, useMediaQuery } from "@mui/material";
-import Email from "@mui/icons-material/Email";
+import { Image, LinkWrapper } from "./style.js";
+import { Nav, Navbar } from "react-bootstrap";
 import Breadcrumb from "./compnents/Breadcrumbs";
+import Email from "@mui/icons-material/Email";
+import React from "react";
 export default function NavBar({ isAdmin }) {
   const mediaQuery = useMediaQuery("(min-width:770px)");
 

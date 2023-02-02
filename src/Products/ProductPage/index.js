@@ -1,12 +1,12 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useGetInventoryByColorway } from "../../api";
-import { Grid, Stack, Skeleton } from "@mui/material";
-import ProductImages from "./ProductImages";
+import { Grid, Skeleton, Stack } from "@mui/material";
 import ProductCanvas from "./ProductCanvas";
-import ProductInfo from "./ProductInfo";
-import ProductHeader from "./ProductHeader";
 import ProductContact from "./ProductContact";
+import ProductHeader from "./ProductHeader";
+import ProductImages from "./ProductImages";
+import ProductInfo from "./ProductInfo";
+import React from "react";
+import { useGetInventoryByColorway } from "../../api";
+import { useParams } from "react-router-dom";
 const ProductPage = () => {
   const { brand, colorway } = useParams();
   const { data, isSuccess, isLoading } = useGetInventoryByColorway({

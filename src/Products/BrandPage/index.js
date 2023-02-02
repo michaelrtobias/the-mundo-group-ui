@@ -1,6 +1,6 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import { Typography } from "@mui/material";
+import { useLocation } from "react-router-dom";
 
 const BrandPage = () => {
   const location = useLocation();

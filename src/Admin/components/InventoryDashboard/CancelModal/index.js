@@ -1,5 +1,3 @@
-import React from "react";
-import DraftSwitch from "../../../../Common/DraftSwitch/index";
 import {
   Button,
   Dialog,
@@ -8,6 +6,8 @@ import {
   DialogTitle,
   Grid,
 } from "@mui/material";
+import DraftSwitch from "../../../../Common/DraftSwitch/index";
+import React from "react";
 const CancelModal = ({
   isCancelModalOpen,
   handleConfirmCancelModal,

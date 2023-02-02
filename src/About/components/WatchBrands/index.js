@@ -1,7 +1,7 @@
-import React from "react";
 import { BrandList, BrandsSection } from "./style.js";
-import { Paper, Card, CardContent, Typography, Grid } from "@mui/material/";
+import { Card, CardContent, Grid, Paper, Typography } from "@mui/material/";
 import { Brands } from "./brandsList";
+import React from "react";
 export default function WatchBrands() {
   return (
     <Paper elevation={8}>

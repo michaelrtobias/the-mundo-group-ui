@@ -1,7 +1,7 @@
+import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Typography, Box } from "@mui/material";
-import InventoryList from "./InventoryList/index";
 import AdminAppBar from "./AdminAppBar";
+import InventoryList from "./InventoryList/index";
 const InventoryDashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showDrafts, setShowDrafts] = useState(false);

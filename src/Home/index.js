@@ -1,11 +1,12 @@
-import React from "react";
-import ImageCarousel from "../Common/Carousel";
-import { HomePage } from "./style.js";
-import { HomeCarouselImages } from "../Common/Carousel/data";
-import ContactBanner from "../Common/ContactBanner/index";
-import HomeLogo from "./components/HomeLogo/index";
-import SloganBox from "./components/Slogan/index";
 import { CenteredParagraph } from "../Common/Style/commonStyle";
+import ContactBanner from "../Common/ContactBanner/index";
+import { HomeCarouselImages } from "../Common/Carousel/data";
+import HomeLogo from "./components/HomeLogo/index";
+import { HomePage } from "./style.js";
+import ImageCarousel from "../Common/Carousel";
+import React from "react";
+import SloganBox from "./components/Slogan/index";
+
 export default function Home() {
   return (
     <HomePage>

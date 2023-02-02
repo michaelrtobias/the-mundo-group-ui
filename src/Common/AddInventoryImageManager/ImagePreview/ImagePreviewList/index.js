@@ -1,7 +1,6 @@
-import React from "react";
-
+import { List, Paper } from "@mui/material";
 import ImagePreviewCard from "./ImagePreviewCard/index";
-import { Paper, List } from "@mui/material";
+import React from "react";
 
 const ImagePreviewList = ({
   images,

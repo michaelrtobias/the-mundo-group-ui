@@ -1,9 +1,8 @@
-import React from "react";
-
 import { ContactLinkBox, ContactLinkHeading } from "./style";
-import { useHistory } from "react-router";
 import Button from "@mui/material/Button";
 import Email from "@mui/icons-material/Email";
+import React from "react";
+import { useHistory } from "react-router";
 
 export default function ContactBanner() {
   const history = useHistory();

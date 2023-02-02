@@ -1,6 +1,6 @@
-import React from "react";
-import { TextField, InputAdornment, IconButton } from "@mui/material";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
+import React from "react";
 const SearchFilter = ({ setSearchTerm, searchTerm, fullWidth = true }) => {
   return (
     <TextField

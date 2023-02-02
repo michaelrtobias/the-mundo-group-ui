@@ -1,7 +1,7 @@
-import React from "react";
-import { ContactInfoWrapper } from "./style.js";
 import Button from "@mui/material/Button";
+import { ContactInfoWrapper } from "./style.js";
 import Email from "@mui/icons-material/Email";
+import React from "react";
 
 export default function FooterContactInfo() {
   const url = window.location.href;

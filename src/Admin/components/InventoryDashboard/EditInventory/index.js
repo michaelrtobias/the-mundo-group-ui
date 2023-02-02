@@ -1,28 +1,26 @@
-import React from "react";
-
-import { useState, useEffect } from "react";
 import {
-  IconButton,
-  TextField,
   Dialog,
   DialogActions,
   DialogContent,
-  Tooltip,
   DialogTitle,
-  Grid,
   FormControlLabel,
+  Grid,
+  IconButton,
+  TextField,
+  Tooltip,
 } from "@mui/material";
-import RotateLeftIcon from "@mui/icons-material/RotateLeft";
-import { LoadingButton } from "@mui/lab";
-import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
+import React, { useEffect, useState } from "react";
 import {
+  useDeleteInventory,
   useEditInventory,
   useGetAllInventory,
-  useDeleteInventory,
 } from "../../../../api/index";
+import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import CancelModal from "../CancelModal/index";
-import { inventorySchema } from "../../../../utils/validate";
 import DraftSwitch from "../../../../Common/DraftSwitch/index";
+import { LoadingButton } from "@mui/lab";
+import RotateLeftIcon from "@mui/icons-material/RotateLeft";
+import { inventorySchema } from "../../../../utils/validate";
 
 const defaultEditInventoryDataSetter = (item) => ({
   brand: item?.brand ?? "",

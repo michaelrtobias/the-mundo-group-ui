@@ -1,6 +1,5 @@
-import React from "react";
-
 import { ImageList, ImageListItem } from "@mui/material";
+import React from "react";
 
 const ProductImages = ({ images, isSuccess }) => {
   return (

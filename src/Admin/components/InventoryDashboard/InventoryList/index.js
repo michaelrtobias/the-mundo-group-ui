@@ -1,9 +1,8 @@
-import React from "react";
 import { Alert, Grid, Skeleton } from "@mui/material";
-import _ from "lodash";
-
-import { useGetAllInventory } from "../../../../api/index";
 import InventoryCard from "./InventoryItem/index";
+import React from "react";
+import _ from "lodash";
+import { useGetAllInventory } from "../../../../api/index";
 const InventoryList = ({ searchTerm, showDrafts, showOnlyDrafts }) => {
   const { data: items = [], isSuccess, isLoading } = useGetAllInventory();
 

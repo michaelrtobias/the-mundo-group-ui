@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { ImgWrapper, SuccessPageWrapper, WatchImg } from "./style.js";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { SuccessPageWrapper, WatchImg, ImgWrapper } from "./style.js";
-import {} from "@mui/material";
 export default function FormSuccessful() {
   const history = useHistory();
   const [secondsLeft, setSecondsLeft] = useState(6);

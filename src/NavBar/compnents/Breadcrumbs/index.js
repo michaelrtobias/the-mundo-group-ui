@@ -1,6 +1,6 @@
-import React from "react";
+import { Breadcrumbs, Link, Typography } from "@mui/material";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import { Typography, Breadcrumbs, Link } from "@mui/material";
+import React from "react";
 
 const breadcrumbNameMap = {
   "/": "Home",

@@ -1,23 +1,22 @@
-import React from "react";
-import { useState, useEffect } from "react";
 import {
-  Grid,
-  IconButton,
   Dialog,
   DialogActions,
   DialogContent,
-  Tooltip,
   DialogTitle,
   FormControlLabel,
+  Grid,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
-import { useEditInventory, useDeleteImage } from "../../../../api/index";
+import React, { useEffect, useState } from "react";
+import { useDeleteImage, useEditInventory } from "../../../../api/index";
+import AddInventoryImageManager from "../../../../Common/AddInventoryImageManager/index";
+import CancelModal from "../CancelModal/index";
+import DraftSwitch from "../../../../Common/DraftSwitch/index";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 import LoadingButton from "@mui/lab/LoadingButton";
 import RotateLeftIcon from "@mui/icons-material/RotateLeft";
-import AddInventoryImageManager from "../../../../Common/AddInventoryImageManager/index";
 import { inventorySchema } from "../../../../utils/validate";
-import DraftSwitch from "../../../../Common/DraftSwitch/index";
-import CancelModal from "../CancelModal/index";
 
 const defaultEditInventoryDataSetter = (item) => ({
   brand: item?.brand ?? "",

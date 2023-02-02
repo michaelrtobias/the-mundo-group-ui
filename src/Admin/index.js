@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   Card,
   CardActionArea,
@@ -7,6 +5,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 const Admin = ({ userData }) => {

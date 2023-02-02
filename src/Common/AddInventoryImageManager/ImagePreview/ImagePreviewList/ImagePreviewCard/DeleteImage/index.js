@@ -1,19 +1,18 @@
-import React from "react";
-
-import { useState } from "react";
-
 import {
-  IconButton,
+  Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Button,
+  IconButton,
 } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
-import { useDeleteImage } from "../../../../../../api/index";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { LoadingButton } from "@mui/lab";
+import React from "react";
+import { useDeleteImage } from "../../../../../../api/index";
+import { useState } from "react";
+
 const DeleteImage = ({
   url,
   handleDeleteImage,

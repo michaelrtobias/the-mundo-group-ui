@@ -1,5 +1,5 @@
+import { Box, Typography } from "@mui/material";
 import React from "react";
-import { Typography, Box } from "@mui/material";
 
 const ProductHeader = ({ data }) => {
   return (

@@ -1,19 +1,19 @@
-import React from "react";
 import {
+  Avatar,
   Card,
-  Grid,
   CardContent,
   CardHeader,
-  Avatar,
+  Grid,
   IconButton,
   Typography,
 } from "@mui/material";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import { red } from "@mui/material/colors";
-import DeleteInventory from "../../DeleteInventory/index";
-import EditInventory from "../../EditInventory/index";
-import EditImages from "../../EditImages/index";
 import CardImagePreview from "./CardImagePreview";
+import DeleteInventory from "../../DeleteInventory/index";
+import EditImages from "../../EditImages/index";
+import EditInventory from "../../EditInventory/index";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import React from "react";
+import { red } from "@mui/material/colors";
 const ContentFilter = (obj) => {
   return Object.keys(obj).filter(
     (key) =>

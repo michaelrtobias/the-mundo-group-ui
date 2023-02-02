@@ -1,13 +1,13 @@
-import React from "react";
+import { Button, Typography } from "@mui/material";
 import {
-  FooterLink,
   ContentWrap,
-  LinksListItem,
-  LinksList,
   CopyrightListItem,
+  FooterLink,
+  LinksList,
+  LinksListItem,
 } from "./style.js";
 import { Auth } from "aws-amplify";
-import { Button, Typography } from "@mui/material";
+import React from "react";
 
 export default function FooterLinks({ isAdmin }) {
   return (

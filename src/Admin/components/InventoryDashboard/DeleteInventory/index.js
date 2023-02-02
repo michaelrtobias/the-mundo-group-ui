@@ -1,16 +1,15 @@
-import React from "react";
-import { useState } from "react";
 import {
   Button,
-  IconButton,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
+  IconButton,
 } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { LoadingButton } from "@mui/lab";
 import { useDeleteInventory } from "../../../../api/index";
 const DeleteInventory = ({ watch }) => {
   const [open, setOpen] = useState(false);

@@ -1,10 +1,10 @@
-import React from "react";
 import {
-  MundoGroupTitle,
-  TitleCard,
   ContactCard,
   GeneralQueries,
+  MundoGroupTitle,
+  TitleCard,
 } from "./style.js";
+import React from "react";
 
 export function ContactUsContent() {
   return (

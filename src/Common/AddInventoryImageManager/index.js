@@ -1,7 +1,7 @@
+import { Grid } from "@mui/material";
+import ImagePreview from "./ImagePreview/index";
 import React from "react";
 import UploadImage from "../UploadImage/index";
-import ImagePreview from "./ImagePreview/index";
-import { Grid } from "@mui/material";
 const uploadImageGridSizes = { xs: 12, sm: 6, lg: 4 };
 const AddInventoryImageManager = ({
   handleAddImage,

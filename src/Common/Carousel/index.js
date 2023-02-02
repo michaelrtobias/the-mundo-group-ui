@@ -1,6 +1,6 @@
-import React from "react";
+import { CarouselWrapper, IMG } from "./style.js";
 import { Carousel } from "react-bootstrap";
-import { IMG, CarouselWrapper } from "./style.js";
+import React from "react";
 
 export default function ImageCarousel({ images }) {
   return (

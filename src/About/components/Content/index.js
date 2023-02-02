@@ -1,12 +1,12 @@
-import React from "react";
 import {
-  WatchSlogan,
+  Image,
   SloganBox,
   WatchDualPictureContainer,
-  Image,
+  WatchSlogan,
 } from "./style.js";
 import { CenteredParagraph } from "../../../Common/Style/commonStyle";
 import { Paper } from "@mui/material/";
+import React from "react";
 const Pictures = [
   {
     src: "Omega-Speedmaster-3861-2021-Unboxing-WatchGecko10.jpeg",
