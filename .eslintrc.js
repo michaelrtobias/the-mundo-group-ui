@@ -14,5 +14,6 @@ module.exports = {
   rules: {
     "react/prop-types": "off",
     "sort-imports": "warn",
+    "no-unused-vars": "warn",
   },
 };

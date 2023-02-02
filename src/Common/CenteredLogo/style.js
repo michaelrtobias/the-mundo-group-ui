@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const Logo = styled.img.attrs(() => ({
-  src: "https://southwest-watches-media.s3.amazonaws.com/southwest-watches-logo-plain-01.png",
-  alt: "logo",
+export const Logo = styled.img.attrs((props) => ({
+  src: props.src,
+  alt: props.alt,
 }))`
-  width: 100%;
+  width: ${(props) => props.width};
   height: auto;
   max-width: 1000px;
   display: block;

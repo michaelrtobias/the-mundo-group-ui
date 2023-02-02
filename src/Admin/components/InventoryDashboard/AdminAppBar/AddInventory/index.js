@@ -178,7 +178,11 @@ const AddInventory = () => {
   };
   const handleSave = async () => {
     if (await isValid()) {
-      addInventory({ item: { ...addInventoryData, draft: isDraft } });
+      if (addInventoryData.images.length === 0) {
+        addInventory({ item: { ...addInventoryData, draft: true } });
+      } else {
+        addInventory({ item: { ...addInventoryData, draft: isDraft } });
+      }
     }
   };
   return (

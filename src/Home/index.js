@@ -1,7 +1,7 @@
+import CenteredLogo from "../Common/CenteredLogo";
 import { CenteredParagraph } from "../Common/Style/commonStyle";
 import ContactBanner from "../Common/ContactBanner/index";
 import { HomeCarouselImages } from "../Common/Carousel/data";
-import HomeLogo from "./components/HomeLogo/index";
 import { HomePage } from "./style.js";
 import ImageCarousel from "../Common/Carousel";
 import React from "react";
@@ -10,7 +10,11 @@ import SloganBox from "./components/Slogan/index";
 export default function Home() {
   return (
     <HomePage>
-      <HomeLogo />
+      <CenteredLogo
+        src="https://southwest-watches-media.s3.amazonaws.com/southwest-watches-logo-plain-01.png"
+        alt="sww-logo"
+        width="100%"
+      />
       <CenteredParagraph>
         Southwest Watches is a premier watch broker to find your perfect time
         piece. Working all around the USA, we are dedicated to locating the

@@ -16,6 +16,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import Home from "../Home/index";
 import InventoryDashboard from "../Admin/components/InventoryDashboard/index";
 import NavBar from "../NavBar/index";
+import NotFound from "../NotFound";
 import ProductPage from "../Products/ProductPage/index";
 import Products from "../Products/index";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -101,33 +102,34 @@ function App() {
                 <NavBar isAdmin={isAdmin} />
 
                 <Switch>
-                  <Route path="/about">
+                  <Route exact path="/about">
                     <About />
                   </Route>
-                  <Route path="/admin/inventory">
+                  <Route exact path="/admin/inventory">
                     <InventoryDashboard userData={userData} />
                   </Route>
-                  <Route path="/admin">
+                  <Route exact path="/admin">
                     <Admin isAdmin={isAdmin} userData={userData} />
                   </Route>
-                  <Route path="/watches/:brand/:colorway">
+                  <Route exact path="/watches/:brand/:colorway">
                     <ProductPage />
                   </Route>
-                  <Route path="/watches/:brand">
+                  <Route exact path="/watches/:brand">
                     <BrandPage />
                   </Route>
-                  <Route path="/watches">
+                  <Route exact path="/watches">
                     <Products />
                   </Route>
-                  <Route path="/contact/success">
+                  <Route exact path="/contact/success">
                     <FormSuccessful />
                   </Route>
-                  <Route path="/contact">
+                  <Route exact path="/contact">
                     <ContactUs />
                   </Route>
-                  <Route path="/">
+                  <Route exact path="/">
                     <Home />
                   </Route>
+                  <Route component={NotFound} />
                 </Switch>
               </Router>
             </Body>

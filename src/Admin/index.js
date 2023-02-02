@@ -18,21 +18,26 @@ const Admin = ({ userData }) => {
   return (
     <>
       {userData && (
-        <Typography align="center" variant="h3">
-          Admin Dashboard {userData.name}
-        </Typography>
+        <>
+          <Typography align="center" variant="h3">
+            Admin Dashboard
+          </Typography>
+          <Typography align="center" variant="h5">
+            Welcome {userData.name}!
+          </Typography>
+        </>
       )}
-      <Paper variant="outlined" sx={{ margin: "1vh 2vw 1vh 2vw" }}>
-        <Card sx={{ maxWidth: 345 }} onClick={handleEditInventoryButtonCLick}>
+      <Paper
+        variant="outlined"
+        sx={{ margin: "1vh 2vw 1vh 2vw", padding: "2em" }}
+      >
+        <Card
+          sx={{ maxWidth: 345, border: ".25em solid black" }}
+          onClick={handleEditInventoryButtonCLick}
+        >
           <CardActionArea>
-            {/* <CardMedia
-              component="img"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-              alt="green iguana"
-            /> */}
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+              <Typography align="center" variant="h5" component="div">
                 Edit Inventory
               </Typography>
             </CardContent>

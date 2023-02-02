@@ -74,7 +74,9 @@ const InventoryList = ({ searchTerm, showDrafts, showOnlyDrafts }) => {
             }
             return item;
           }).length === 0 && (
-            <Alert severity="info">There is no current inventory</Alert>
+            <Alert fullWidth severity="info">
+              There is no current inventory
+            </Alert>
           )}
       </Grid>
     </>
