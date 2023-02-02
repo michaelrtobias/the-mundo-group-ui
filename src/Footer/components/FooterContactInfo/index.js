@@ -1,7 +1,7 @@
-import React from "react";
-import { ContactInfoWrapper } from "./style.js";
 import Button from "@mui/material/Button";
+import { ContactInfoWrapper } from "./style.js";
 import Email from "@mui/icons-material/Email";
+import React from "react";
 
 export default function FooterContactInfo() {
   const url = window.location.href;
@@ -10,7 +10,7 @@ export default function FooterContactInfo() {
     <ContactInfoWrapper>
       <h4>Contact Info</h4>
       <div>
-        <b>Email:</b>{" "}
+        <b>Email:</b>
         <a href="mailto:info@southwestwatches.com">info@southwestwatches.com</a>
       </div>
       <div>
@@ -24,7 +24,7 @@ export default function FooterContactInfo() {
           href="/contact"
           variant="contained"
           color="info"
-          sx={{ "margin-top": "0.5em" }}
+          sx={{ marginTop: "0.5em" }}
           endIcon={<Email />}
         >
           Send Us A Message

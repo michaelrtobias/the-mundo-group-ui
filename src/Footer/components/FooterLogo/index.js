@@ -1,4 +1,5 @@
-import { FooterImage, ContentWrap } from "./style.js";
+import { ContentWrap, FooterImage } from "./style.js";
+import React from "react";
 
 export default function FooterLogo() {
   return (

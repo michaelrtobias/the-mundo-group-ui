@@ -1,4 +1,5 @@
-import { SloganWrapper, Slogan } from "./style";
+import { Slogan, SloganWrapper } from "./style";
+import React from "react";
 
 export default function SloganBox() {
   return (

@@ -1,0 +1,8 @@
+{
+  "short_name": "Southwest Watches",
+  "name": "The Front-end UI for Southwest Watches",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

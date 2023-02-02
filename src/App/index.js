@@ -1,38 +1,143 @@
-import React from "react";
-import Home from "../Home/index";
-import ContactUs from "../ContactUs/index";
+import "bootstrap/dist/css/bootstrap.css";
+import Amplify, { Auth, Hub } from "aws-amplify";
+import { Body, Page } from "./style.js";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React, { useEffect, useState } from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import About from "../About/index";
-// import About from "../About/index";
-import Inventory from "../Inventory/index";
+import Admin from "../Admin/index";
+import BrandPage from "../Products/BrandPage";
+import ContactUs from "../ContactUs/index";
+import Cookies from "js-cookie";
+import { DndProvider } from "react-dnd";
 import Footer from "../Footer/index";
 import FormSuccessful from "../ContactUs/components/WishList/components/FormSuccessful";
-
+import { HTML5Backend } from "react-dnd-html5-backend";
+import Home from "../Home/index";
+import InventoryDashboard from "../Admin/components/InventoryDashboard/index";
 import NavBar from "../NavBar/index";
+import NotFound from "../NotFound";
+import ProductPage from "../Products/ProductPage/index";
+import Products from "../Products/index";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
-
-import { Body, Page } from "./style.js";
+const queryClient = new QueryClient();
 function App() {
+  const [userData, setUserData] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const awsauth = {
+    domain: "admin.southwestwatches.com",
+    scope: ["aws.cognito.signin.user.admin", "email", "openid", "phone"],
+    redirectSignIn: "https://southwestwatches.com",
+    redirectSignOut: "https://southwestwatches.com",
+    responseType: "code",
+  };
+  const getCurrentUserDetails = async () => {
+    try {
+      const { attributes: user } = await Auth.currentAuthenticatedUser();
+      setUserData(user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const isCookie = Cookies.get("amplify-redirected-from-hosted-ui");
+    if (isCookie && userData === null) {
+      setIsAdmin(true);
+      getCurrentUserDetails();
+    } else if (isCookie) {
+      setIsAdmin(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    Amplify.configure({
+      Auth: {
+        region: "us-east-1",
+        userPoolId: "us-east-1_AXiINZ5Xi",
+        userPoolWebClientId: "2raim5b443bcsrfbj97755n4k8",
+        cookieStorage: {
+          domain: "southwestwatches.com",
+          path: "/",
+          expires: 365,
+          secure: true,
+        },
+        mandatorySignIn: false,
+        redirectSignIn: "https://southwestwatches.com",
+        redirectSignOut: "https://southwestwatches.com",
+        oauth: {
+          domain: "admin.southwestwatches.com",
+          scope: ["aws.cognito.signin.user.admin", "email", "openid", "phone"],
+          redirectSignIn: "https://southwestwatches.com",
+          redirectSignOut: "https://southwestwatches.com",
+          responseType: "code",
+        },
+      },
+    });
+    Auth.configure({ oauth: awsauth });
+    Hub.listen("auth", ({ payload: { event, data } }) => {
+      switch (event) {
+        case "signIn":
+          setUserData(data);
+          setIsAdmin(true);
+          break;
+        case "signOut":
+          setUserData({});
+          setIsAdmin(false);
+          break;
+        default:
+          break;
+      }
+    });
+  });
+
   return (
     <>
-      <Page>
-        <Body>
-          <Router>
-            <NavBar />
+      <QueryClientProvider client={queryClient}>
+        <DndProvider backend={HTML5Backend}>
+          <Page>
+            <Body>
+              <Router>
+                <NavBar isAdmin={isAdmin} />
 
-            <Switch>
-              <Route path="/about" component={About}></Route>
-              {/* <Route path="/watches" component={Inventory}></Route> */}
-              <Route path="/contact/success" component={FormSuccessful}></Route>
-              <Route path="/contact" component={ContactUs}></Route>
-              <Route path="/" component={Home}></Route>
-            </Switch>
-          </Router>
-        </Body>
-
-        <Footer />
-      </Page>
+                <Switch>
+                  <Route exact path="/about">
+                    <About />
+                  </Route>
+                  <Route exact path="/admin/inventory">
+                    <InventoryDashboard userData={userData} />
+                  </Route>
+                  <Route exact path="/admin">
+                    <Admin isAdmin={isAdmin} userData={userData} />
+                  </Route>
+                  <Route exact path="/watches/:brand/:colorway">
+                    <ProductPage />
+                  </Route>
+                  <Route exact path="/watches/:brand">
+                    <BrandPage />
+                  </Route>
+                  <Route exact path="/watches">
+                    <Products />
+                  </Route>
+                  <Route exact path="/contact/success">
+                    <FormSuccessful />
+                  </Route>
+                  <Route exact path="/contact">
+                    <ContactUs />
+                  </Route>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <Route component={NotFound} />
+                </Switch>
+              </Router>
+            </Body>
+            <Footer isAdmin={isAdmin} />
+          </Page>
+        </DndProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </>
   );
 }

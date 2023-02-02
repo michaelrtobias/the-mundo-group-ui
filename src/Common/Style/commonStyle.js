@@ -8,3 +8,8 @@ export const CenteredParagraph = styled.p`
     font-size: 4vw;
   }
 `;
+
+export const FlexBoxRow = styled.div`
+  display: flex;
+  flex-direction: row;
+`;

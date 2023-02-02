@@ -1,9 +1,10 @@
 import {
-  MundoGroupTitle,
-  TitleCard,
   ContactCard,
   GeneralQueries,
+  MundoGroupTitle,
+  TitleCard,
 } from "./style.js";
+import React from "react";
 
 export function ContactUsContent() {
   return (
@@ -15,7 +16,7 @@ export function ContactUsContent() {
         <MundoGroupTitle>Southwest Watches</MundoGroupTitle>
         <GeneralQueries>
           <div>
-            <b>Email:</b>{" "}
+            <b>Email:</b>
             <a href="mailto:info@southwestwatches.com">
               info@southwestwatches.com
             </a>
@@ -27,9 +28,7 @@ export function ContactUsContent() {
             <b>Phone:</b> +1 (847)-525-5122
           </div>
           <br></br>
-          <div>
-            Please allow up to 24 hours for a response to your inquiry.
-          </div>{" "}
+          <div>Please allow up to 24 hours for a response to your inquiry.</div>
           <div>
             Emails sent during non-business hours will be responded to on the
             next business day.

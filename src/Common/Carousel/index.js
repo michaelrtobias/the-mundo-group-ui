@@ -1,14 +1,14 @@
-import React from "react";
+import { CarouselWrapper, IMG } from "./style.js";
 import { Carousel } from "react-bootstrap";
-import { IMG, CarouselWrapper } from "./style.js";
+import React from "react";
 
 export default function ImageCarousel({ images }) {
   return (
     <CarouselWrapper>
       <Carousel variant="dark" prevLabel="" nextLabel="">
         {images.map((image, index) => (
-          <Carousel.Item>
-            <IMG src={image.src} alt={image.alt} key={index} />
+          <Carousel.Item key={index}>
+            <IMG src={image.src} alt={image.alt} />
           </Carousel.Item>
         ))}
       </Carousel>

@@ -1,7 +1,8 @@
 import { ContactLinkBox, ContactLinkHeading } from "./style";
-import { useHistory } from "react-router";
 import Button from "@mui/material/Button";
 import Email from "@mui/icons-material/Email";
+import React from "react";
+import { useHistory } from "react-router";
 
 export default function ContactBanner() {
   const history = useHistory();
@@ -16,10 +17,10 @@ export default function ContactBanner() {
         variant="contained"
         color="info"
         sx={{
-          "margin-top": "0.5em",
-          "max-width": "70vw",
+          marginTop: "0.5em",
+          maxWidth: "70vw",
           "@media (max-width: 1230px)": {
-            "margin-left": "15vw",
+            marginLeft: "15vw",
           },
         }}
         endIcon={<Email />}
@@ -27,7 +28,7 @@ export default function ContactBanner() {
           history.push("/contact");
         }}
       >
-        Send A Message{" "}
+        Send A Message
       </Button>
     </ContactLinkBox>
   );

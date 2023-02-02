@@ -1,49 +1,51 @@
+import { Breadcrumbs, Link, Typography } from "@mui/material";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import { Typography, Breadcrumbs } from "@mui/material";
+import React from "react";
 
 const breadcrumbNameMap = {
   "/": "Home",
   "/about": "About",
+  "/admin": "Admin",
+  "/admin/inventory": "Edit Inventory",
   "/watches": "Pre-Owned Watches",
   "/contact": "Contact",
   "/contact/success": "Success",
 };
 
+function LinkRouter(props) {
+  return <Link {...props} component={RouterLink} />;
+}
+
 export default function Breadcrumb() {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
-  console.log("pathnames", pathnames);
   return (
     <Breadcrumbs
       aria-label="breadcrumb"
       sx={{ marginLeft: "2.3vw", marginTop: "1vh" }}
+      maxItems={3}
+      itemsBeforeCollapse={2}
+      itemsAfterCollapse={1}
     >
-      <RouterLink
-        underline="hover"
-        color="inherit"
-        to="/"
-        style={{ color: "black" }}
-      >
+      <LinkRouter underline="hover" to="/" style={{ color: "black" }}>
         Home
-      </RouterLink>
+      </LinkRouter>
       {pathnames.map((value, index) => {
-        const last = index === pathnames.length - 1;
+        const isLast = index === pathnames.length - 1;
         const to = `/${pathnames.slice(0, index + 1).join("/")}`;
-
-        return last ? (
+        return isLast ? (
           <Typography color="text.primary" key={to}>
-            {breadcrumbNameMap[to]}
+            {breadcrumbNameMap[to] || value}
           </Typography>
         ) : (
-          <RouterLink
+          <LinkRouter
             underline="hover"
-            color="inherit"
             to={to}
-            key={to}
+            key={index}
             style={{ color: "black" }}
           >
-            {breadcrumbNameMap[to]}
-          </RouterLink>
+            {breadcrumbNameMap[to] || value}
+          </LinkRouter>
         );
       })}
     </Breadcrumbs>

@@ -1,9 +1,10 @@
-import { Nav, Navbar } from "react-bootstrap";
-import { Image, LinkWrapper } from "./style.js";
 import { Button, useMediaQuery } from "@mui/material";
-import Email from "@mui/icons-material/Email";
+import { Image, LinkWrapper } from "./style.js";
+import { Nav, Navbar } from "react-bootstrap";
 import Breadcrumb from "./compnents/Breadcrumbs";
-export default function NavBar() {
+import Email from "@mui/icons-material/Email";
+import React from "react";
+export default function NavBar({ isAdmin }) {
   const mediaQuery = useMediaQuery("(min-width:770px)");
 
   return (
@@ -21,27 +22,28 @@ export default function NavBar() {
           <Nav className="mr-auto">
             {mediaQuery ? (
               <>
-                {" "}
                 <Nav.Link href="/about">About</Nav.Link>
-                {/* <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link> */}
+                <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link>
                 <Nav.Link href="/contact">Contact Us</Nav.Link>
+                {isAdmin && <Nav.Link href="/admin">Admin</Nav.Link>}
               </>
             ) : (
               <LinkWrapper>
                 <Nav.Link href="/about">About</Nav.Link>
-                {/* <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link> */}
+                <Nav.Link href="/watches">Pre-Owned Watches</Nav.Link>
                 <Nav.Link href="/contact">Contact Us</Nav.Link>
+                {isAdmin && <Nav.Link href="/admin">Admin</Nav.Link>}
               </LinkWrapper>
             )}
           </Nav>
-        </Navbar.Collapse>{" "}
+        </Navbar.Collapse>
         {mediaQuery ? (
           <Button
             href="/contact"
             variant="contained"
             color="info"
             endIcon={<Email />}
-            sx={{ "margin-right": "2vw" }}
+            sx={{ marginRight: "2vw" }}
           >
             Send Us A Message
           </Button>

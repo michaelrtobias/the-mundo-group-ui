@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { ImgWrapper, SuccessPageWrapper, WatchImg } from "./style.js";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { SuccessPageWrapper, WatchImg, ImgWrapper } from "./style.js";
-import {} from "@mui/material";
 export default function FormSuccessful() {
   const history = useHistory();
   const [secondsLeft, setSecondsLeft] = useState(6);
@@ -39,7 +38,7 @@ export default function FormSuccessful() {
       <h3>{`You will be redirected to the home page in ${secondsLeft} seconds. Have a great day!`}</h3>
       <h5>
         If you do not get redirected in time, please click
-        <a href="localhost:3000"> here</a>
+        <a href="/"> here</a>
       </h5>
     </SuccessPageWrapper>
   );
