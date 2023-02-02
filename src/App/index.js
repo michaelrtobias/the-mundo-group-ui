@@ -28,8 +28,8 @@ function App() {
   const awsauth = {
     domain: "admin.southwestwatches.com",
     scope: ["aws.cognito.signin.user.admin", "email", "openid", "phone"],
-    redirectSignIn: "http://localhost:3000",
-    redirectSignOut: "https://localhost:3000",
+    redirectSignIn: "https://southwestwatches.com",
+    redirectSignOut: "https://southwestwatches.com",
     responseType: "code",
   };
   const getCurrentUserDetails = async () => {
@@ -58,19 +58,19 @@ function App() {
         userPoolId: "us-east-1_AXiINZ5Xi",
         userPoolWebClientId: "2raim5b443bcsrfbj97755n4k8",
         cookieStorage: {
-          domain: "localhost",
+          domain: "southwestwatches.com",
           path: "/",
           expires: 365,
           secure: true,
         },
         mandatorySignIn: false,
-        redirectSignIn: "http://localhost:3000",
-        redirectSignOut: "http://localhost:3000",
+        redirectSignIn: "https://southwestwatches.com",
+        redirectSignOut: "https://southwestwatches.com",
         oauth: {
           domain: "admin.southwestwatches.com",
           scope: ["aws.cognito.signin.user.admin", "email", "openid", "phone"],
-          redirectSignIn: "http://localhost:3000",
-          redirectSignOut: "http://localhost:3000",
+          redirectSignIn: "https://southwestwatches.com",
+          redirectSignOut: "https://southwestwatches.com",
           responseType: "code",
         },
       },

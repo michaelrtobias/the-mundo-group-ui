@@ -38,7 +38,7 @@ export default function FormSuccessful() {
       <h3>{`You will be redirected to the home page in ${secondsLeft} seconds. Have a great day!`}</h3>
       <h5>
         If you do not get redirected in time, please click
-        <a href="localhost:3000"> here</a>
+        <a href="/"> here</a>
       </h5>
     </SuccessPageWrapper>
   );
