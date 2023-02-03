@@ -17,8 +17,8 @@ export function ContactUsContent() {
         <GeneralQueries>
           <div>
             <b>Email:</b>
-            <a href="mailto:info@southwestwatches.com">
-              info@southwestwatches.com
+            <a href="mailto:contact@southwestwatches.com">
+              contact@southwestwatches.com
             </a>
           </div>
           <div>

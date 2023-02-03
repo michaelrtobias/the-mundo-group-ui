@@ -11,7 +11,9 @@ export default function FooterContactInfo() {
       <h4>Contact Info</h4>
       <div>
         <b>Email:</b>
-        <a href="mailto:info@southwestwatches.com">info@southwestwatches.com</a>
+        <a href="mailto:contact@southwestwatches.com">
+          contact@southwestwatches.com
+        </a>
       </div>
       <div>
         <b>Phone:</b> +1 (480)-709-7019
