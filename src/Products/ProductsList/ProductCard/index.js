@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-
+import { useHistory } from "react-router";
 const ProductCard = ({
   watch: {
     brand: brandDefault,
@@ -20,6 +20,7 @@ const ProductCard = ({
     images,
   },
 }) => {
+  const history = useHistory();
   const capitalizeFirstLetter = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1);
   const formatData = (obj) => {
@@ -36,6 +37,9 @@ const ProductCard = ({
     bracelet: braceletDefault,
   });
 
+  const handleNavigateToProductPage = () => {
+    history.push(`/watches/${brandDefault}/${colorway}`);
+  };
   return (
     <Card sx={{ minHeight: "100%" }}>
       <CardMedia
@@ -47,6 +51,7 @@ const ProductCard = ({
             : "https://southwest-watches-media.s3.amazonaws.com/southwest-watches-logo-plain-01.png"
         }
         alt={images.length > 0 ? images[0].alt : "alt-text"}
+        onClick={handleNavigateToProductPage}
       />
       <Box
         sx={{

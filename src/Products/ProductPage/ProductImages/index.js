@@ -6,11 +6,23 @@ const ProductImages = ({ images, isSuccess }) => {
     <>
       {isSuccess && (
         <ImageList sx={{ width: "100%", maxHeight: "600px" }} cols={1}>
-          {images.map((image, i) => (
-            <ImageListItem key={i}>
-              <img src={image.image_url} alt={image.alt} loading="lazy" />
+          {images.length > 0 ? (
+            images.map((image, i) => (
+              <ImageListItem key={i}>
+                <img src={image.image_url} alt={image.alt} loading="lazy" />
+              </ImageListItem>
+            ))
+          ) : (
+            <ImageListItem>
+              <img
+                src={
+                  "https://southwest-watches-media.s3.amazonaws.com/southwest-watches-logo-plain-01.png"
+                }
+                alt={"SWW Logo"}
+                loading="lazy"
+              />
             </ImageListItem>
-          ))}
+          )}
         </ImageList>
       )}
     </>

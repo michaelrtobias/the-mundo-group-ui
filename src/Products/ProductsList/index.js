@@ -1,11 +1,17 @@
-import { Alert, Grid, Skeleton } from "@mui/material";
+import { Grid, Skeleton } from "@mui/material";
+import NoItemsAlert from "../../Common/NoItemsAlert/index";
 import ProductCard from "./ProductCard";
 import React from "react";
 import _ from "lodash";
 import { useGetAllInventory } from "../../api";
 
 const ProductList = ({ searchTerm }) => {
-  const { data: items = [], isSuccess, isLoading } = useGetAllInventory();
+  const {
+    data: items = [],
+    isSuccess,
+    isLoading,
+    isError,
+  } = useGetAllInventory();
   const toLowerCaseObjStringValues = (item) => {
     return Object.fromEntries(
       Object.entries(item).map(([key, value]) => [
@@ -42,9 +48,8 @@ const ProductList = ({ searchTerm }) => {
       {isSuccess &&
         items.filter(
           (item) => item.draft !== true && includesValue(searchTerm, item)
-        ).length === 0 && (
-          <Alert severity="info">There is no current inventory</Alert>
-        )}
+        ).length === 0 && <NoItemsAlert isError={isError} />}
+      {isError && <NoItemsAlert isError={isError} />}
     </Grid>
   );
 };
