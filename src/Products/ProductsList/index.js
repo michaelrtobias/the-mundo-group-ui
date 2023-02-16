@@ -3,15 +3,10 @@ import NoItemsAlert from "../../Common/NoItemsAlert/index";
 import ProductCard from "./ProductCard";
 import React from "react";
 import _ from "lodash";
-import { useGetAllInventory } from "../../api";
+import { useGetWatches } from "../../api";
 
 const ProductList = ({ searchTerm }) => {
-  const {
-    data: items = [],
-    isSuccess,
-    isLoading,
-    isError,
-  } = useGetAllInventory();
+  const { data: items = [], isSuccess, isLoading, isError } = useGetWatches();
   const toLowerCaseObjStringValues = (item) => {
     return Object.fromEntries(
       Object.entries(item).map(([key, value]) => [
