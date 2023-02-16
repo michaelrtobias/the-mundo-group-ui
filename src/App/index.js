@@ -25,13 +25,6 @@ const queryClient = new QueryClient();
 function App() {
   const [userData, setUserData] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  const awsauth = {
-    domain: "admin.southwestwatches.com",
-    scope: ["aws.cognito.signin.user.admin", "email", "openid", "phone"],
-    redirectSignIn: "https://southwestwatches.com",
-    redirectSignOut: "https://southwestwatches.com",
-    responseType: "code",
-  };
   const getCurrentUserDetails = async () => {
     try {
       const { attributes: user } = await Auth.currentAuthenticatedUser();
@@ -52,6 +45,13 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const awsauth = {
+      domain: "admin.southwestwatches.com",
+      scope: ["aws.cognito.signin.user.admin", "email", "openid", "phone"],
+      redirectSignIn: "https://southwestwatches.com",
+      redirectSignOut: "https://southwestwatches.com",
+      responseType: "code",
+    };
     Amplify.configure({
       Auth: {
         region: "us-east-1",
@@ -66,13 +66,6 @@ function App() {
         mandatorySignIn: false,
         redirectSignIn: "https://southwestwatches.com",
         redirectSignOut: "https://southwestwatches.com",
-        oauth: {
-          domain: "admin.southwestwatches.com",
-          scope: ["aws.cognito.signin.user.admin", "email", "openid", "phone"],
-          redirectSignIn: "https://southwestwatches.com",
-          redirectSignOut: "https://southwestwatches.com",
-          responseType: "code",
-        },
       },
     });
     Auth.configure({ oauth: awsauth });
