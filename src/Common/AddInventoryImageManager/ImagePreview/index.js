@@ -18,7 +18,7 @@ const ImagePreview = ({
       setSelectedImageIndex(images.length - 1);
     }
     setIsMove(false);
-  }, [images]);
+  }, [images, isMove, selectedImageIndex, setIsMove, setSelectedImageIndex]);
 
   return (
     <Grid container spacing={2}>

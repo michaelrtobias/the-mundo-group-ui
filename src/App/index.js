@@ -20,28 +20,32 @@ import NotFound from "../NotFound";
 import ProductPage from "../Products/ProductPage/index";
 import Products from "../Products/index";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
+import RequireAuth from "../utils/requireAuth";
 const queryClient = new QueryClient();
 function App() {
   const [userData, setUserData] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isAuthFinished, setIsAuthFinished] = useState(false);
   const getCurrentUserDetails = async () => {
+    const isCookie = Cookies.get("amplify-redirected-from-hosted-ui");
+    if (isCookie) {
+      setIsAdmin(true);
+    }
     try {
       const { attributes: user } = await Auth.currentAuthenticatedUser();
       setUserData(user);
+      setIsAdmin(true);
+      setIsAuthFinished(true);
     } catch (error) {
+      setIsAuthFinished(true);
+      setIsAdmin(false);
+
       console.log(error);
     }
   };
 
   useEffect(() => {
-    const isCookie = Cookies.get("amplify-redirected-from-hosted-ui");
-    if (isCookie && userData === null) {
-      setIsAdmin(true);
-      getCurrentUserDetails();
-    } else if (isCookie) {
-      setIsAdmin(true);
-    }
+    getCurrentUserDetails();
   }, []);
 
   useEffect(() => {
@@ -83,7 +87,7 @@ function App() {
           break;
       }
     });
-  });
+  }, []);
 
   return (
     <>
@@ -93,16 +97,28 @@ function App() {
             <Body>
               <Router>
                 <NavBar isAdmin={isAdmin} />
-
                 <Switch>
                   <Route exact path="/about">
                     <About />
                   </Route>
                   <Route exact path="/admin/inventory">
-                    <InventoryDashboard userData={userData} />
+                    <RequireAuth
+                      isAdmin={isAdmin}
+                      isAuthFinished={isAuthFinished}
+                    >
+                      <InventoryDashboard
+                        userData={userData}
+                        isAdmin={isAdmin}
+                      />
+                    </RequireAuth>
                   </Route>
                   <Route exact path="/admin">
-                    <Admin isAdmin={isAdmin} userData={userData} />
+                    <RequireAuth
+                      isAdmin={isAdmin}
+                      isAuthFinished={isAuthFinished}
+                    >
+                      <Admin isAdmin={isAdmin} userData={userData} />
+                    </RequireAuth>
                   </Route>
                   <Route exact path="/watches/:brand/:colorway">
                     <ProductPage />
