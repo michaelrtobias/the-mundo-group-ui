@@ -8,7 +8,7 @@ export default function FormSuccessful() {
     setTimeout(function () {
       history.push("/");
     }, 6000);
-  }, []);
+  }, [history]);
 
   useEffect(() => {
     if (secondsLeft === 0) {
