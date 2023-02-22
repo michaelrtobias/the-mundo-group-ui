@@ -3,7 +3,7 @@ import NoItemsAlert from "../../Common/NoItemsAlert/index";
 import ProductCard from "./ProductCard";
 import React from "react";
 import _ from "lodash";
-import { useGetWatches } from "../../api";
+import { useGetWatches } from "../../api/hooks/useGetWatches";
 
 const ProductList = ({ searchTerm }) => {
   const { data: items = [], isSuccess, isLoading, isError } = useGetWatches();

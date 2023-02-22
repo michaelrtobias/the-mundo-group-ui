@@ -3,7 +3,7 @@ import InventoryCard from "./InventoryItem/index";
 import NoItemsAlert from "../../../../Common/NoItemsAlert";
 import React from "react";
 import _ from "lodash";
-import { useGetAllInventory } from "../../../../api/index";
+import { useGetAllInventory } from "../../../../api/hooks/useGetAllInventory";
 const InventoryList = ({ searchTerm, showDrafts, showOnlyDrafts }) => {
   const {
     data: items = [],

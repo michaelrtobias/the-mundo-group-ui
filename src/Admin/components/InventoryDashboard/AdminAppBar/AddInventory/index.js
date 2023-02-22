@@ -9,12 +9,13 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useAddInventory, useGetAllInventory } from "../../../../../api/index";
 import AddInventoryImageManager from "../../../../../Common/AddInventoryImageManager/index";
 import CancelModal from "../../CancelModal/index";
 import DraftSwitch from "../../../../../Common/DraftSwitch/index";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { inventorySchema } from "../../../../../utils/validate";
+import { useAddInventory } from "../../../../../api/hooks/useAddInventory";
+import { useGetAllInventory } from "../../../../../api/hooks/useGetAllInventory";
 const defaultAddInventoryState = {
   brand: "",
   model: "",
