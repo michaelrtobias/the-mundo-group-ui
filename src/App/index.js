@@ -52,8 +52,8 @@ function App() {
     const awsauth = {
       domain: "admin.southwestwatches.com",
       scope: ["aws.cognito.signin.user.admin", "email", "openid", "phone"],
-      redirectSignIn: "https://southwestwatches.com",
-      redirectSignOut: "https://southwestwatches.com",
+      redirectSignIn: "http://localhost:3000",
+      redirectSignOut: "http://localhost:3000",
       responseType: "code",
     };
     Amplify.configure({
@@ -62,14 +62,14 @@ function App() {
         userPoolId: "us-east-1_AXiINZ5Xi",
         userPoolWebClientId: "2raim5b443bcsrfbj97755n4k8",
         cookieStorage: {
-          domain: "southwestwatches.com",
+          domain: "localhost",
           path: "/",
           expires: 365,
-          secure: true,
+          secure: false,
         },
         mandatorySignIn: false,
-        redirectSignIn: "https://southwestwatches.com",
-        redirectSignOut: "https://southwestwatches.com",
+        redirectSignIn: "http://localhost:3000",
+        redirectSignOut: "http://localhost:3000",
       },
     });
     Auth.configure({ oauth: awsauth });

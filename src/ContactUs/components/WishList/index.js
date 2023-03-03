@@ -7,7 +7,7 @@ import UploadImage from "../../../Common/UploadImage/index";
 import { makeStyles } from "@mui/styles";
 import { sendMessageSchema } from "../../../utils/validate";
 import { useHistory } from "react-router";
-import { useSendLeadMessage } from "../../../api/index";
+import { useSendLeadMessage } from "../../../api/hooks/useSendLeadMessage";
 const uploadImageGridSizes = { xs: 12, md: 6 };
 
 const useStyles = makeStyles(() => ({

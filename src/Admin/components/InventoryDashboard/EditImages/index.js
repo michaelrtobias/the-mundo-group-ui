@@ -9,7 +9,6 @@ import {
   Tooltip,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useDeleteImage, useEditInventory } from "../../../../api/index";
 import AddInventoryImageManager from "../../../../Common/AddInventoryImageManager/index";
 import CancelModal from "../CancelModal/index";
 import DraftSwitch from "../../../../Common/DraftSwitch/index";
@@ -17,6 +16,8 @@ import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 import LoadingButton from "@mui/lab/LoadingButton";
 import RotateLeftIcon from "@mui/icons-material/RotateLeft";
 import { inventorySchema } from "../../../../utils/validate";
+import { useDeleteImage } from "../../../../api/hooks/useDeleteImage";
+import { useEditInventory } from "../../../../api/hooks/useEditInventory";
 
 const defaultEditInventoryDataSetter = (item) => ({
   brand: item?.brand ?? "",
