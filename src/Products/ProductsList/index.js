@@ -7,6 +7,7 @@ import { useGetWatches } from "../../api/hooks/useGetWatches";
 
 const ProductList = ({ searchTerm }) => {
   const { data: items = [], isSuccess, isLoading, isError } = useGetWatches();
+
   const toLowerCaseObjStringValues = (item) => {
     return Object.fromEntries(
       Object.entries(item).map(([key, value]) => [
