@@ -1,11 +1,7 @@
-import Button from "@mui/material/Button";
 import { ContactInfoWrapper } from "./style.js";
-import Email from "@mui/icons-material/Email";
 import React from "react";
 
 export default function FooterContactInfo() {
-  const url = window.location.href;
-
   return (
     <ContactInfoWrapper>
       <h4>Contact Info</h4>
@@ -21,17 +17,6 @@ export default function FooterContactInfo() {
       <div>
         <b>Phone:</b> +1 (847)-525-5122
       </div>
-      {!url.includes("watches") ? (
-        <Button
-          href="/contact"
-          variant="contained"
-          color="info"
-          sx={{ marginTop: "0.5em" }}
-          endIcon={<Email />}
-        >
-          Send Us A Message
-        </Button>
-      ) : null}
     </ContactInfoWrapper>
   );
 }

@@ -1,25 +1,13 @@
 import { ContactFormWrapper, WishListCard } from "./style.js";
-import { Paper, TextField } from "@mui/material";
+import { Grid, Paper, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { LoadingButton } from "@mui/lab";
 import React from "react";
 import UploadImage from "../../../Common/UploadImage/index";
-import { makeStyles } from "@mui/styles";
 import { sendMessageSchema } from "../../../utils/validate";
 import { useHistory } from "react-router";
 import { useSendLeadMessage } from "../../../api/hooks/useSendLeadMessage";
-const uploadImageGridSizes = { xs: 12, md: 6 };
-
-const useStyles = makeStyles(() => ({
-  root: {
-    margin: "8px 8px 40px 8px",
-    padding: "8px",
-    display: "grid",
-    gridTemplateColumns: "3fr 3fr 3fr",
-    gridColumnGap: "30px",
-    gridRowGap: "10px",
-  },
-}));
+const uploadImageGridSizes = { xs: 6 };
 
 const defaultWishListPayload = {
   first_name: "",
@@ -38,7 +26,6 @@ export default function WishList() {
   const [validationErrors, setValidationErrors] = useState({});
   const [wishlistIsEmpty, setWishlistIsEmpty] = useState(true);
   const history = useHistory();
-  const classes = useStyles();
 
   const { mutate: sendLeadMessage, isLoading } = useSendLeadMessage({
     onSuccess: async () => {
@@ -110,76 +97,97 @@ export default function WishList() {
           will contact you as soon as possible
         </p>
       </WishListCard>
-      <Paper className={classes.root}>
-        <TextField
-          required
-          variant="filled"
-          color="primary"
-          label="First Name"
-          name="first_name"
-          value={wishlistEntry.first_name}
-          error={!!validationErrors.first_name}
-          helperText={validationErrors.first_name}
-          onChange={handleChange}
-        ></TextField>
-
-        <TextField
-          required
-          variant="filled"
-          color="primary"
-          name="last_name"
-          label="Last Name"
-          value={wishlistEntry.last_name}
-          error={!!validationErrors.last_name}
-          helperText={validationErrors.last_name}
-          onChange={handleChange}
-        ></TextField>
-        <TextField
-          required
-          variant="filled"
-          color="primary"
-          label="Phone Number"
-          name="phone"
-          value={wishlistEntry.phone}
-          error={!!validationErrors.phone}
-          helperText={validationErrors.phone}
-          onChange={handleChange}
-        ></TextField>
-        <TextField
-          required
-          variant="filled"
-          color="primary"
-          label="Email"
-          name="email"
-          value={wishlistEntry.email}
-          error={!!validationErrors.email}
-          helperText={validationErrors.email}
-          onChange={handleChange}
-        ></TextField>
-        <TextField
-          variant="filled"
-          color="primary"
-          name="description"
-          label="Description"
-          value={wishlistEntry.description}
-          error={!!validationErrors.description}
-          helperText={validationErrors.description}
-          onChange={handleChange}
-        />
-        <UploadImage
-          handleImageChange={handleImageChange}
-          pathKey="contactformupload"
-          gridSizes={uploadImageGridSizes}
-        />
-        <LoadingButton
-          variant="contained"
-          loading={isLoading}
-          color={formError ? "error" : "primary"}
-          disabled={wishlistIsEmpty}
-          onClick={() => handleSubmit()}
-        >
-          {formError ? "There was an error. Please try again" : "Submit"}
-        </LoadingButton>
+      <Paper sx={{ margin: "8px 1vw 400px 1vw", padding: "8px" }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6} md={4}>
+            <TextField
+              fullWidth
+              required
+              variant="filled"
+              color="primary"
+              label="First Name"
+              name="first_name"
+              value={wishlistEntry.first_name}
+              error={!!validationErrors.first_name}
+              helperText={validationErrors.first_name}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <TextField
+              fullWidth
+              required
+              variant="filled"
+              color="primary"
+              name="last_name"
+              label="Last Name"
+              value={wishlistEntry.last_name}
+              error={!!validationErrors.last_name}
+              helperText={validationErrors.last_name}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <TextField
+              fullWidth
+              required
+              variant="filled"
+              color="primary"
+              label="Phone Number"
+              name="phone"
+              value={wishlistEntry.phone}
+              error={!!validationErrors.phone}
+              helperText={validationErrors.phone}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <TextField
+              fullWidth
+              required
+              variant="filled"
+              color="primary"
+              label="Email"
+              name="email"
+              value={wishlistEntry.email}
+              error={!!validationErrors.email}
+              helperText={validationErrors.email}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <TextField
+              fullWidth
+              variant="filled"
+              color="primary"
+              name="description"
+              label="Description"
+              value={wishlistEntry.description}
+              error={!!validationErrors.description}
+              helperText={validationErrors.description}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <UploadImage
+              handleImageChange={handleImageChange}
+              pathKey="contactformupload"
+              gridSizes={uploadImageGridSizes}
+            />
+          </Grid>
+          <Grid item xs={6} md={4}>
+            <LoadingButton
+              variant="contained"
+              loading={isLoading}
+              color={formError ? "error" : "primary"}
+              disabled={wishlistIsEmpty}
+              onClick={() => handleSubmit()}
+              fullWidth
+            >
+              {formError ? "There was an error. Please try again" : "Submit"}
+            </LoadingButton>
+          </Grid>
+        </Grid>
       </Paper>
     </ContactFormWrapper>
   );
