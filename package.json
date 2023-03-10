@@ -42,7 +42,8 @@
     "deploy": "aws s3 sync --profile TMG_michael --acl public-read build/ s3://southwestwatches.com",
     "deployCodeBuild": "aws s3 sync --acl public-read build/ s3://southwestwatches.com",
     "deployCodeBuildWWW": "aws s3 sync --acl public-read build/ s3://www.southwestwatches.com",
-    "lint": "eslint .eslintrc.js"
+    "lint": "eslint .eslintrc.js",
+    "invalidateCloudfront": "aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths /*"
   },
   "eslintConfig": {
     "extends": [

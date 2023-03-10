@@ -20,3 +20,5 @@ phases:
       - echo "Uploading bundle to s3"
       - npm run deployCodeBuild
       - npm run deployCodeBuildWWW
+      - echo "invalidating cloudfront distrobution"
+      - npm run invalidateCloudfront
