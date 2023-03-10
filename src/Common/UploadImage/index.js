@@ -9,7 +9,6 @@ export default function UploadImage({
   validationErrors = null,
   gridSizes,
 }) {
-  // const [URL, setUrl] = useState("");
   const [success, setSuccess] = useState(false);
   const [uploadInput, setUploadInput] = useState([]);
   const [loading, setLoading] = useState(false);
