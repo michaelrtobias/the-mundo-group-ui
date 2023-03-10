@@ -7,6 +7,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import ProductInquiryModal from "../../ProductInquiryModal/index";
 import React from "react";
 import { useHistory } from "react-router";
 const ProductCard = ({
@@ -70,9 +71,15 @@ const ProductCard = ({
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant="outlined" size="small" href="/contact">
-            Inquire
-          </Button>
+          <ProductInquiryModal
+            brand={brand}
+            model={model}
+            model_number={modelNumber}
+            size={size}
+            bracelet={bracelet}
+            images={images}
+            colorway={colorway}
+          />
           <Button
             variant="outlined"
             size="small"
