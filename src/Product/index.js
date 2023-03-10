@@ -5,7 +5,7 @@ import ProductHeader from "./ProductHeader";
 import ProductImages from "./ProductImages";
 import ProductInfo from "./ProductInfo";
 import React from "react";
-import { useGetInventoryByColorway } from "../../api/hooks/useGetInventoryByColorway";
+import { useGetInventoryByColorway } from "../api/hooks/useGetInventoryByColorway";
 import { useParams } from "react-router-dom";
 const ProductPage = () => {
   const { brand, colorway } = useParams();

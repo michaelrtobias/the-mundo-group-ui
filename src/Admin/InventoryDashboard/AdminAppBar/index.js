@@ -1,7 +1,7 @@
 import AddInventory from "./AddInventory";
 import { Grid } from "@mui/material";
 import React from "react";
-import SearchFilter from "../../../../Common/SearchFilter";
+import SearchFilter from "../../../Common/SearchFilter";
 import ShowDrafts from "./ShowDrafts";
 const AdminAppBar = ({
   setSearchTerm,

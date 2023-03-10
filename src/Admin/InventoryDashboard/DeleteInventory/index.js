@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { LoadingButton } from "@mui/lab";
-import { useDeleteInventory } from "../../../../api/hooks/useDeleteInventory";
+import { useDeleteInventory } from "../../../api/hooks/useDeleteInventory";
 const DeleteInventory = ({ watch }) => {
   const [open, setOpen] = useState(false);
 

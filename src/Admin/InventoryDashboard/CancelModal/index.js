@@ -6,7 +6,7 @@ import {
   DialogTitle,
   Grid,
 } from "@mui/material";
-import DraftSwitch from "../../../../Common/DraftSwitch/index";
+import DraftSwitch from "../../../Common/DraftSwitch/index";
 import React from "react";
 const CancelModal = ({
   isCancelModalOpen,

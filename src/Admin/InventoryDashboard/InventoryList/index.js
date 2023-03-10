@@ -1,9 +1,9 @@
 import { Grid, Skeleton } from "@mui/material";
 import InventoryCard from "./InventoryItem/index";
-import NoItemsAlert from "../../../../Common/NoItemsAlert";
+import NoItemsAlert from "../../../Common/NoItemsAlert";
 import React from "react";
 import _ from "lodash";
-import { useGetAllInventory } from "../../../../api/hooks/useGetAllInventory";
+import { useGetAllInventory } from "../../../api/hooks/useGetAllInventory";
 const InventoryList = ({ searchTerm, showDrafts, showOnlyDrafts }) => {
   const {
     data: items = [],

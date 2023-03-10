@@ -12,13 +12,13 @@ import {
 import React, { useEffect, useState } from "react";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import CancelModal from "../CancelModal/index";
-import DraftSwitch from "../../../../Common/DraftSwitch/index";
+import DraftSwitch from "../../../Common/DraftSwitch/index";
 import { LoadingButton } from "@mui/lab";
 import RotateLeftIcon from "@mui/icons-material/RotateLeft";
-import { inventorySchema } from "../../../../utils/validate";
-import { useDeleteInventory } from "../../../../api/hooks/useDeleteInventory";
-import { useEditInventory } from "../../../../api/hooks/useEditInventory";
-import { useGetAllInventory } from "../../../../api/hooks/useGetAllInventory";
+import { inventorySchema } from "../../../utils/validate";
+import { useDeleteInventory } from "../../../api/hooks/useDeleteInventory";
+import { useEditInventory } from "../../../api/hooks/useEditInventory";
+import { useGetAllInventory } from "../../../api/hooks/useGetAllInventory";
 
 const defaultEditInventoryDataSetter = (item) => ({
   brand: item?.brand ?? "",

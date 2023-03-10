@@ -6,19 +6,18 @@ import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import About from "../About/index";
 import Admin from "../Admin/index";
-import BrandPage from "../Products/BrandPage";
 import ContactUs from "../ContactUs/index";
 import Cookies from "js-cookie";
 import { DndProvider } from "react-dnd";
-import Footer from "../Footer/index";
+import Footer from "../Common/Footer";
 import FormSuccessful from "../ContactUs/components/WishList/components/FormSuccessful";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Home from "../Home/index";
-import InventoryDashboard from "../Admin/components/InventoryDashboard/index";
-import NavBar from "../NavBar/index";
+import InventoryDashboard from "../Admin/InventoryDashboard/index";
+import NavBar from "../Common/NavBar";
 import NotFound from "../NotFound";
-import ProductPage from "../Products/ProductPage/index";
-import Products from "../Products/index";
+import ProductPage from "../Product";
+import Products from "../Products";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import RequireAuth from "../utils/requireAuth";
 const queryClient = new QueryClient();
@@ -122,9 +121,6 @@ function App() {
                   </Route>
                   <Route exact path="/watches/:brand/:colorway">
                     <ProductPage />
-                  </Route>
-                  <Route exact path="/watches/:brand">
-                    <BrandPage />
                   </Route>
                   <Route exact path="/watches">
                     <Products />
