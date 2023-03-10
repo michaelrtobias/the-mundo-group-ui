@@ -12,8 +12,6 @@ const AddInventoryImageManager = ({
   selectedImageIndex,
   setSelectedImageIndex,
   handleMoveImage,
-  isMove,
-  setIsMove,
 }) => {
   return (
     <>
@@ -27,8 +25,6 @@ const AddInventoryImageManager = ({
               selectedImageIndex={selectedImageIndex}
               setSelectedImageIndex={setSelectedImageIndex}
               handleMoveImage={handleMoveImage}
-              isMove={isMove}
-              setIsMove={setIsMove}
             />
           )}
         </Grid>

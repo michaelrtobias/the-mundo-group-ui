@@ -44,11 +44,11 @@ const EditImages = ({ watch }) => {
   const [isEdited, setIsEdited] = useState(false);
   const [imagesToBeDeleted, setImagesToBeDeleted] = useState([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [isMove, setIsMove] = useState(false);
 
   const { mutate: editInventory, isLoading } = useEditInventory({
     onSuccess: () => {
       // setEditInventoryData(defaultEditInventoryData);
+      setIsOpen(false);
       setIsEdited(false);
       setValidationErrors({});
     },
@@ -98,7 +98,6 @@ const EditImages = ({ watch }) => {
         });
       }
       editInventory({ item: { ...editInventoryData, draft: isDraft } });
-      setIsOpen(false);
       setImagesToBeDeleted([]);
     }
   };
@@ -151,7 +150,6 @@ const EditImages = ({ watch }) => {
   };
 
   const handleMoveImage = (destinationIndex, currentIndex) => {
-    setIsMove(true);
     const tempImages = [...editInventoryData.images];
     const removedItem = tempImages.splice(currentIndex, 1)[0];
     tempImages.splice(destinationIndex, 0, removedItem);
@@ -254,8 +252,6 @@ const EditImages = ({ watch }) => {
                 images={editInventoryData.images}
                 handleDeleteImage={handleDeleteImage}
                 isEdit={true}
-                isMove={isMove}
-                setIsMove={setIsMove}
                 selectedImageIndex={selectedImageIndex}
                 setSelectedImageIndex={setSelectedImageIndex}
                 handleMoveImage={handleMoveImage}
