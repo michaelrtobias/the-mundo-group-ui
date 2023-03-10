@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import ImagePreviewList from "./ImagePreviewList/index";
 import Preview from "./Preview/index";
+import React from "react";
 
 const ImagePreview = ({
   images,
@@ -10,16 +10,7 @@ const ImagePreview = ({
   selectedImageIndex,
   setSelectedImageIndex,
   handleMoveImage,
-  setIsMove,
-  isMove,
 }) => {
-  useEffect(() => {
-    if (!isMove && selectedImageIndex >= 0) {
-      setSelectedImageIndex(images.length - 1);
-    }
-    setIsMove(false);
-  }, [images, isMove, selectedImageIndex, setIsMove, setSelectedImageIndex]);
-
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6} lg={4}>

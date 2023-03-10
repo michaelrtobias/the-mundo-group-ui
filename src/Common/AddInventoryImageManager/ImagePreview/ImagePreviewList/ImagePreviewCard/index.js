@@ -27,6 +27,7 @@ const ImagePreviewCard = ({
 }) => {
   const classes = useStyles();
   const handleClick = () => {
+    console.log("clicked index: ", index);
     setSelectedImageIndex(index);
   };
   return (
