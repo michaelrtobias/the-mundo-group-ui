@@ -9,9 +9,10 @@ export const ContentWrap = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    text-align: center;
     color: white;
     grid-area: 1 / 3 / 2 / 5;
-    margin-left: 80px;
+    margin-left: 100px;
   }
   @media (max-width: 1100px) {
     margin-top: 2em;
