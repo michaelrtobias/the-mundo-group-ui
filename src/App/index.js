@@ -4,21 +4,20 @@ import { Body, Page } from "./style.js";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import About from "../About/index";
-import Admin from "../Admin/index";
-import BrandPage from "../Products/BrandPage";
-import ContactUs from "../ContactUs/index";
+import About from "../views/About/index";
+import Admin from "../views/Admin/index";
+import ContactUs from "../views/ContactUs/index";
 import Cookies from "js-cookie";
 import { DndProvider } from "react-dnd";
-import Footer from "../Footer/index";
-import FormSuccessful from "../ContactUs/components/WishList/components/FormSuccessful";
+import Footer from "../components/Footer";
+import FormSuccessful from "../views/ContactUs/components/WishList/components/FormSuccessful";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import Home from "../Home/index";
-import InventoryDashboard from "../Admin/components/InventoryDashboard/index";
-import NavBar from "../NavBar/index";
-import NotFound from "../NotFound";
-import ProductPage from "../Products/ProductPage/index";
-import Products from "../Products/index";
+import Home from "../views/Home/index";
+import InventoryDashboard from "../views/Admin/InventoryDashboard/index";
+import NavBar from "../components/NavBar";
+import NotFound from "../views/NotFound";
+import ProductPage from "../views/Product";
+import Products from "../views/Products";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import RequireAuth from "../utils/requireAuth";
 const queryClient = new QueryClient();
@@ -122,9 +121,6 @@ function App() {
                   </Route>
                   <Route exact path="/watches/:brand/:colorway">
                     <ProductPage />
-                  </Route>
-                  <Route exact path="/watches/:brand">
-                    <BrandPage />
                   </Route>
                   <Route exact path="/watches">
                     <Products />
